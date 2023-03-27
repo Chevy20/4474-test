@@ -112,7 +112,7 @@
                                 
                                     <div class="mb-3">
                                         <label for="tripName" class="form-label">Trip Name</label>
-                                        <input type="text" class="form-control" id="tripName" aria-describedby="tripHelp" value="ExampleTrip" disabled > <!--Reaplce value with PHP get for trip-->
+                                        <input type="text" class="form-control" id="tripName" aria-describedby="tripHelp" value="Italian Wineries" disabled > <!--Reaplce value with PHP get for trip-->
                                         <div id="tripHelp" class="form-text">Name of trip. Cannot be changed.</div>
                                     </div>
                                     <div class="mb-3">
