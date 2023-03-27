@@ -100,9 +100,9 @@
                 <p class="clbl">Passenger Name: <span id="passengerName"class="confirm">John Doe</span></p>
                 <p class="clbl">Start Date: <span id="startDate"class="confirm">2023-04-15</span></p>
                 <p class="clbl">End Date: <span id="endDate" class="confirm">2023-04-22</span></p>
-                <p class="clbl">Trip Name: <span id="tripName" class="confirm">Italian Wineries</span></p>
+                <p class="clbl">Trip Name: <span id="tripName" class="confirm">Venice</span></p>
                 <p class="clbl">Destination: <span id="destination"class="confirm">Italy</span></p>
-                <p class="clbl">Total: <span id="total"class="confirm">$300 CAD</span></p>
+                <p class="clbl">Total: <span id="total"class="confirm">$250.00 CAD</span></p>
                 <a href="home.html" class="btn btn-primary">Return to Home</a>      <!--Change href to whatever home page is called-->
 
             </div>
