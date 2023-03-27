@@ -132,7 +132,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="start" class="form-label">Start Date</label> <span style="color: red !important; display: inline; float: none;" class="form-label">*</span>
-                                        <input type="date" class="date-box"id="start" name="trip-start" value="mm/dd/yyyy">
+                                        <input type="date" class="date-box"id="start" name="trip-start" value="mm/dd/yyyy" required>
                                         <div id="startHelp" class="form-text">Select the start date of trip.</div>
                                     </div>
                                     <div class="mb-3">
@@ -154,19 +154,19 @@
                     
                                     <div class="mb-3">
                                         <label for="passFName1" class="form-label">Passenger First Name</label><span style="color: red !important; display: inline; float: none;" class="form-label">*</span>
-                                        <input type="text" class="form-control" id="passFName1">
+                                        <input type="text" class="form-control" id="passFName1" required>
                                     </div>
                                     <div class="mb-3">
                                     <label for="passLName1" class="form-label">Passenger Last Name</label><span style="color: red !important; display: inline; float: none;"class="form-label">*</span>
-                                        <input type="text" class="form-control" id="passLName1">
+                                        <input type="text" class="form-control" id="passLName1" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="DOB" class="form-label">Date of Birth</label><span style="color: red !important; display: inline; float: none;"class="form-label">*</span>
-                                        <input type="date" class="date-box"id="DOB" name="date-of-birth" value="mm/dd/yyyy">
+                                        <input type="date" class="date-box"id="DOB" name="date-of-birth" value="mm/dd/yyyy" required>
                                     </div>
                                     <div class="mb-3">
                                     <label for="country" class="form-label">Country of Citizenship</label><span style="color: red !important; display: inline; float: none;"class="form-label">*</span>      
-                                        <select id="country" name="country" class="form-control">
+                                        <select id="country" name="country" class="form-control" required>
                                             <option value="Afghanistan">Afghanistan</option>
                                             <option value="Åland Islands">Åland Islands</option>
                                             <option value="Albania">Albania</option>
