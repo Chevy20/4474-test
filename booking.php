@@ -481,7 +481,7 @@
             bookingFeeElement.textContent = bookingFee.toFixed(2);
             grandTotalElement.textContent = grandTotal.toFixed(2);
         }
-
+        
         calculateTaxAndFees();
 
         startDateInput.addEventListener("input", calculateEndDate);
