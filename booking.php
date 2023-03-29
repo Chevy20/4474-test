@@ -138,12 +138,12 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="start" class="form-label">Start Date</label> <span style="color: red !important; display: inline; float: none;" class="form-label">*</span>
-                                        <input type="date" class="date-box"id="start" name="trip-start" value="mm/dd/yyyy" required>
+                                        <input type="date" class="date-box"id="start" name="trip-start" placeholder="mm/dd/yyyy" required>
                                         <div id="startHelp" class="form-text">Select the start date of trip.</div>
                                     </div>
                                     <div class="mb-3">
                                         <label for="end" class="form-label">End Date</label>
-                                        <input type="date" class="date-box"id="end" name="trip-end" value="mm/dd/yyyy" disabled>
+                                        <input type="date" class="date-box"id="end" name="trip-end" placeholder="mm/dd/yyyy" disabled>
                                         <div id="endHelp" class="form-text">End Date of trip. Start date + duration. Will add in JS for it later</div>
                                     </div>
                                 
@@ -439,7 +439,27 @@
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
         integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
-        crossorigin="anonymous"></script>    
+        crossorigin="anonymous"></script> 
+    <script>
+        const startDateInput = document.getElementById("start");
+        const endDateInput = document.getElementById("end");
+        const durationInput = document.getElementById("duration");
+
+        function calculateEndDate() {
+            const startDate = new Date(startDateInput.value);
+            const duration = parseInt(durationInput.value, 10);
+
+            if (isNaN(startDate.getTime()) || isNaN(duration)) {
+                return;
+            }
+
+            const endDate = new Date(startDate);
+            endDate.setDate(startDate.getDate() + duration);
+            endDateInput.value = endDate.toISOString().split("T")[0];
+        }
+
+        startDateInput.addEventListener("input", calculateEndDate);
+    </script>   
 
 </body>
 </html>
