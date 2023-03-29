@@ -12,6 +12,13 @@
 </head>
 
 <body>
+    <?php
+    $tripName = $_GET['tripName'];
+    $country = $_GET['country'];
+    $duration = $_GET['duration'];
+    $ticketPrice = $_GET['ticketPrice'];
+
+    ?>
    <!-- Navigation Bar 1 -->
    <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container-fluid">
@@ -111,22 +118,22 @@
                                 
                                     <div class="mb-3">
                                         <label for="tripName" class="form-label">Trip Name</label>
-                                        <input type="text" class="form-control" id="tripName" aria-describedby="tripHelp" value="Venice" disabled > <!--Reaplce value with PHP get for trip-->
+                                        <input type="text" class="form-control" id="tripName" aria-describedby="tripHelp" value="<?php echo htmlspecialchars($tripName); ?>" disabled > 
                                         <div id="tripHelp" class="form-text">Name of trip. Cannot be changed.</div>
                                     </div>
                                     <div class="mb-3">
                                         <label for="countryName" class="form-label">Country</label>
-                                        <input type="text" class="form-control" id="countryName" aria-describedby="countryHelp" value="Italy" disabled > <!--Reaplce value with PHP get for trip-->
+                                        <input type="text" class="form-control" id="countryName" aria-describedby="countryHelp" value="<?php echo htmlspecialchars($country); ?>" disabled > 
                                         <div id="countryHelp" class="form-text">Country of trip. Cannot be changed.</div>
                                     </div>
                                     <div class="mb-3">
                                         <label for="duration" class="form-label">Duration (days) </label>
-                                        <input type="text" class="form-control" id="duration" aria-describedby="durationHelp" value="7" disabled > <!--Reaplce value with PHP get for trip-->
+                                        <input type="text" class="form-control" id="duration" aria-describedby="durationHelp" value="<?php echo htmlspecialchars($duration); ?>" disabled > 
                                         <div id="durationHelp" class="form-text">Duration of trip. Cannot be changed.</div>
                                     </div>
                                     <div class="mb-3">
                                         <label for="price" class="form-label">Price Per Ticket (CAD)</label>
-                                        <input type="text" class="form-control" id="price" aria-describedby="priceHelp" value="250.00" disabled > <!--Reaplce value with PHP get for trip-->
+                                        <input type="text" class="form-control" id="price" aria-describedby="priceHelp" value="<?php echo htmlspecialchars($ticketPrice); ?>" disabled >
                                         <div id="priceHelp" class="form-text">Price of ticket. Cannot be changed.</div>
                                     </div>
                                     <div class="mb-3">
