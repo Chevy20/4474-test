@@ -105,7 +105,7 @@
     <div class="container-fluid bg-light">
         <div class="row justify-content-center mt-5">
           <div class="col-md-8 col-lg-100 border rounded p-4 bg-white">
-            <form action="payment.php" method="GET" target="_self">
+            <form action="payment.php" method="POST" target="_self">
                 <div class="accordion" id="accordionExample">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingOne">
@@ -144,7 +144,7 @@
                                     <div class="mb-3">
                                         <label for="end" class="form-label">End Date</label>
                                         <input type="date" class="date-box"id="end" name="trip-end" placeholder="mm/dd/yyyy" disabled>
-                                        <div id="endHelp" class="form-text">End Date of trip. Start date + duration. Will add in JS for it later</div>
+                                        <div id="endHelp" class="form-text">End Date of trip. Start date + duration. Cannot Change</div>
                                     </div>
                                 
                         </div>
@@ -424,6 +424,11 @@
                         </div>
                     </div>
                 </div>
+                <div>
+                <p>Tax (13%): <span id="tax"></span></p>
+                <p>Booking Fee (5%): <span id="bookingFee"></span></p>
+                <p>Grand Total: <span id="grandTotal"></span></p>
+                </div>
                 <div class="mb-3 form-check">
                     <input type="checkbox" onchange="document.getElementById('submitBtn').disabled = !this.checked;" class="form-check-input" id="verifyCheck" unchecked>
                     <label class="form-check-label" for="verifyCheck" id="checkLbl">Verify trip Information and passenger information is correct</label>
@@ -444,6 +449,10 @@
         const startDateInput = document.getElementById("start");
         const endDateInput = document.getElementById("end");
         const durationInput = document.getElementById("duration");
+        const priceInput = document.getElementById("price");
+        const taxElement = document.getElementById("tax");
+        const bookingFeeElement = document.getElementById("bookingFee");
+        const grandTotalElement = document.getElementById("grandTotal");
 
         function calculateEndDate() {
             const startDate = new Date(startDateInput.value);
@@ -457,6 +466,23 @@
             endDate.setDate(startDate.getDate() + duration);
             endDateInput.value = endDate.toISOString().split("T")[0];
         }
+        function calculateTaxAndFees() {
+            const price = parseFloat(priceInput.value);
+
+            if (isNaN(price)) {
+                return;
+            }
+
+            const tax = price * 0.13;
+            const bookingFee = price * 0.05;
+            const grandTotal = price + tax + bookingFee;
+
+            taxElement.textContent = tax.toFixed(2);
+            bookingFeeElement.textContent = bookingFee.toFixed(2);
+            grandTotalElement.textContent = grandTotal.toFixed(2);
+        }
+
+        calculateTaxAndFees();
 
         startDateInput.addEventListener("input", calculateEndDate);
     </script>   
