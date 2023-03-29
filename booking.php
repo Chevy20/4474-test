@@ -98,6 +98,9 @@
         .form-check-label{
             font-size: 25px; 
         }
+        .TotalDisplay{
+            font-size: 15px;
+        }
    
 
     </style>
@@ -424,10 +427,10 @@
                         </div>
                     </div>
                 </div>
-                <div>
-                <p>Tax (13%): <span id="tax"></span></p>
-                <p>Booking Fee (5%): <span id="bookingFee"></span></p>
-                <p>Grand Total: <span id="grandTotal"></span></p>
+                <div class="TotalDisplay">
+                    <p>Tax (13%): $<span id="tax"></span> CAD</p>
+                    <p>Booking Fee (5%): $<span id="bookingFee"> CAD</span></p>
+                    <p>Grand Total: $<span id="grandTotal"></span> CAD</p>
                 </div>
                 <div class="mb-3 form-check">
                     <input type="checkbox" onchange="document.getElementById('submitBtn').disabled = !this.checked;" class="form-check-input" id="verifyCheck" unchecked>
@@ -481,7 +484,7 @@
             bookingFeeElement.textContent = bookingFee.toFixed(2);
             grandTotalElement.textContent = grandTotal.toFixed(2);
         }
-        
+
         calculateTaxAndFees();
 
         startDateInput.addEventListener("input", calculateEndDate);
