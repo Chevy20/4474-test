@@ -428,6 +428,7 @@
                     </div>
                 </div>
                 <div class="TotalDisplay">
+                    <p>Subtotal: $<span id="subtotal"></span> CAD</p>
                     <p>Tax (13%): $<span id="tax"></span> CAD</p>
                     <p>Booking Fee (5%): $<span id="bookingFee"> CAD</span></p>
                     <p>Grand Total: $<span id="grandTotal"></span> CAD</p>
@@ -453,6 +454,7 @@
         const endDateInput = document.getElementById("end");
         const durationInput = document.getElementById("duration");
         const priceInput = document.getElementById("price");
+        const subtotalElement = document.getElementById("subtotal");
         const taxElement = document.getElementById("tax");
         const bookingFeeElement = document.getElementById("bookingFee");
         const grandTotalElement = document.getElementById("grandTotal");
@@ -480,6 +482,7 @@
             const bookingFee = price * 0.05;
             const grandTotal = price + tax + bookingFee;
 
+            subtotalElement.textContent = price.toFixed(2); 
             taxElement.textContent = tax.toFixed(2);
             bookingFeeElement.textContent = bookingFee.toFixed(2);
             grandTotalElement.textContent = grandTotal.toFixed(2);

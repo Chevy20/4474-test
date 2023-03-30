@@ -12,7 +12,7 @@ $user_id = $_SESSION['user_id'];
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Toronto Trip Information</title>
+    <title>Banff Trip Information</title>
 </head>
 
 <body>
@@ -86,7 +86,7 @@ $user_id = $_SESSION['user_id'];
         <div class="container">
             <div class="d-sm-flex flex-column">
                 <div>
-                    <h1>Toronto</h1>
+                    <h1>Banff</h1>
                 </div>
                 <div id="tripImgs" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-indicators">
@@ -99,13 +99,13 @@ $user_id = $_SESSION['user_id'];
                     </div>
                     <div class="carousel-inner">
                         <div class="carousel-item active c-item">
-                            <img src="img/toronto1.jpg" class="d-block w-100 c-img" alt="Trip Image">
+                            <img src="img/banff1.jpg" class="d-block w-100 c-img" alt="Trip Image">
                         </div>
                         <div class="carousel-item c-item">
-                            <img src="img/toronto2.jpg" class="d-block w-100 c-img" alt="Trip Image">
+                            <img src="img/banff2.jpg" class="d-block w-100 c-img" alt="Trip Image">
                         </div>
                         <div class="carousel-item c-item">
-                            <img src="img/toronto3.jpg" class="d-block w-100 c-img" alt="Trip Image">
+                            <img src="img/banff3.jpg" class="d-block w-100 c-img" alt="Trip Image">
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#tripImgs" data-bs-slide="prev">
@@ -126,23 +126,22 @@ $user_id = $_SESSION['user_id'];
         <div class="container">
             <div class="d-md-flex flex-column justify-content-between align-items-center">
                 <h2 class="mb-3 mb-md-0">About the Trip</h2>
-                <p>Explore the vibrant city of Toronto on a bus trip! Sit back, relax, and enjoy the sights as you 
-		   travel through the bustling streets and vibrant neighborhoods of this cosmopolitan 
-		   metropolis. See the iconic CN Tower, the historic Distillery District, and the beautiful waterfront, 
-	           among other highlights. Your knowledgeable guide will share interesting facts and stories about Toronto's 
-		   history and culture, making this a truly memorable experience. Whether you're a first-time visitor or a seasoned 
-		   traveler, this bus tour is a fantastic way to discover the best of Toronto</p>
+                <p>Experience the breathtaking natural beauty of Banff on a bus tour that takes you through the majestic peaks, crystal-clear lakes, 
+                    and stunning wilderness of the Canadian Rockies. Marvel at the turquoise waters of Lake Louise, journey along the Icefields Parkway, 
+                    and hike through the stunning landscapes of Banff National Park. Your knowledgeable guide will share fascinating insights into the region's unique geology, 
+                    wildlife, and ecology as you explore this natural wonderland. Whether you're an outdoor enthusiast or simply seeking a peaceful escape into nature, 
+                    this bus tour is an excellent way to discover the awe-inspiring beauty of Banff and the surrounding area.</p>
                 <ul>
                     <li>Country: Canada</li>
-                    <li>Duration (days): 2</li>
-                    <li>Price per Ticket (CAD): $75.00</li>
+                    <li>Duration (days): 4</li>
+                    <li>Price per Ticket (CAD): $200.00</li>
                 </ul>
                 <form action="booking.php" method="GET" target="_self">
                     <div class="mb-3">
-                        <input type="hidden" name="tripName" value="Toronto" />
+                        <input type="hidden" name="tripName" value="Banff" />
                         <input type="hidden" name="country" value="Canada" />
-                        <input type="hidden" name="duration" value="2" />
-                        <input type="hidden" name="ticketPrice" value="75.00" />
+                        <input type="hidden" name="duration" value="4" />
+                        <input type="hidden" name="ticketPrice" value="200.00" />
                     </div>
                     <button type="submit" class="btn btn-primary">Book Now!</button>
 
