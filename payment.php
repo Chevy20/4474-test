@@ -344,14 +344,6 @@ $user_id = $_SESSION['user_id'];
             }
 
             if (cardNumberValid && expiryDateValid && cvcValid && postalCodeValid && phoneNumberValid) {
-                //Change this to query db and make sure number is unique once php is setup
-                // Generate a random 8-digit integer
-                 const randomBookingNumber = Math.floor(10000000 + Math.random() * 90000000);
-
-                // Assign the random number to the hidden input with the ID "bookingNumber"
-                const bookingNumberInput = document.getElementById('bookingNumber');
-                bookingNumberInput.value = randomBookingNumber;
-
                 creditCardForm.submit();
             } else {
                 alert('Please correct the errors in the form before submitting.');
