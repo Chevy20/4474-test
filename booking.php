@@ -105,6 +105,9 @@ $user_id = $_SESSION['user_id'];
         .TotalDisplay{
             font-size: 15px;
         }
+        .no-cursor-change{
+            pointer-events: none;
+        }
    
 
     </style>
@@ -125,21 +128,21 @@ $user_id = $_SESSION['user_id'];
                                 
                                     <div class="mb-3">
                                         <label for="tripName" class="form-label">Trip Name</label>
-                                        <input type="text" class="form-control" id="tripName" name="tripName" aria-describedby="tripHelp" value="<?php echo htmlspecialchars($tripName); ?>" readonly > 
+                                        <input type="text" class="form-control no-cursor-change" id="tripName" name="tripName" aria-describedby="tripHelp" value="<?php echo htmlspecialchars($tripName); ?>" readonly > 
                                         <div id="tripHelp" class="form-text">Name of trip. Cannot be changed.</div>
                                     </div>
                                     <div class="mb-3">
                                         <label for="countryName" class="form-label">Country</label>
-                                        <input type="text" class="form-control" id="countryName" name ="countryName"  aria-describedby="countryHelp" value="<?php echo htmlspecialchars($country); ?>" readonly > 
+                                        <input type="text" class="form-control no-cursor-change" id="countryName" name ="countryName"  aria-describedby="countryHelp" value="<?php echo htmlspecialchars($country); ?>" readonly > 
                                         <div id="countryHelp" class="form-text">Country of trip. Cannot be changed.</div>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="duration" class="form-label">Duration (days) </label>
+                                        <label for="duration" class="form-label no-cursor-change">Duration (days) </label>
                                         <input type="text" class="form-control" id="duration" name = "duration" aria-describedby="durationHelp" value="<?php echo htmlspecialchars($duration); ?>" readonly > 
                                         <div id="durationHelp" class="form-text">Duration of trip. Cannot be changed.</div>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="price" class="form-label">Price Per Ticket (CAD)</label>
+                                        <label for="price" class="form-label no-cursor-change">Price Per Ticket (CAD)</label>
                                         <input type="text" class="form-control" id="price" name ="price" aria-describedby="priceHelp" value="<?php echo htmlspecialchars($ticketPrice); ?>" readonly >
                                         <div id="priceHelp" class="form-text">Price of ticket. Cannot be changed.</div>
                                     </div>
@@ -149,7 +152,7 @@ $user_id = $_SESSION['user_id'];
                                         <div id="startHelp" class="form-text">Select the start date of trip.</div>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="end" class="form-label">End Date</label>
+                                        <label for="end" class="form-label no-cursor-change">End Date</label>
                                         <input type="date" class="date-box"id="end" name="trip-end" placeholder="mm/dd/yyyy" readonly>
                                         <div id="endHelp" class="form-text">End Date of trip. Start date + duration. Cannot Change</div>
                                     </div>
@@ -509,9 +512,24 @@ $user_id = $_SESSION['user_id'];
         calculateTaxAndFees();
 
         startDateInput.addEventListener("input", calculateEndDate);
+         /*
         tripNameInput.addEventListener('mousedown', (event) => {
             event.preventDefault(); // Prevents the click on the input
         });
+        countryNameInput.addEventListener('mousedown', (event) => {
+            event.preventDefault(); // Prevents the click on the input
+        });
+        endDateInput.addEventListener('mousedown', (event) => {
+            event.preventDefault(); // Prevents the click on the input
+        });
+        durationInput.addEventListener('mousedown', (event) => {
+            event.preventDefault(); // Prevents the click on the input
+        });
+        priceInput.addEventListener('mousedown', (event) => {
+            event.preventDefault(); // Prevents the click on the input
+        });
+        */
+        
     </script>   
 
 </body>
