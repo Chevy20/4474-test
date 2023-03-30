@@ -12,7 +12,7 @@ $user_id = $_SESSION['user_id'];
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Niagara Falls Trip Information</title>
+    <title>Toronto Trip Information</title>
 </head>
 
 <body>
@@ -126,25 +126,24 @@ $user_id = $_SESSION['user_id'];
         <div class="container">
             <div class="d-md-flex flex-column justify-content-between align-items-center">
                 <h2 class="mb-3 mb-md-0">About the Trip</h2>
-                <p>Niagara Falls is a breathtaking natural wonder located in Ontario, Canada. It is home to three
-                    majestic waterfalls: Horseshoe Falls, American Falls, and Bridal Veil Falls.
-                    Visitors can witness the power and beauty of the falls up close through a variety of experiences,
-                    including a boat ride on the Maid of the Mist, a walk behind the falls, and a helicopter tour.
-                    In addition to the falls, the Niagara region offers a variety of attractions, such as wineries,
-                    casinos, and historic sites. Join us on our bus trip and discover the awe-inspiring beauty of
-                    Niagara Falls Canada.</p>
+                <p>Explore the vibrant city of Toronto on a bus trip! Sit back, relax, and enjoy the sights as you 
+		   travel through the bustling streets and vibrant neighborhoods of this cosmopolitan 
+		   metropolis. See the iconic CN Tower, the historic Distillery District, and the beautiful waterfront, 
+	           among other highlights. Your knowledgeable guide will share interesting facts and stories about Toronto's 
+		   history and culture, making this a truly memorable experience. Whether you're a first-time visitor or a seasoned 
+		   traveler, this bus tour is a fantastic way to discover the best of Toronto</p>
                 <ul>
                     <li>Country: Canada</li>
-                    <li>Duration (days): 3</li>
-                    <li>Price per Ticket (CAD): $100.00</li>
+                    <li>Duration (days): 2</li>
+                    <li>Price per Ticket (CAD): $75.00</li>
                 </ul>
 		<p><?php echo htmlspecialchars($user_id); ?></p>
                 <form action="booking.php" method="GET" target="_self">
                     <div class="mb-3">
-                        <input type="hidden" name="tripName" value="Niagara Falls" />
+                        <input type="hidden" name="tripName" value="Toronto" />
                         <input type="hidden" name="country" value="Canada" />
-                        <input type="hidden" name="duration" value="3" />
-                        <input type="hidden" name="ticketPrice" value="100.00" />
+                        <input type="hidden" name="duration" value="2" />
+                        <input type="hidden" name="ticketPrice" value="75.00" />
                     </div>
                     <button type="submit" class="btn btn-primary">Book Now!</button>
 
