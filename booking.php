@@ -125,22 +125,22 @@ $user_id = $_SESSION['user_id'];
                                 
                                     <div class="mb-3">
                                         <label for="tripName" class="form-label">Trip Name</label>
-                                        <input type="text" class="form-control" id="tripName" name="tripName" aria-describedby="tripHelp" value="<?php echo htmlspecialchars($tripName); ?>" disabled > 
+                                        <input type="text" class="form-control" id="tripName" name="tripName" aria-describedby="tripHelp" value="<?php echo htmlspecialchars($tripName); ?>" readonly > 
                                         <div id="tripHelp" class="form-text">Name of trip. Cannot be changed.</div>
                                     </div>
                                     <div class="mb-3">
                                         <label for="countryName" class="form-label">Country</label>
-                                        <input type="text" class="form-control" id="countryName" name ="countryName"  aria-describedby="countryHelp" value="<?php echo htmlspecialchars($country); ?>" disabled > 
+                                        <input type="text" class="form-control" id="countryName" name ="countryName"  aria-describedby="countryHelp" value="<?php echo htmlspecialchars($country); ?>" readonly > 
                                         <div id="countryHelp" class="form-text">Country of trip. Cannot be changed.</div>
                                     </div>
                                     <div class="mb-3">
                                         <label for="duration" class="form-label">Duration (days) </label>
-                                        <input type="text" class="form-control" id="duration" name = "duration" aria-describedby="durationHelp" value="<?php echo htmlspecialchars($duration); ?>" disabled > 
+                                        <input type="text" class="form-control" id="duration" name = "duration" aria-describedby="durationHelp" value="<?php echo htmlspecialchars($duration); ?>" readonly > 
                                         <div id="durationHelp" class="form-text">Duration of trip. Cannot be changed.</div>
                                     </div>
                                     <div class="mb-3">
                                         <label for="price" class="form-label">Price Per Ticket (CAD)</label>
-                                        <input type="text" class="form-control" id="price" name ="price" aria-describedby="priceHelp" value="<?php echo htmlspecialchars($ticketPrice); ?>" disabled >
+                                        <input type="text" class="form-control" id="price" name ="price" aria-describedby="priceHelp" value="<?php echo htmlspecialchars($ticketPrice); ?>" readonly >
                                         <div id="priceHelp" class="form-text">Price of ticket. Cannot be changed.</div>
                                     </div>
                                     <div class="mb-3">

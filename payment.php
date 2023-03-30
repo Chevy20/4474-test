@@ -21,7 +21,7 @@ $user_id = $_SESSION['user_id'];
         $PassLName = $_GET['passLName1'];
         $tripName = $_GET['tripName'];
         $country = $_GET['countryName'];
-        $price = $_GET['price'];
+        $price = isset($_GET['price']) ? $_GET['price'] : 0;
         $startDate = $_GET['trip-start'];
         $endDate = $_GET['trip-end'];
         
