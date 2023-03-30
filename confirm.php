@@ -108,13 +108,13 @@ $user_id = $_SESSION['user_id'];
                 <h4> Payment succeeded! Below you will find your confirmation information: <h3>
                 <h5> An email copy will be sent to the email associated with your account. <h3>
                 <!-- All fields below will be populated with php using post-->
-                <p class="clbl">Booking Number: <span id="bookingNumber" class="confirm">11111111</span></p>     
-                <p class="clbl">Passenger Name: <span id="passengerName"class="confirm"><?php echo htmlspecialchars($PassFName); ?> <?php echo htmlspecialchars($PassLName); ?></span></p>
-                <p class="clbl">Start Date: <span id="startDate"class="confirm"><?php echo htmlspecialchars($startDate); ?>/span></p>
-                <p class="clbl">End Date: <span id="endDate" class="confirm"><?php echo htmlspecialchars($endDate); ?></span></p>
-                <p class="clbl">Trip Name: <span id="tripName" class="confirm"><?php echo htmlspecialchars($tripName); ?></span></p>
-                <p class="clbl">Country: <span id="Country"class="confirm"><?php echo htmlspecialchars($country); ?></span></p>
-                <p class="clbl">Total: <span id="total"class="confirm">$<?php echo htmlspecialchars($total); ?> CAD</span></p>
+                <p class="clbl">Booking Number: 11111111</p>     
+                <p class="clbl">Passenger Name: <?php echo htmlspecialchars($PassFName); ?> <?php echo htmlspecialchars($PassLName); ?></span></p>
+                <p class="clbl">Start Date: <?php echo htmlspecialchars($startDate); ?> </p>
+                <p class="clbl">End Date: <?php echo htmlspecialchars($endDate); ?></p>
+                <p class="clbl">Trip Name: <?php echo htmlspecialchars($tripName); ?></p>
+                <p class="clbl">Country: <?php echo htmlspecialchars($country); ?></p>
+                <p class="clbl">Total: $<?php echo htmlspecialchars($total); ?> CAD</p>
                 <a href="home.html" class="btn btn-primary">Return to Home</a>      <!--Change href to whatever home page is called-->
 
             </div>
