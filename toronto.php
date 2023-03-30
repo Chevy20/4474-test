@@ -86,7 +86,7 @@ $user_id = $_SESSION['user_id'];
         <div class="container">
             <div class="d-sm-flex flex-column">
                 <div>
-                    <h1>Niagara Falls</h1>
+                    <h1>Toronto</h1>
                 </div>
                 <div id="tripImgs" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-indicators">
@@ -99,13 +99,13 @@ $user_id = $_SESSION['user_id'];
                     </div>
                     <div class="carousel-inner">
                         <div class="carousel-item active c-item">
-                            <img src="img/Falls1.jpg" class="d-block w-100 c-img" alt="Trip Image">
+                            <img src="img/toronto1.jpg" class="d-block w-100 c-img" alt="Trip Image">
                         </div>
                         <div class="carousel-item c-item">
-                            <img src="img/Falls2.jpg" class="d-block w-100 c-img" alt="Trip Image">
+                            <img src="img/toronto2.jpg" class="d-block w-100 c-img" alt="Trip Image">
                         </div>
                         <div class="carousel-item c-item">
-                            <img src="img/Falls3.jpg" class="d-block w-100 c-img" alt="Trip Image">
+                            <img src="img/toronto3.jpg" class="d-block w-100 c-img" alt="Trip Image">
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#tripImgs" data-bs-slide="prev">
