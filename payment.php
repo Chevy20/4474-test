@@ -17,13 +17,13 @@ $user_id = $_SESSION['user_id'];
 </head>
 <body>
     <?php
-        $PassFName = $_POST['passFName1'];
-        $PassLName = $_POST['passLName1'];
-        $tripName = $_POST['tripName'];
-        $country = $_POST['countryName'];
-        $price = $_POST['price'];
-        $startDate = $_POST['trip-start'];
-        $endDate = $_POST['trip-end'];
+        $PassFName = $_GET['passFName1'];
+        $PassLName = $_GET['passLName1'];
+        $tripName = $_GET['tripName'];
+        $country = $_GET['countryName'];
+        $price = $_GET['price'];
+        $startDate = $_GET['trip-start'];
+        $endDate = $_GET['trip-end'];
         
     ?>
     <!-- Navigation Bar 1 -->
