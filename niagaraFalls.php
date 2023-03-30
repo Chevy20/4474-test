@@ -138,7 +138,6 @@ $user_id = $_SESSION['user_id'];
                     <li>Duration (days): 3</li>
                     <li>Price per Ticket (CAD): $100.00</li>
                 </ul>
-		<p><?php echo htmlspecialchars($user_id); ?></p>
                 <form action="booking.php" method="GET" target="_self">
                     <div class="mb-3">
                         <input type="hidden" name="tripName" value="Niagara Falls" />

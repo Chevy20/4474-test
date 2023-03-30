@@ -6,13 +6,19 @@
     <title>Account Information</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
-    
+     
 </head>
 <body>
 
 <?php include 'connection.php';?> <!-- b onnect to db -->
-  
-  
+<?php
+session_start();
+$user_id = $_SESSION['user_id'];
+
+//echo $user_id;
+
+?>
+
     <!-- Navigation Bar 1 -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container-fluid">
@@ -90,7 +96,7 @@
             $result1 = $connection -> query("SELECT user_id, username FROM Account_info");
 
             $row1 = $result1 ->fetch_assoc();
-            echo '<h4> Account Number:' . $row1["user_id"] . $row1["username"] . '</h4>';
+            echo '<h4> &nbsp; &nbsp; Account Number:' . $row1["user_id"] . $row1["username"] . '</h4>';
             
             ?>
             <br>
@@ -151,10 +157,20 @@
                       <div class="card">
                         <div class="card-body">
                           <h5 class="card-title">Contact Information</h5>
+                          <?php
+
+                          //$result1 = $connection -> query("SELECT fname, lname, Phone, email  FROM Account_info");
+
+                          //$row1 = $result1 ->fetch_assoc();
+                          //echo '<h4> &nbsp; &nbsp; Account Number:' . $row1["user_id"] . $row1["username"] . '</h4>';
+                          
+
                           <p class="card-text">First Name: James</p>
                           <p class="card-text">Last Name: dad </p>
                           <p class="card-text">Phone: 923123219 </p>
                           <p class="card-text">email: jasd@gmail.com </p>
+
+                          ?>
 
                           <a class="btn btn-primary " data-bs-toggle="popover" data-bs-placement="top" title="Edit information" href="changepassword.html"  >Edit Information</a>
                         </div>
