@@ -1,3 +1,7 @@
+<?php
+session_start();
+$user_id = $_SESSION['user_id'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,7 +16,15 @@
     <title>Trip Information</title>
 </head>
 <body>
-
+    <?php
+        $PassFName = $_POST['passFName1'];
+        $PassLName = $_POST['passLName1'];
+        $tripName = $_POST['tripName'];
+        $country = $_POST['country'];
+        $startDate = $_POST['start'];
+        $endDate = $_POST['end'];
+        $total = $_POST['totalIn'];
+    ?>
     <!-- Navigation Bar 1 -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container-fluid">
@@ -101,6 +113,9 @@
             color: #dc3545;
             font-size: 12px;
         }
+        .TotalDisplay{
+            font-size: 15px;
+        }
       
    
     </style>
@@ -172,11 +187,23 @@
                             </div>
                         </div>
                     </div>
+                    <div class="TotalDisplay">
+                    <p>Subtotal: $<span id="subtotal"></span> CAD</p>
+                    <p>Tax (13%): $<span id="tax"></span> CAD</p>
+                    <p>Booking Fee (5%): $<span id="bookingFee"> CAD</span></p>
+                    <p>Grand Total: $<span id="grandTotal"></span> CAD</p>
+                </div>
                     <div class="mb-3 form-check">
                         <input type="checkbox" onchange="document.getElementById('submitBtn').disabled = !this.checked;" class="form-check-input" id="verifyCheck" unchecked>
                         <label class="form-check-label" for="verifyCheck" id="checkLbl">Verify Card information and Billing Information is correct.</label>
                         </div>
-                    <input type="hidden" id="bookingNumber" name="bookingNumber">
+                    <input type="hidden" id="PassFName" name="PassFName" value="<?php echo htmlspecialchars($PassFName); ?>">
+                    <input type="hidden" id="PassLName" name="PassLName" value="<?php echo htmlspecialchars($PassLName); ?>">
+                    <input type="hidden" id="tripName" name="tripName" value="<?php echo htmlspecialchars($tripName); ?>">
+                    <input type="hidden" id="startDate" name="startDate" value="<?php echo htmlspecialchars($startDate); ?>">
+                    <input type="hidden" id="endDate" name="endDate" value="<?php echo htmlspecialchars($endDate); ?>">
+                    <input type="hidden" id="country" name="country" value="<?php echo htmlspecialchars($country); ?>">
+                    <input type="hidden" id="total" name="total" value="<?php echo htmlspecialchars($total); ?>">
                     <button type="submit" class="btn btn-primary" id="submitBtn" disabled >Process Payment</button>
                 </form>
 

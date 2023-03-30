@@ -1,3 +1,7 @@
+<?php
+session_start();
+$user_id = $_SESSION['user_id'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -432,6 +436,7 @@
                     <p>Tax (13%): $<span id="tax"></span> CAD</p>
                     <p>Booking Fee (5%): $<span id="bookingFee"> CAD</span></p>
                     <p>Grand Total: $<span id="grandTotal"></span> CAD</p>
+                    <input type="hidden" id=totalIn name="total">
                 </div>
                 <div class="mb-3 form-check">
                     <input type="checkbox" onchange="document.getElementById('submitBtn').disabled = !this.checked;" class="form-check-input" id="verifyCheck" unchecked>
@@ -458,6 +463,7 @@
         const taxElement = document.getElementById("tax");
         const bookingFeeElement = document.getElementById("bookingFee");
         const grandTotalElement = document.getElementById("grandTotal");
+        const totalInput = document.getElementById("totalIn");
 
         function calculateEndDate() {
             const startDate = new Date(startDateInput.value);
@@ -486,6 +492,7 @@
             taxElement.textContent = tax.toFixed(2);
             bookingFeeElement.textContent = bookingFee.toFixed(2);
             grandTotalElement.textContent = grandTotal.toFixed(2);
+            totalInput.value = grandTotal.toFixed(2);
         }
 
         calculateTaxAndFees();

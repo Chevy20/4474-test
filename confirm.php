@@ -1,3 +1,7 @@
+<?php
+session_start();
+$user_id = $_SESSION['user_id'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,10 +13,18 @@
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Trip Information</title>
+    <title>Confirmation page</title>
 </head>
 <body>
-
+    <?php
+        $PassFName = $_POST['PassFName'];
+        $PassLName = $_POST['PassLName'];
+        $tripName = $_POST['tripName'];
+        $country = $_POST['country'];
+        $startDate = $_POST['startDate'];
+        $endDate = $_POST['endDate'];
+        $total = $_POST['total'];
+    ?>
     <!-- Navigation Bar 1 -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
@@ -97,12 +109,12 @@
                 <h5> An email copy will be sent to the email associated with your account. <h3>
                 <!-- All fields below will be populated with php using post-->
                 <p class="clbl">Booking Number: <span id="bookingNumber" class="confirm">11111111</span></p>     
-                <p class="clbl">Passenger Name: <span id="passengerName"class="confirm">John Doe</span></p>
-                <p class="clbl">Start Date: <span id="startDate"class="confirm">2023-04-15</span></p>
-                <p class="clbl">End Date: <span id="endDate" class="confirm">2023-04-22</span></p>
-                <p class="clbl">Trip Name: <span id="tripName" class="confirm">Venice</span></p>
-                <p class="clbl">Destination: <span id="destination"class="confirm">Italy</span></p>
-                <p class="clbl">Total: <span id="total"class="confirm">$250.00 CAD</span></p>
+                <p class="clbl">Passenger Name: <span id="passengerName"class="confirm"><?php echo htmlspecialchars($PassFName); ?> <?php echo htmlspecialchars($PassLName); ?></span></p>
+                <p class="clbl">Start Date: <span id="startDate"class="confirm"><?php echo htmlspecialchars($startDate); ?>/span></p>
+                <p class="clbl">End Date: <span id="endDate" class="confirm"><?php echo htmlspecialchars($endDate); ?></span></p>
+                <p class="clbl">Trip Name: <span id="tripName" class="confirm"><?php echo htmlspecialchars($tripName); ?></span></p>
+                <p class="clbl">Country: <span id="Country"class="confirm"><?php echo htmlspecialchars($country); ?></span></p>
+                <p class="clbl">Total: <span id="total"class="confirm">$<?php echo htmlspecialchars($total); ?> CAD</span></p>
                 <a href="home.html" class="btn btn-primary">Return to Home</a>      <!--Change href to whatever home page is called-->
 
             </div>
