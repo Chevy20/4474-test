@@ -458,6 +458,8 @@ $user_id = $_SESSION['user_id'];
         integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
         crossorigin="anonymous"></script> 
     <script>
+        const tripNameInput = document.getElementById("tripName");
+        const countryNameInput = document.getElementById("countryName");
         const startDateInput = document.getElementById("start");
         const endDateInput = document.getElementById("end");
         const durationInput = document.getElementById("duration");
@@ -507,6 +509,9 @@ $user_id = $_SESSION['user_id'];
         calculateTaxAndFees();
 
         startDateInput.addEventListener("input", calculateEndDate);
+        tripNameInput.addEventListener('mousedown', (event) => {
+            event.preventDefault(); // Prevents the click on the input
+        });
     </script>   
 
 </body>
