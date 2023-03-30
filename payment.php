@@ -21,9 +21,10 @@ $user_id = $_SESSION['user_id'];
         $PassLName = $_POST['passLName1'];
         $tripName = $_POST['tripName'];
         $country = $_POST['countryName'];
+        $price = $_POST['price'];
         $startDate = $_POST['trip-start'];
         $endDate = $_POST['trip-end'];
-        $total = $_POST['totalIn'];
+        
     ?>
     <!-- Navigation Bar 1 -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
@@ -231,7 +232,7 @@ $user_id = $_SESSION['user_id'];
         const grandTotalElement = document.getElementById("grandTotal");
 
         function calculateTaxAndFees() {
-            const price = parseFloat(priceInput.value);
+            const Price = <?php echo json_encode($price); ?>;
 
             if (isNaN(price)) {
                 return;
@@ -245,6 +246,7 @@ $user_id = $_SESSION['user_id'];
             taxElement.textContent = tax.toFixed(2);
             bookingFeeElement.textContent = bookingFee.toFixed(2);
             grandTotalElement.textContent = grandTotal.toFixed(2);
+            
         }
         calculateTaxAndFees();
 
