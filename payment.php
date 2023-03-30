@@ -218,6 +218,32 @@ $user_id = $_SESSION['user_id'];
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
         integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
         crossorigin="anonymous"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+            const subtotalElement = document.getElementById("subtotal");
+            const taxElement = document.getElementById("tax");
+            const bookingFeeElement = document.getElementById("bookingFee");
+            const grandTotalElement = document.getElementById("grandTotal");
+
+            function calculateTaxAndFees() {
+                const price = <?php echo json_encode($price); ?>;
+
+                if (isNaN(price)) {
+                    return;
+                }
+
+                const tax = price * 0.13;
+                const bookingFee = price * 0.05;
+                const grandTotal = price + tax + bookingFee;
+
+                subtotalElement.textContent = price.toFixed(2); 
+                taxElement.textContent = tax.toFixed(2);
+                bookingFeeElement.textContent = bookingFee.toFixed(2);
+                grandTotalElement.textContent = grandTotal.toFixed(2);
+            }
+            calculateTaxAndFees();
+        });
+    </script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
         const cardNumberInput = document.getElementById('card-number');
@@ -226,29 +252,7 @@ $user_id = $_SESSION['user_id'];
         const billPCInput = document.getElementById('billPC');
         const billPhoneInput = document.getElementById('billPhone');
         const creditCardForm = document.getElementById('credit-card-form');
-        const subtotalElement = document.getElementById("subtotal");
-        const taxElement = document.getElementById("tax");
-        const bookingFeeElement = document.getElementById("bookingFee");
-        const grandTotalElement = document.getElementById("grandTotal");
-
-        function calculateTaxAndFees() {
-            const price = <?php echo json_encode($price); ?>;
-
-            if (isNaN(price)) {
-                return;
-            }
-
-            const tax = price * 0.13;
-            const bookingFee = price * 0.05;
-            const grandTotal = price + tax + bookingFee;
-
-            subtotalElement.textContent = price.toFixed(2); 
-            taxElement.textContent = tax.toFixed(2);
-            bookingFeeElement.textContent = bookingFee.toFixed(2);
-            grandTotalElement.textContent = grandTotal.toFixed(2);
-            
-        }
-        calculateTaxAndFees();
+      
 
         cardNumberInput.addEventListener('input', (e) => {
             e.target.value = e.target.value
