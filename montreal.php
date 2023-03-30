@@ -12,7 +12,7 @@ $user_id = $_SESSION['user_id'];
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Toronto Trip Information</title>
+    <title>Montreal Trip Information</title>
 </head>
 
 <body>
@@ -86,7 +86,7 @@ $user_id = $_SESSION['user_id'];
         <div class="container">
             <div class="d-sm-flex flex-column">
                 <div>
-                    <h1>Toronto</h1>
+                    <h1>Montreal</h1>
                 </div>
                 <div id="tripImgs" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-indicators">
@@ -99,13 +99,13 @@ $user_id = $_SESSION['user_id'];
                     </div>
                     <div class="carousel-inner">
                         <div class="carousel-item active c-item">
-                            <img src="img/toronto1.jpg" class="d-block w-100 c-img" alt="Trip Image">
+                            <img src="img/montreal1.jpg" class="d-block w-100 c-img" alt="Trip Image">
                         </div>
                         <div class="carousel-item c-item">
-                            <img src="img/toronto2.jpg" class="d-block w-100 c-img" alt="Trip Image">
+                            <img src="img/montreal2.jpg" class="d-block w-100 c-img" alt="Trip Image">
                         </div>
                         <div class="carousel-item c-item">
-                            <img src="img/toronto3.jpg" class="d-block w-100 c-img" alt="Trip Image">
+                            <img src="img/montreal3.jpg" class="d-block w-100 c-img" alt="Trip Image">
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#tripImgs" data-bs-slide="prev">
@@ -126,23 +126,22 @@ $user_id = $_SESSION['user_id'];
         <div class="container">
             <div class="d-md-flex flex-column justify-content-between align-items-center">
                 <h2 class="mb-3 mb-md-0">About the Trip</h2>
-                <p>Explore the vibrant city of Toronto on a bus trip! Sit back, relax, and enjoy the sights as you 
-		   travel through the bustling streets and vibrant neighborhoods of this cosmopolitan 
-		   metropolis. See the iconic CN Tower, the historic Distillery District, and the beautiful waterfront, 
-	           among other highlights. Your knowledgeable guide will share interesting facts and stories about Toronto's 
-		   history and culture, making this a truly memorable experience. Whether you're a first-time visitor or a seasoned 
-		   traveler, this bus tour is a fantastic way to discover the best of Toronto</p>
+                <p>Discover the charm and character of Montreal on a bus tour that takes you through the city's most famous landmarks and vibrant neighborhoods. 
+                    Admire the historic architecture of Old Montreal, explore the bustling shopping district of Sainte-Catherine Street, and take in the stunning 
+                    views of the city from the top of Mount Royal. Your knowledgeable guide will share fascinating insights into Montreal's rich history, 
+                    culture, and diverse communities as you explore the city's unique features. 
+                    Whether you're a local or a visitor, this bus tour is an excellent way to experience the best of Montreal and discover what makes it such a beloved and captivating city. </p>
                 <ul>
                     <li>Country: Canada</li>
-                    <li>Duration (days): 2</li>
-                    <li>Price per Ticket (CAD): $75.00</li>
+                    <li>Duration (days): 3</li>
+                    <li>Price per Ticket (CAD): $150.00</li>
                 </ul>
                 <form action="booking.php" method="GET" target="_self">
                     <div class="mb-3">
-                        <input type="hidden" name="tripName" value="Toronto" />
+                        <input type="hidden" name="tripName" value="Montreal" />
                         <input type="hidden" name="country" value="Canada" />
-                        <input type="hidden" name="duration" value="2" />
-                        <input type="hidden" name="ticketPrice" value="75.00" />
+                        <input type="hidden" name="duration" value="3" />
+                        <input type="hidden" name="ticketPrice" value="150.00" />
                     </div>
                     <button type="submit" class="btn btn-primary">Book Now!</button>
 
