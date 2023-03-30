@@ -89,9 +89,7 @@
 
             $result1 = $connection -> query("SELECT user_id, username FROM Account_info");
 
-            $row1 = $result1 ->fetch_assoc();
-            echo '<h4> Account Number:' . $row1["user_id"] . $row1["username"] . '</h4>';
-            
+            echo '<h4> Account Number:' . $result1["user_id"] . $result1["username"] . '</h4>';
             ?>
             <br>
             
@@ -240,6 +238,7 @@
                         echo '<td>' . $row1["Cost"] . '</td>';
                         echo '</tr>';
                       }
+                      
                       
                     ?>
                       
