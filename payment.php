@@ -225,6 +225,28 @@ $user_id = $_SESSION['user_id'];
         const billPCInput = document.getElementById('billPC');
         const billPhoneInput = document.getElementById('billPhone');
         const creditCardForm = document.getElementById('credit-card-form');
+        const subtotalElement = document.getElementById("subtotal");
+        const taxElement = document.getElementById("tax");
+        const bookingFeeElement = document.getElementById("bookingFee");
+        const grandTotalElement = document.getElementById("grandTotal");
+
+        function calculateTaxAndFees() {
+            const price = parseFloat(priceInput.value);
+
+            if (isNaN(price)) {
+                return;
+            }
+
+            const tax = price * 0.13;
+            const bookingFee = price * 0.05;
+            const grandTotal = price + tax + bookingFee;
+
+            subtotalElement.textContent = price.toFixed(2); 
+            taxElement.textContent = tax.toFixed(2);
+            bookingFeeElement.textContent = bookingFee.toFixed(2);
+            grandTotalElement.textContent = grandTotal.toFixed(2);
+        }
+        calculateTaxAndFees();
 
         cardNumberInput.addEventListener('input', (e) => {
             e.target.value = e.target.value
