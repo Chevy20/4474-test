@@ -125,22 +125,22 @@ $user_id = $_SESSION['user_id'];
                                 
                                     <div class="mb-3">
                                         <label for="tripName" class="form-label">Trip Name</label>
-                                        <input type="text" class="form-control" id="tripName" aria-describedby="tripHelp" value="<?php echo htmlspecialchars($tripName); ?>" disabled > 
+                                        <input type="text" class="form-control" id="tripName" name="tripName" aria-describedby="tripHelp" value="<?php echo htmlspecialchars($tripName); ?>" disabled > 
                                         <div id="tripHelp" class="form-text">Name of trip. Cannot be changed.</div>
                                     </div>
                                     <div class="mb-3">
                                         <label for="countryName" class="form-label">Country</label>
-                                        <input type="text" class="form-control" id="countryName" aria-describedby="countryHelp" value="<?php echo htmlspecialchars($country); ?>" disabled > 
+                                        <input type="text" class="form-control" id="countryName" name ="countryName"  aria-describedby="countryHelp" value="<?php echo htmlspecialchars($country); ?>" disabled > 
                                         <div id="countryHelp" class="form-text">Country of trip. Cannot be changed.</div>
                                     </div>
                                     <div class="mb-3">
                                         <label for="duration" class="form-label">Duration (days) </label>
-                                        <input type="text" class="form-control" id="duration" aria-describedby="durationHelp" value="<?php echo htmlspecialchars($duration); ?>" disabled > 
+                                        <input type="text" class="form-control" id="duration" name = "duration" aria-describedby="durationHelp" value="<?php echo htmlspecialchars($duration); ?>" disabled > 
                                         <div id="durationHelp" class="form-text">Duration of trip. Cannot be changed.</div>
                                     </div>
                                     <div class="mb-3">
                                         <label for="price" class="form-label">Price Per Ticket (CAD)</label>
-                                        <input type="text" class="form-control" id="price" aria-describedby="priceHelp" value="<?php echo htmlspecialchars($ticketPrice); ?>" disabled >
+                                        <input type="text" class="form-control" id="price" name ="price" aria-describedby="priceHelp" value="<?php echo htmlspecialchars($ticketPrice); ?>" disabled >
                                         <div id="priceHelp" class="form-text">Price of ticket. Cannot be changed.</div>
                                     </div>
                                     <div class="mb-3">
@@ -167,11 +167,11 @@ $user_id = $_SESSION['user_id'];
                     
                                     <div class="mb-3">
                                         <label for="passFName1" class="form-label">Passenger First Name</label><span style="color: red !important; display: inline; float: none;" class="form-label">*</span>
-                                        <input type="text" class="form-control" id="passFName1" required>
+                                        <input type="text" class="form-control" id="passFName1" name="passFName1" required>
                                     </div>
                                     <div class="mb-3">
                                     <label for="passLName1" class="form-label">Passenger Last Name</label><span style="color: red !important; display: inline; float: none;"class="form-label">*</span>
-                                        <input type="text" class="form-control" id="passLName1" required>
+                                        <input type="text" class="form-control" id="passLName1" name="passLName1" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="DOB" class="form-label">Date of Birth</label><span style="color: red !important; display: inline; float: none;"class="form-label">*</span>
@@ -436,7 +436,7 @@ $user_id = $_SESSION['user_id'];
                     <p>Tax (13%): $<span id="tax"></span> CAD</p>
                     <p>Booking Fee (5%): $<span id="bookingFee"> CAD</span></p>
                     <p>Grand Total: $<span id="grandTotal"></span> CAD</p>
-                    <input type="hidden" id=totalIn name="total">
+                    <input type="hidden" id=totalIn  name="totalIn">
                 </div>
                 <div class="mb-3 form-check">
                     <input type="checkbox" onchange="document.getElementById('submitBtn').disabled = !this.checked;" class="form-check-input" id="verifyCheck" unchecked>

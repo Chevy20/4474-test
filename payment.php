@@ -20,9 +20,9 @@ $user_id = $_SESSION['user_id'];
         $PassFName = $_POST['passFName1'];
         $PassLName = $_POST['passLName1'];
         $tripName = $_POST['tripName'];
-        $country = $_POST['country'];
-        $startDate = $_POST['start'];
-        $endDate = $_POST['end'];
+        $country = $_POST['countryName'];
+        $startDate = $_POST['trip-start'];
+        $endDate = $_POST['trip-end'];
         $total = $_POST['totalIn'];
     ?>
     <!-- Navigation Bar 1 -->
