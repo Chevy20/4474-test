@@ -129,7 +129,7 @@ $user_id = $_SESSION['user_id'];
     <div class="container-fluid bg-light">
         <div class="row justify-content-center mt-5">
             <div class="col-md-8 col-lg-100 border rounded p-4 bg-white">
-                <form action="confirm.php" method="GET" target="_self" id="credit-card-form">
+                <form action="confirm.php" method="POST" target="_self" id="credit-card-form">
                     <div class="accordion" id="accordionExample">
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingOne">
