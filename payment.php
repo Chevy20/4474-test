@@ -232,7 +232,7 @@ $user_id = $_SESSION['user_id'];
         const grandTotalElement = document.getElementById("grandTotal");
 
         function calculateTaxAndFees() {
-            const Price = <?php echo json_encode($price); ?>;
+            const price = <?php echo json_encode($price); ?>;
 
             if (isNaN(price)) {
                 return;
