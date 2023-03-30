@@ -125,22 +125,22 @@ $user_id = $_SESSION['user_id'];
                                 
                                     <div class="mb-3">
                                         <label for="tripName" class="form-label">Trip Name</label>
-                                        <input type="text" class="form-control" id="tripName" name="tripName" aria-describedby="tripHelp" value="<?php echo htmlspecialchars($tripName); ?>" readonly > 
+                                        <input type="text" class="form-control" id="tripName" name="tripName" aria-describedby="tripHelp" value="<?php echo htmlspecialchars($tripName); ?>" disabled > 
                                         <div id="tripHelp" class="form-text">Name of trip. Cannot be changed.</div>
                                     </div>
                                     <div class="mb-3">
                                         <label for="countryName" class="form-label">Country</label>
-                                        <input type="text" class="form-control" id="countryName" name ="countryName"  aria-describedby="countryHelp" value="<?php echo htmlspecialchars($country); ?>" readonly > 
+                                        <input type="text" class="form-control" id="countryName" name ="countryName"  aria-describedby="countryHelp" value="<?php echo htmlspecialchars($country); ?>" disabled > 
                                         <div id="countryHelp" class="form-text">Country of trip. Cannot be changed.</div>
                                     </div>
                                     <div class="mb-3">
                                         <label for="duration" class="form-label">Duration (days) </label>
-                                        <input type="text" class="form-control" id="duration" name = "duration" aria-describedby="durationHelp" value="<?php echo htmlspecialchars($duration); ?>" readonly > 
+                                        <input type="text" class="form-control" id="duration" name = "duration" aria-describedby="durationHelp" value="<?php echo htmlspecialchars($duration); ?>" disabled > 
                                         <div id="durationHelp" class="form-text">Duration of trip. Cannot be changed.</div>
                                     </div>
                                     <div class="mb-3">
                                         <label for="price" class="form-label">Price Per Ticket (CAD)</label>
-                                        <input type="text" class="form-control" id="price" name ="price" aria-describedby="priceHelp" value="<?php echo htmlspecialchars($ticketPrice); ?>" readonly >
+                                        <input type="text" class="form-control" id="price" name ="price" aria-describedby="priceHelp" value="<?php echo htmlspecialchars($ticketPrice); ?>" disabled >
                                         <div id="priceHelp" class="form-text">Price of ticket. Cannot be changed.</div>
                                     </div>
                                     <div class="mb-3">
@@ -436,6 +436,10 @@ $user_id = $_SESSION['user_id'];
                     <p>Tax (13%): $<span id="tax"></span> CAD</p>
                     <p>Booking Fee (5%): $<span id="bookingFee"> CAD</span></p>
                     <p>Grand Total: $<span id="grandTotal"></span> CAD</p>
+                    <input type="hidden" name="subIN" id="subIN"/>
+                    <input type="hidden" name="taxIn" id="taxIn" />
+                    <input type="hidden" name="bookIN" id="bookIN" />
+                    <input type="hidden" name="gtIN"  id="gtIN"/>
                 </div>
                 <div class="mb-3 form-check">
                     <input type="checkbox" onchange="document.getElementById('submitBtn').disabled = !this.checked;" class="form-check-input" id="verifyCheck" unchecked>
@@ -462,6 +466,10 @@ $user_id = $_SESSION['user_id'];
         const taxElement = document.getElementById("tax");
         const bookingFeeElement = document.getElementById("bookingFee");
         const grandTotalElement = document.getElementById("grandTotal");
+        const subIN = document.getElementById("subIN");
+        const taxIn = document.getElementById("taxIn");
+        const bookIN = document.getElementById("bookIN");
+        const gtIN = document.getElementById("gtIN");
 
         function calculateEndDate() {
             const startDate = new Date(startDateInput.value);
@@ -490,6 +498,10 @@ $user_id = $_SESSION['user_id'];
             taxElement.textContent = tax.toFixed(2);
             bookingFeeElement.textContent = bookingFee.toFixed(2);
             grandTotalElement.textContent = grandTotal.toFixed(2);
+            subIN.value = subtotalElement.textContent;
+            taxIn.value = taxElement.textContent;
+            bookIN.value =  bookingFeeElement.textContent;
+            gtIN.value = grandTotalElement.textContent;
         }
 
         calculateTaxAndFees();

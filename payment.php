@@ -21,7 +21,10 @@ $user_id = $_SESSION['user_id'];
         $PassLName = $_GET['passLName1'];
         $tripName = $_GET['tripName'];
         $country = $_GET['countryName'];
-        $price = isset($_GET['price']) ? $_GET['price'] : 0;
+        $sub = $_GET['subIN'];
+        $tax = $_GET['taxIn'];
+        $fee = $_GET['bookIN'];
+        $total= $_GET['gtIN'];
         $startDate = $_GET['trip-start'];
         $endDate = $_GET['trip-end'];
         
@@ -189,10 +192,10 @@ $user_id = $_SESSION['user_id'];
                         </div>
                     </div>
                     <div class="TotalDisplay">
-                    <p>Subtotal: $<span id="subtotal"></span> CAD</p>
-                    <p>Tax (13%): $<span id="tax"></span> CAD</p>
-                    <p>Booking Fee (5%): $<span id="bookingFee"> CAD</span></p>
-                    <p>Grand Total: $<span id="grandTotal"></span> CAD</p>
+                    <p>Subtotal: $ <?php echo htmlspecialchars($sub); ?> CAD</p>
+                    <p>Tax (13%): $<?php echo htmlspecialchars($tax); ?>CAD</p>
+                    <p>Booking Fee (5%): $<?php echo htmlspecialchars($fee); ?>CAD</span></p>
+                    <p>Grand Total: $<?php echo htmlspecialchars($total); ?> CAD</p>
                 </div>
                     <div class="mb-3 form-check">
                         <input type="checkbox" onchange="document.getElementById('submitBtn').disabled = !this.checked;" class="form-check-input" id="verifyCheck" unchecked>
@@ -218,32 +221,6 @@ $user_id = $_SESSION['user_id'];
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
         integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
         crossorigin="anonymous"></script>
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-            const subtotalElement = document.getElementById("subtotal");
-            const taxElement = document.getElementById("tax");
-            const bookingFeeElement = document.getElementById("bookingFee");
-            const grandTotalElement = document.getElementById("grandTotal");
-
-            function calculateTaxAndFees() {
-                const price = <?php echo json_encode($price); ?>;
-
-                if (isNaN(price)) {
-                    return;
-                }
-
-                const tax = price * 0.13;
-                const bookingFee = price * 0.05;
-                const grandTotal = price + tax + bookingFee;
-
-                subtotalElement.textContent = price.toFixed(2); 
-                taxElement.textContent = tax.toFixed(2);
-                bookingFeeElement.textContent = bookingFee.toFixed(2);
-                grandTotalElement.textContent = grandTotal.toFixed(2);
-            }
-            calculateTaxAndFees();
-        });
-    </script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
         const cardNumberInput = document.getElementById('card-number');
