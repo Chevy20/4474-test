@@ -137,13 +137,13 @@ $user_id = $_SESSION['user_id'];
                                         <div id="countryHelp" class="form-text">Country of trip. Cannot be changed.</div>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="duration" class="form-label no-cursor-change">Duration (days) </label>
-                                        <input type="text" class="form-control" id="duration" name = "duration" aria-describedby="durationHelp" value="<?php echo htmlspecialchars($duration); ?>" readonly > 
+                                        <label for="duration" class="form-label">Duration (days) </label>
+                                        <input type="text" class="form-control no-cursor-change" id="duration" name = "duration" aria-describedby="durationHelp" value="<?php echo htmlspecialchars($duration); ?>" readonly > 
                                         <div id="durationHelp" class="form-text">Duration of trip. Cannot be changed.</div>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="price" class="form-label no-cursor-change">Price Per Ticket (CAD)</label>
-                                        <input type="text" class="form-control" id="price" name ="price" aria-describedby="priceHelp" value="<?php echo htmlspecialchars($ticketPrice); ?>" readonly >
+                                        <label for="price" class="form-label">Price Per Ticket (CAD)</label>
+                                        <input type="text" class="form-control no-cursor-change" id="price" name ="price" aria-describedby="priceHelp" value="<?php echo htmlspecialchars($ticketPrice); ?>" readonly >
                                         <div id="priceHelp" class="form-text">Price of ticket. Cannot be changed.</div>
                                     </div>
                                     <div class="mb-3">
@@ -152,8 +152,8 @@ $user_id = $_SESSION['user_id'];
                                         <div id="startHelp" class="form-text">Select the start date of trip.</div>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="end" class="form-label no-cursor-change">End Date</label>
-                                        <input type="date" class="date-box"id="end" name="trip-end" placeholder="mm/dd/yyyy" readonly>
+                                        <label for="end" class="form-label">End Date</label>
+                                        <input type="date" class="date-box no-cursor-change"id="end" name="trip-end" placeholder="mm/dd/yyyy" readonly>
                                         <div id="endHelp" class="form-text">End Date of trip. Start date + duration. Cannot Change</div>
                                     </div>
                                 
