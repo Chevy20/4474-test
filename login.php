@@ -26,7 +26,7 @@
   <div class="wrapper">
     <div class="inner-warpper text-center">
       <h2 class="title">Login </h2>
-      <form action="authenticate.php" method="post" id="formvalidate">
+      <form action="HomePage.php" method="post" id="formvalidate">
         <div class="input-group">
           <label class="palceholder" for="userName">Email</label>
           <input class="form-control" name="userName" id="userName" type="text" placeholder="" />
@@ -44,7 +44,7 @@
           <i id="see" onclick="see()" class="far fa-eye">
             <span class="popuptext" id="popup">show password</span>
           </i>
-          <a class="forgot pull-right" href="#">Forgot Password?</a>
+          <a class="forgot pull-right" href="changepassword.php">Forgot Password?</a>
         </div>
 
         <button type="submit" id="login">Login</button>

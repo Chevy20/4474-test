@@ -18,60 +18,63 @@
 
     ?>
     
-        <!-- Navigation Bar 1 -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-white">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">
-                    <img src="img/gachi.jpg" alt="Logo" height="50">
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav1" aria-controls="navbarNav1" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse justify-content-end" id="navbarNav1">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <div class="row">
-                            <a class="nav-link" href="#">
-                                <span>
-                                <i class="fa-solid fa-house fa-lg"></i>
-                                
-                                </span>
-                                <span>Home </span>
-
-                            </a>
-                            
-                            </div>
-                            
-                        </li>
-                        <li class="nav-item">
-                        
-
-
-                            <a class="nav-link" href="#"> 
+       <!-- Navigation Bar 1 -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="img/gachi.jpg" alt="Logo" height="50">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav1" aria-controls="navbarNav1" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav1">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <div class="row">
+                          <a class="nav-link" href="HomePage.php">
                             <span>
-                                &nbsp; &nbsp;
-                                <i class="fa-sharp fa-regular fa-circle-question fa-lg"></i>
+                              <i class="fa-solid fa-house fa-lg"></i>
+                              
                             </span>
-                            <span>help</span>
-                            </a>
+                            <span>Home </span>
+
+                          </a>
+                          
+                        </div>
+                        
+                    </li>
+                    <li class="nav-item">
+                      
 
 
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Account
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Log Out</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
+                        <a class="nav-link" href="help.php"> 
+                          <span>
+                            &nbsp; &nbsp;
+                            <i class="fa-sharp fa-regular fa-circle-question fa-lg"></i>
+                          </span>
+                          <span>help</span>
+                        </a>
+
+
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Account
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="Wishlist.php">Wishlist</a></li>
+                            <li><a class="dropdown-item" href="#">Manage Booking</a></li>
+                            <li><a class="dropdown-item" href="a.php">Account Settting</a></li>
+                            <li><a class="dropdown-item" href="#">Log Out</a></li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
-        </nav>
+        </div>
+    </nav>
 
         <!-- Full Screen Image -->
-        <a href="#" class="d-block bg-image hover-zoom" data-bs-toggle="popover" data-bs-placement="top" title="Return to Home Page"> </a>
+        <a href="HomePage.php" class="d-block bg-image hover-zoom" data-bs-toggle="popover" data-bs-placement="top" title="Return to Home Page"> </a>
         <style>
         /* Custom CSS */
         .bg-image {
@@ -95,7 +98,7 @@
                 $result1 = $connection -> query("SELECT user_id, username FROM Account_info");
 
                 $row1 = $result1 ->fetch_assoc();
-                echo '<h4> &nbsp; &nbsp; Account Number:' . $row1["user_id"] . $row1["username"] . '</h4>';
+                echo '<h4> &nbsp; &nbsp; Account Number:' . $row1["user_id"] . "AAC@@@" . $row1["username"] . '</h4>';
                 
                 ?>
                 <br>
@@ -123,14 +126,17 @@
                     <span> &nbsp; Payment Information</span>
                     </button>
                 </li>
+
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link  align-items-center" id="trips-tab" data-bs-toggle="tab" data-bs-target="#trips" type="button" role="tab" aria-controls="trips" aria-selected="false" data-bs-toggle="tooltip" data-bs-placement="top" title="Check trips travelled">
-                    <span>
-                        <i class="fa-solid fa-bus fa-xl" style="color: #ffd814;"></i>
-                    </span>
-                    <span> &nbsp; Past Trips</span>
-                    </button>
+                <button class="nav-link  align-items-center" id="trips-tab" data-bs-toggle="tab" data-bs-target="#trips" type="button" role="tab" aria-controls="trips" aria-selected="false" data-bs-toggle="tooltip" data-bs-placement="top" title="Check trips travelled">
+                  <span>
+                    <i class="fa-solid fa-bus fa-xl" style="color: #ffd814;"></i>
+                  </span>
+                  <span> &nbsp; Past Trips</span>
+                </button>
                 </li>
+                
+
                 <li class="nav-item" role="presentation">
                     <button class="nav-link  align-items-center" id="settings-tab" data-bs-toggle="tab" data-bs-target="#settings" type="button" role="tab" aria-controls="settings" aria-selected="false" data-bs-toggle="tooltip" data-bs-placement="top" title="Settings">
                     <span>
@@ -143,9 +149,7 @@
                 </ul>
 
 
-                
-
-                
+                       
                 <!-- Tab panes -->
                 <div class="tab-content">
                 <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
@@ -156,20 +160,6 @@
                         <div class="card">
                             <div class="card-body">
                             <h5 class="card-title">Contact Information</h5>
-                            <?php
-
-                            
-                            $result1 = $connection -> query('SELECT fname, lname, Phone, email  FROM Account_info, User_info WHERE Account_info.user_id = ' . $user_id . ' and Account_info.Postal = User_info.Postal');
-
-                            $row1 = $result1 ->fetch_assoc();
-                            
-
-                                echo '<p class="card-text"> &nbsp; First Name:' . $row1["fname"] . '</p>';
-                                echo '<p class="card-text"> &nbsp; Last Name:' . $row1["lname"] . '</p>';
-                                echo '<p class="card-text"> &nbsp; Phone:' . $row1["Phone"] . '</p>';
-                                echo '<p class="card-text"> &nbsp; email:' . $row1["email"] . '</p>';
-                            
-                            ?>
 
 
                             <a class="btn btn-primary " data-bs-toggle="popover" data-bs-placement="top" title="Edit information" href="updatecontact.php"  >Edit Information</a>
@@ -231,74 +221,61 @@
                     
 
                 </div>
-                <div class="tab-pane fade" id="payment" role="tabpanel" aria-labelledby="payment-tab">
-                <div class="container">
+                    <div class="tab-pane fade" id="payment" role="tabpanel" aria-labelledby="payment-tab">
+                        <div class="container">
 
 
-<a href="card.php" class="btn btn-success">Add new Cards</a>
-<br><br>
+                    <a href="card.php" class="btn btn-success">Add new Cards</a>
+                    <br><br>
+                                    
+                    <?php
+
+                    if (isset($_POST['deletecard'])) {
+                        $temp1 = $_POST['deletecard'];
+
+                        $result2 = $connection->query('DELETE FROM Credit_card WHERE user_id = ' . $user_id . ' AND CreditNum =' . '"' . $temp1 . '"');
+
+                        echo "<script>
+                        alert('Card Deleted');
+                        </script>";
+                        
+                    }
+
+
+
+                    $result2 = $connection->query('SELECT * FROM Credit_card WHERE user_id = ' . $user_id);
+                    $card = 1;
+                    $temp;
+                    echo '<div class="col-md-12 mx-auto">';
+                    while ($row = $result2->fetch_assoc()) {
+                        echo '<div class="card mb-3">';
+                        echo '<div class="card-header bg-primary text-white"> Card #' . $card . '</div>';
+                        echo '<div class="card-body">';
+                        echo '<h5 class="card-title">Credit Card ' . $card . '</h5>';
+                        echo '<p class="card-text">Card Number: ' . $row['CreditNum'] . '</p>';
+                        echo '<p class="card-text">Expiration Date:' . $row['expiry'] . '</p>';
+                        echo '<p class="card-text">CVC:  ' . $row['CVV'] . ' </p>';
+                        echo '<p class="card-text">Name on Card: ' . $row['fname'] . " " . $row['lname'] . '</p>';
+                        echo '<br>';
+                        $temp = $row['CreditNum'];
+
+                        echo '<form method="post" action="a.php">';
+                        echo '<input type="hidden" name="deletecard" value="' . $temp . '">';
+                        echo '<button type="submit" class="btn btn-danger">Delete Card</button>';
+                        echo '</form>';
+                        
+                        //echo '<button id="' . $row['CreditNum'] . '" name="' . $card . '" class="btn btn-danger" onclick="showCardNumber(this)"> Delete Credit Card</button>';
+                        echo '</div>';
+                        echo '</div>';
+                        echo '</div>';
+                        $card = $card + 1;
+                    }
+
+                      echo '</div>';
+                    ?>
+
                 
-<?php
-
-if (isset($_POST['deletecard'])) {
-    $temp1 = $_POST['deletecard'];
-
-    $result2 = $connection->query('DELETE FROM Credit_card WHERE user_id = ' . $user_id . ' AND CreditNum =' . '"' . $temp1 . '"');
-
-    echo "<script>
-    alert('Card Deleted');
-    </script>";
-    
-  }
-
-
-
-$result2 = $connection->query('SELECT * FROM Credit_card WHERE user_id = ' . $user_id);
-$card = 1;
-$temp;
-echo '<div class="col-md-12 mx-auto">';
-while ($row = $result2->fetch_assoc()) {
-    echo '<div class="card mb-3">';
-    echo '<div class="card-header bg-primary text-white"> Card #' . $card . '</div>';
-    echo '<div class="card-body">';
-    echo '<h5 class="card-title">Credit Card ' . $card . '</h5>';
-    echo '<p class="card-text">Card Number: ' . $row['CreditNum'] . '</p>';
-    echo '<p class="card-text">Expiration Date:' . $row['expiry'] . '</p>';
-    echo '<p class="card-text">CVC:  ' . $row['CVV'] . ' </p>';
-    echo '<p class="card-text">Name on Card: ' . $row['fname'] . " " . $row['lname'] . '</p>';
-    echo '<br>';
-    $temp = $row['CreditNum'];
-
-    echo '<form method="post" action="a.php">';
-    echo '<input type="hidden" name="deletecard" value="' . $temp . '">';
-    echo '<button type="submit" class="btn btn-danger">Delete Card</button>';
-    echo '</form>';
-    
-    //echo '<button id="' . $row['CreditNum'] . '" name="' . $card . '" class="btn btn-danger" onclick="showCardNumber(this)"> Delete Credit Card</button>';
-    echo '</div>';
-    echo '</div>';
-    echo '</div>';
-    $card = $card + 1;
-}
-echo '</div>';
-echo '</div>';
-?>
-
-<script>
-function showCardNumber(button) {
-    var cardNumber = button.id;
-    alert("Card Number: " + cardNumber);
-    
-}
-</script>
-
-
-
-
-
-            
-
-
+               
 
                 <div class="tab-pane fade" id="trips" role="tabpanel" aria-labelledby="trips-tab">
                     <table class="table table-striped">
@@ -430,8 +407,17 @@ function showCardNumber(button) {
                             
                             <br>  
                             <a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleting">
-                                Delete Account
+                                Delete Account  
                             </a>
+
+                            <script> 
+                        
+                                function confirmDelete() {
+
+                                    alert("You activated Delete Account feature, however for the testing and grading, account will not be deleted this moment");
+                                }
+                                              
+                            </script>
 
                             <!-- Modal -->
                             <div class="modal fade" id="deleting" tabindex="-1" aria-labelledby="deletingLabel" aria-hidden="true">
@@ -446,7 +432,7 @@ function showCardNumber(button) {
                                     </div>
                                     <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                    <button type="button" class="btn btn-danger">Delete</button>
+                                    <button type="button" class="btn btn-danger" onclick="confirmDelete()">Delete</button>
                                     </div>
                                 </div>
                                 </div>
@@ -471,10 +457,7 @@ function showCardNumber(button) {
 
 
 
-                            
-
-                            
-
+                        
                 
 
                         </div>
