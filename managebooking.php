@@ -135,22 +135,6 @@
   </div>
 
   <script>
-  // Function to get URL parameters
-  function getUrlParameter(name) {
-    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-    const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-    const results = regex.exec(location.search);
-    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-  }
-
-  document.addEventListener('DOMContentLoaded', () => {
-    // Check for the delete_success URL parameter
-    if (getUrlParameter("delete_success") !== '') {
-      const successModal = new bootstrap.Modal(document.getElementById('successModal'));
-      successModal.show();
-    }
-  });
-
   const deleteButtons = document.querySelectorAll('.delete-btn');
   const confirmationModal = new bootstrap.Modal(document.getElementById('confirmationModal'));
   const confirmDelete = document.getElementById('confirmDelete');
@@ -169,21 +153,4 @@
     }
   });
 </script>
-
-<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="successModalLabel">Success</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        Trip has been deleted successfully.
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
 </body>
