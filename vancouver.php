@@ -190,10 +190,44 @@
         integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
         crossorigin="anonymous"></script>
         <script>
-            document.querySelector('.like-btn').addEventListener('click', function () {
-                this.classList.toggle('active');
+            const likeBtn = document.querySelector('.like-btn');
+
+            likeBtn.addEventListener('click', function () {
+                const tripId = document.querySelector('input[name="tripId"]').value;
+                const formData = new FormData();
+                formData.append('trip_id', tripId);
+
+                if (this.classList.contains('active')) {
+                    this.classList.remove('active');
+                    fetch('remove_from_wishlist.php', {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => response.text())
+                    .then(data => {
+                        console.log(data); // Check for success or error messages from the PHP script
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+                } else {
+                    this.classList.add('active');
+                    fetch('add_to_wishlist.php', {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => response.text())
+                    .then(data => {
+                        console.log(data); // Check for success or error messages from the PHP script
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+                }
             });
         </script>
+
+
 
 </body>
 
