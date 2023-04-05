@@ -192,8 +192,8 @@
                             <h2 class="card-title">Address</h2>
                             <hr>
                             <div class="row">
-                            <div class="col-md-6">
 
+                            <div class="col-md-6">
                             <?php
 
 
@@ -212,8 +212,8 @@
                                 <a href="updateaddress.php" class="btn btn-primary">Edit Address</a>
                             </div>
                             
+                            
                             <div class="col-md-6">
-
                             <?php
                                 $result77 = $connection -> query('SELECT Prov, Country, User_info.Postal FROM Account_info, User_info WHERE Account_info.user_id = ' . $user_id . ' and Account_info.Postal = User_info.Postal');
 
@@ -227,20 +227,19 @@
                                 echo '<span> Postal Code: &nbsp;' . $row1["Postal"] . '</span>';
                                 echo '<br><br>';
                             ?>
+                            </div>
 
                             </div>
-                            </div>
-                        </div>
-                        </div>
+
+                    </div>
+                    </div>
+            
     
-                    <br>
-                    
+                
                     
 
-                </div>
-                    <div class="tab-pane fade" id="payment" role="tabpanel" aria-labelledby="payment-tab">
-                        <div class="container">
-
+                <div class="tab-pane fade" id="payment" role="tabpanel" aria-labelledby="payment-tab">
+                    <div class="container">
 
                     <a href="card.php" class="btn btn-success">Add new Cards</a>
                     <br><br>
@@ -257,8 +256,6 @@
                         </script>";
                         
                     }
-
-
 
                     $result2 = $connection->query('SELECT * FROM Credit_card WHERE user_id = ' . $user_id);
                     $card = 1;
@@ -288,11 +285,14 @@
                         $card = $card + 1;
                     }
 
-                      echo '</div>';
+                    echo '</div>';
+
                     ?>
 
+                    </div>
                 </div>
 
+            
                 <div class="tab-pane fade" id="trips" role="tabpanel" aria-labelledby="trips-tab">
                     <table class="table table-striped">
                         <thead>
@@ -409,7 +409,7 @@
                                 
                                 
                                 </div>
-                            </div>
+                            </di/v>
                             </div>
 
                             <div class="tab-pane fade" id="deleteaccount">
@@ -484,15 +484,14 @@
 
                         </div>
 
-                        </div>
+                        
     
                     </div>
                     
         
                 </div>
 
-                </div>
-            
+            </div>
             </div>
         </div>
 
