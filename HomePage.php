@@ -243,11 +243,7 @@
         const destination = document.getElementById("destination").value;
         const form = document.getElementById("searchForm");
 
-        // Remove spaces from the destination value
-        const destinationNoSpaces = destination.replace(/\s+/g, '');
-
-        // Set the form action based on the destination value without spaces
-        form.action = destinationNoSpaces.toLowerCase() + ".php";
+        console.log(destination);
 
         // Submit the form with the updated action
         form.submit();
