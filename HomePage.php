@@ -65,7 +65,7 @@
                             <span><i class="fa-regular fa-circle-user"></i></span>
                             <span>Account</span>
                         </a>
-                        <li class="nav-item dropdown">
+                        <li class="nav-item dropdown nav-item">
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item nav-link" href="Wishlist.php">Wishlist</a></li>
                             <li><a class="dropdown-item nav-link" href="#">Manage Bookings</a></li>
