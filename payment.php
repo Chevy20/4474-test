@@ -329,7 +329,7 @@
         }
     
         creditCardForm.addEventListener('submit', async (event) =>  {
-            e.preventDefault();
+            event.preventDefault();
 
             const cardNumber = cardNumberInput.value;
             const expiryDate = expiryDateInput.value;
