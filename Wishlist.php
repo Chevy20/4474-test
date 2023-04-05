@@ -155,7 +155,7 @@
             </div>
           </div>
           <div class="d-grid gap-2 m-1">
-            <a href="#" class="btn btn-primary">View Trip Details</a>
+            <a href="#" class="btn btn-primary view-details-btn">View Trip Details</a>
           </div>
           <div class="d-grid m-1">
             <div class="btn-group edit-btn-group">
@@ -190,12 +190,12 @@
         });
       });
     }
-
     document.getElementById('liveToastBtn').addEventListener('click', function () {
       isEditModeEnabled = true;
       document.getElementById('edit_btn').disabled = true;
       document.getElementById('confirm_btn').style.display = 'block';
       updateButtonGroupState();
+      updateViewDetailsButtonsState();
     });
 
     document.getElementById('modal_no').addEventListener('click', function () {
@@ -206,6 +206,7 @@
       document.getElementById('edit_btn').disabled = false;
       document.getElementById('confirm_btn').style.display = 'none';
       updateButtonGroupState();
+      updateViewDetailsButtonsState();
     });
 
     document.getElementById('confirm_btn').addEventListener('click', function () {
@@ -213,6 +214,7 @@
       document.getElementById('edit_btn').disabled = false;
       document.getElementById('confirm_btn').style.display = 'none';
       updateButtonGroupState();
+      updateViewDetailsButtonsState();
       // Add any functionality you want to happen when "Confirm Changes" is clicked
     });
 
