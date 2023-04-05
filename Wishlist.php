@@ -106,10 +106,13 @@
       </div>
       <div class="col-auto">
         <div class="edit button">
-          <button type="button" class="btn btn-primary justify-content-md-center" data-bs-toggle="modal"
-            data-bs-target="#exampleModal">
-            Edit Wishlist
-          </button>
+        <button type="button" class="btn btn-primary justify-content-md-center" data-bs-toggle="modal"
+          data-bs-target="#exampleModal" id="edit_btn">
+          Edit Wishlist
+        </button>
+        <button type="button" class="btn btn-success justify-content-md-center" id="confirm_btn" style="display: none;">
+          Confirm Changes
+        </button>
           <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog">
@@ -201,11 +204,24 @@
   <script>
     let isEditModeEnabled = false;
     document.getElementById('liveToastBtn').addEventListener('click', function () {
-      isEditModeEnabled = true;
-    });
-    document.getElementById('modal_no').addEventListener('click', function () {
-      isEditModeEnabled = false;
-    });
+    isEditModeEnabled = true;
+    document.getElementById('edit_btn').disabled = true;
+    document.getElementById('confirm_btn').style.display = 'block';
+  });
+
+  document.getElementById('modal_no').addEventListener('click', function () {
+    isEditModeEnabled = false;
+    document.getElementById('edit_btn').disabled = false;
+    document.getElementById('confirm_btn').style.display = 'none';
+  });
+
+  // Add this event listener for the "Confirm Changes" button
+  document.getElementById('confirm_btn').addEventListener('click', function () {
+    isEditModeEnabled = false;
+    document.getElementById('edit_btn').disabled = false;
+    document.getElementById('confirm_btn').style.display = 'none';
+    // Add any functionality you want to happen when "Confirm Changes" is clicked
+  });
     document.querySelectorAll('.card').forEach((card) => {
       card.addEventListener('dragstart', (e) => {
         if (!isEditModeEnabled) return;
