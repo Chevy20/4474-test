@@ -188,11 +188,11 @@
                         <input type="hidden" name="tripId"  value ="1"/>
                     </div>
                     <div class="buttons-container">
-                    <button type="submit" class="btn btn-primary">Book Now!</button>
-                    <button type="button" class="btn btn-outline-danger like-btn<?php if ($is_trip_in_wishlist) echo ' active'; ?>">
-                        <i class="fa fa-heart-o" aria-hidden="true"></i>
-                    </button>
-                </div>
+                        <button type="submit" class="btn btn-primary">Book Now!</button>
+                        <button type="button" class="btn btn-outline-danger like-btn<?php if ($is_trip_in_wishlist) echo ' active'; ?>">
+                            <i class="fa fa-heart-o" aria-hidden="true"></i>
+                        </button>
+                    </div>
                     
                 </form>
 
@@ -223,49 +223,49 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
         integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
         crossorigin="anonymous"></script>
-        <script>
-            const likeBtn = document.querySelector('.like-btn');
-            const notificationModal = new bootstrap.Modal(document.getElementById('notificationModal'));
-            const notificationModalMessage = document.getElementById('notificationModalMessage');
+    <script>
+        const likeBtn = document.querySelector('.like-btn');
+        const notificationModal = new bootstrap.Modal(document.getElementById('notificationModal'));
+        const notificationModalMessage = document.getElementById('notificationModalMessage');
 
-            likeBtn.addEventListener('click', function () {
-                const tripId = document.querySelector('input[name="tripId"]').value;
-                const formData = new FormData();
-                formData.append('trip_id', tripId);
+        likeBtn.addEventListener('click', function () {
+            const tripId = document.querySelector('input[name="tripId"]').value;
+            const formData = new FormData();
+            formData.append('trip_id', tripId);
 
-                if (this.classList.contains('active')) {
-                    this.classList.remove('active');
-                    fetch('remove_from_wishlist.php', {
-                        method: 'POST',
-                        body: formData
-                    })
-                    .then(response => response.text())
-                    .then(data => {
-                        console.log(data); // Check for success or error messages from the PHP script
-                        notificationModalMessage.innerHTML = 'Trip removed from your wishlist!';
-                        notificationModal.show();
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                    });
-                } else {
-                    this.classList.add('active');
-                    fetch('add_to_wishlist.php', {
-                        method: 'POST',
-                        body: formData
-                    })
-                    .then(response => response.text())
-                    .then(data => {
-                        console.log(data); // Check for success or error messages from the PHP script
-                        notificationModalMessage.innerHTML = 'Trip added to your wishlist!';
-                        notificationModal.show();
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                    });
-                }
-            });
-        </script>
+            if (this.classList.contains('active')) {
+                this.classList.remove('active');
+                fetch('remove_from_wishlist.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.text())
+                .then(data => {
+                    console.log(data); // Check for success or error messages from the PHP script
+                    notificationModalMessage.innerHTML = 'Trip removed from your wishlist!';
+                    notificationModal.show();
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            } else {
+                this.classList.add('active');
+                fetch('add_to_wishlist.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.text())
+                .then(data => {
+                    console.log(data); // Check for success or error messages from the PHP script
+                    notificationModalMessage.innerHTML = 'Trip added to your wishlist!';
+                    notificationModal.show();
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            }
+        });
+    </script>
 
 
 

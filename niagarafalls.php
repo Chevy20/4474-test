@@ -1,6 +1,25 @@
 <?php 
     session_start();
     $user_id = $_SESSION['user_id'];
+    include 'connection.php'; 
+    function is_trip_in_wishlist($connection, $user_id, $trip_id) {
+        $query = "SELECT * FROM wishlist WHERE user_id = ? AND trip_id = ?";
+        $stmt = $connection->prepare($query);
+        $stmt->bind_param("ii", $user_id, $trip_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+    
+        if ($result->num_rows > 0) {
+            $stmt->close();
+            return true;
+        } else {
+            $stmt->close();
+            return false;
+        }
+    }
+    
+    $trip_id = 2; // replace this with the actual trip ID
+    $is_trip_in_wishlist = is_trip_in_wishlist($connection, $user_id, $trip_id);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,6 +43,31 @@
         .c-img {
             height: 100%;
             object-fit: cover;
+        }
+        .buttons-container {
+            display: flex;
+            gap: 10px;
+        }
+
+        .like-btn {
+            padding: 6px 10px;
+            font-size: 24px;
+        }
+
+        .like-btn .fa-heart-o {
+            pointer-events: none;
+        }
+
+        .like-btn:focus {
+            outline: none;
+        }
+
+        .like-btn.active {
+            color: red;
+        }
+
+        .like-btn.active .fa-heart-o {
+            content: "\f004";
         }
     </style>
     <!-- Navigation Bar 1 -->
@@ -146,7 +190,12 @@
                         <input type="hidden" name="ticketPrice" value="100.00" />
                         <input type="hidden" name="tripId"  value ="2"/>
                     </div>
-                    <button type="submit" class="btn btn-primary">Book Now!</button>
+                    <div class="buttons-container">
+                        <button type="submit" class="btn btn-primary">Book Now!</button>
+                        <button type="button" class="btn btn-outline-danger like-btn<?php if ($is_trip_in_wishlist) echo ' active'; ?>">
+                            <i class="fa fa-heart-o" aria-hidden="true"></i>
+                        </button>
+                    </div>
 
                 </form>
 
@@ -154,6 +203,22 @@
 
         </div>
     </section>
+    <div class="modal fade" id="notificationModal" tabindex="-1" aria-labelledby="notificationModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="notificationModalLabel">Notification</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="notificationModalMessage">
+                    <!-- Message will be set via JavaScript -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
@@ -162,6 +227,49 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
         integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
         crossorigin="anonymous"></script>
+    <script>
+        const likeBtn = document.querySelector('.like-btn');
+        const notificationModal = new bootstrap.Modal(document.getElementById('notificationModal'));
+        const notificationModalMessage = document.getElementById('notificationModalMessage');
+
+        likeBtn.addEventListener('click', function () {
+            const tripId = document.querySelector('input[name="tripId"]').value;
+            const formData = new FormData();
+            formData.append('trip_id', tripId);
+
+            if (this.classList.contains('active')) {
+                this.classList.remove('active');
+                fetch('remove_from_wishlist.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.text())
+                .then(data => {
+                    console.log(data); // Check for success or error messages from the PHP script
+                    notificationModalMessage.innerHTML = 'Trip removed from your wishlist!';
+                    notificationModal.show();
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            } else {
+                this.classList.add('active');
+                fetch('add_to_wishlist.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.text())
+                .then(data => {
+                    console.log(data); // Check for success or error messages from the PHP script
+                    notificationModalMessage.innerHTML = 'Trip added to your wishlist!';
+                    notificationModal.show();
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            }
+        });
+    </script>     
 
 </body>
 
