@@ -35,13 +35,14 @@
                 <ul class="navbar-nav">
                 <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Account
+                            <span><i class="fa-regular fa-circle-user"></i></span>
+                            <span>Account</span>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="Wishlist.php">Wishlist</a></li>
-                            <li><a class="dropdown-item" href="#">Manage Booking</a></li>
-                            <li><a class="dropdown-item" href="a.php">Account Settting</a></li>
-                            <li><a class="dropdown-item" href="#">Log Out</a></li>
+                            <li><a class="dropdown-item nav-link" href="Wishlist.php">Wishlist</a></li>
+                            <li><a class="dropdown-item nav-link" href="#">Manage Bookings</a></li>
+                            <li><a class="dropdown-item nav-link" href="a.php">Account Settting</a></li>
+                            <li><a class="dropdown-item nav-link" href="#">Log Out</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
