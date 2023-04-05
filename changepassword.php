@@ -19,8 +19,8 @@ $user_id = $_SESSION['user_id'];
 ?>
   
 
-    <!-- Navigation Bar 1 -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+     <!-- Navigation Bar 1 -->
+     <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
                 <img src="img/gachi.jpg" alt="Logo" height="50">
@@ -32,7 +32,7 @@ $user_id = $_SESSION['user_id'];
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <div class="row">
-                          <a class="nav-link" href="#">
+                          <a class="nav-link" href="HomePage.php">
                             <span>
                               <i class="fa-solid fa-house fa-lg"></i>
                               
@@ -48,7 +48,7 @@ $user_id = $_SESSION['user_id'];
                       
 
 
-                        <a class="nav-link" href="#"> 
+                        <a class="nav-link" href="help.php"> 
                           <span>
                             &nbsp; &nbsp;
                             <i class="fa-sharp fa-regular fa-circle-question fa-lg"></i>
@@ -63,6 +63,9 @@ $user_id = $_SESSION['user_id'];
                             Account
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="Wishlist.php">Wishlist</a></li>
+                            <li><a class="dropdown-item" href="#">Manage Booking</a></li>
+                            <li><a class="dropdown-item" href="a.php">Account Settting</a></li>
                             <li><a class="dropdown-item" href="#">Log Out</a></li>
                         </ul>
                     </li>

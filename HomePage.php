@@ -14,10 +14,30 @@
 
     <?php include 'connection.php';?> <!-- b onnect to db -->
 
-    <?php
-    session_start();
-    $user_id = $_SESSION['user_id'];
+    <?php 
+	// Get the absolute path to userInfo.json
+	$jsonFilePath = __DIR__ . '/userInfo.json';
 
+	// Read the contents of userInfo.json
+	$jsonUserData = file_get_contents($jsonFilePath);
+
+	// Check if the file was read successfully
+	if ($jsonUserData === false) {
+           die("Error: Unable to read userInfo.json");
+	}
+
+	// Decode the JSON string into an associative array
+	$userDataArray = json_decode($jsonUserData, true);
+
+	// Check if the JSON data was decoded successfully
+	if ($userDataArray === null) {
+    	   die("Error: Unable to decode userInfo.json");
+	}
+
+	// Store the values in PHP variable
+	$userName = $userDataArray['userName'];
+	$userPassword = $userDataArray['userPassword'];
+	$userID = $userDataArray['userID'];
     ?>
 
     <!-- Navigation Bar 1 -->

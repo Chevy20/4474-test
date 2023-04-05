@@ -13,8 +13,10 @@
     <?php include 'connection.php';?> <!-- b onnect to db -->
 
     <?php
+    //session_destory();
     session_start();
     $user_id = $_SESSION['user_id'];
+    //echo "Session Number is " . $user_id;
 
     ?>
     
@@ -160,6 +162,20 @@
                         <div class="card">
                             <div class="card-body">
                             <h5 class="card-title">Contact Information</h5>
+                            <?php
+
+                            
+                            $result1 = $connection -> query('SELECT fname, lname, Phone, email  FROM Account_info, User_info WHERE Account_info.user_id = ' . $user_id . ' and Account_info.Postal = User_info.Postal');
+                            $row1 = $result1 ->fetch_assoc();
+
+
+                                echo '<p class="card-text"> &nbsp; First Name:' . $row1["fname"] . '</p>';
+                                echo '<p class="card-text"> &nbsp; Last Name:' . $row1["lname"] . '</p>';
+                                echo '<p class="card-text"> &nbsp; Phone:' . $row1["Phone"] . '</p>';
+                                echo '<p class="card-text"> &nbsp; email:' . $row1["email"] . '</p>';
+
+                            ?>
+
 
 
                             <a class="btn btn-primary " data-bs-toggle="popover" data-bs-placement="top" title="Edit information" href="updatecontact.php"  >Edit Information</a>
@@ -180,9 +196,9 @@
                             <?php
 
 
-                                $result1 = $connection -> query('SELECT Street_name, City FROM Account_info, User_info WHERE Account_info.user_id = ' . $user_id . ' and Account_info.Postal = User_info.Postal');
+                                $result77 = $connection -> query('SELECT Street_name, City FROM Account_info, User_info WHERE Account_info.user_id = ' . $user_id . ' and Account_info.Postal = User_info.Postal');
 
-                                $row1 = $result1 ->fetch_assoc();
+                                $row1 = $result77 ->fetch_assoc();
 
 
                                 echo '<span> Street Name: &nbsp;' . $row1["Street_name"] . '</span>';
@@ -198,9 +214,9 @@
                             <div class="col-md-6">
 
                             <?php
-                                $result1 = $connection -> query('SELECT Prov, Country, User_info.Postal FROM Account_info, User_info WHERE Account_info.user_id = ' . $user_id . ' and Account_info.Postal = User_info.Postal');
+                                $result77 = $connection -> query('SELECT Prov, Country, User_info.Postal FROM Account_info, User_info WHERE Account_info.user_id = ' . $user_id . ' and Account_info.Postal = User_info.Postal');
 
-                                $row1 = $result1 ->fetch_assoc();
+                                $row1 = $result77 ->fetch_assoc();
 
 
                                 echo '<span> Province: &nbsp;' . $row1["Prov"] . '</span>';
@@ -275,7 +291,6 @@
                     ?>
 
                 
-               
 
                 <div class="tab-pane fade" id="trips" role="tabpanel" aria-labelledby="trips-tab">
                     <table class="table table-striped">
@@ -292,15 +307,17 @@
 
                         <?php
                         $result1 = $connection -> query("SELECT user_id, trip_id, myDate, Cost FROM Travelled_trip");
-                        
+                        $tripper = 1;
                         while($row1 = $result1 ->fetch_assoc()){
                             echo '<tr>';
-                            echo '<th scope="row"> 1 </th>';
+                            echo '<th scope="row">' . $tripper . '</th>';
                             echo '<td>' . $row1["user_id"] . $row1["trip_id"] . '</td>';
                             echo '<td>' . $row1["myDate"] . '</td>';
                             echo '<td>' . $row1["Cost"] . '</td>';
                             echo '</tr>';
+                            $tripper = $tripper + 1;
                         }
+
                         
                         ?>
                         

@@ -86,7 +86,11 @@
                             if (isset($_POST['destination'])) {
                                     $temp1 = $_POST['destination'];
             
-                                    //$result2 = $connection->query('');
+                                    $result111 = $connection->query('SELECT COUNT(*) as count FROM Trips WHERE trip_name LIKE' . "'%" . $temp1 . "%'" );
+                                    $row2 = $result111 ->fetch_assoc();
+                                    $num_row = $row2['count'];
+
+                            
                                     //header('Location: Search.php');
                             
                             }                     
@@ -94,13 +98,13 @@
                             
                             ?>
 
-                            <form action="search.php" method="post">
+                            <form action="Search.php" method="post">
                             <div class="searchbar">
                             <input class="form-control" list="datalistOptions" id="exampleDataList" name="destination" placeholder="Choose a destination..." style="width:600px">
                             <datalist id="datalistOptions">
-                            <option value="Emerald Lake, BC">
-                            <option value="Venice, Italy">
-                            <option value="Reykjavík, Iceland">
+                            <option value="Vancouver">
+                            <option value="Toronto">
+                            <option value="Quebec">
                             </datalist>
                             </div>
                             <div class="d-grid gap-2 m-2">
@@ -115,76 +119,54 @@
             </div>
         </div>
     </div>
-    <div class="results">
-        <div class="row justify-content-evenly">
-            <div class="col-3">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="col-auto m-1">
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>Sort By...</option>
-                                <option value="1">Date</option>
-                                <option value="2">Price</option>
-                                <option value="3">Duration</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="col-8">
                 <div class="card">
                     <div class="card-body">
                         <div class="row justify-content-center">
                             <div class="col-auto m-1">
-                                <h2><span class="badge text-bg-light">Results: 3</span></h2>
+                                
+                            <?php 
+                            
+                            echo '<h2><span class="badge text-bg-light">' . "Results:" . $num_row .  '</span></h2>';
+                            
+                            ?>
+                                
                             </div>
-                            <div class="row justify-content-start">
-                                <div class="card m-1">
-                                    <div class="row g-0 justify-content-evenly">
-                                        <div class="col-auto m-1">
-                                            <img src="emerald-lake-yoho-national-park-british-columbia-canada-wallpaper-1920x1080-wallpaper.jpg" class="card-img" style="width:300px;height:150px;">
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="card-header">
-                                                <h5 class="card-title">Emerald Lake, BC</h5>
-                                            </div>
-                                            <div class="card-body">
-                                                <p class="card-text">Emerald Lake is a freshwater lake located in Yoho National Park, British Columbia, Canada. Yoho National Park is one of the 4 contiguous National Parks in the heart of Canada's Rocky Mountains, along the boundary of British Columbia and Alberta Provinces, the other Parks are Kootenay, Jasper, and Banff.</p>
-                                                <a href="#" class="btn btn-primary">View Trip Details</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>  
-                                <div class="card m-1">
-                                    <div class="row g-0 justify-content-evenly">
-                                        <div class="col-auto m-1">
-                                            <img src="804395.jpg" class="card-img" style="width:300px;height:150px;">
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="card-header">
-                                                <h5 class="card-title">Reykjavík, Iceland</h5>
-                                            </div>
-                                            <div class="card-body">
-                                                <p class="card-text">Reykjavík is a city of bold contrasts: it is both cosmopolitan and small-town; vibrant and sophisticated; young-at-heart and yet full of history. Many monuments, new and old, are also worth a peek, including the newly built oceanfront music and conference centre, Harpa.</p>
-                                                <a href="#" class="btn btn-primary">View Trip Details</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card m-1">
-                                    <div class="row g-0 justify-content-evenly">
-                                        <div class="col-auto m-1">
-                                            <img src="1000163-sea-city-cityscape-Italy-Venice-Tourism-evening-coast-town-canal-vacation-waterway-geographical-feature.jpg" class="card-img" style="width:300px;height:150px;">
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="card-header">
-                                                <h5 class="card-title">Venice, Italy</h5>
-                                            </div>
-                                            <div class="card-body">
-                                                <p class="card-text">Venice, known also as the “City of Canals,” “The Floating City,” and “Serenissima,” is arguably one of Italy's most picturesque cities. With its winding canals, striking architecture, and beautiful bridges, Venice is a popular destination for travel.</p>
-                                                <a href="#" class="btn btn-primary">View Trip Details</a>
-                                            </div>
-                                        </div>
+
+                            <?php 
+
+                            $result111 = $connection->query('SELECT * FROM Trips WHERE trip_name LIKE' . "'%" . $temp1 . "%'" );
+                            while ($row = $result111->fetch_assoc()) {
+                                echo '<div class="row justify-content-start">';
+                                echo '<div class="card m-1">';
+                                echo '<div class="row g-0 justify-content-evenly">';
+                                echo '<div class="col-auto m-1">';
+                                echo '<img src= ' . '"' . $row['pic'] . '"' . 'class = "card-img" style="width:300px;height:200px;">'; 
+                                echo '</div>';
+                                echo '<div class="col-md-8">';
+                                echo '<div class="card-header">';
+                                echo '<h5 class="card-title">' . $row['trip_name'] . '</h5>';
+                                echo '</div>';
+                                echo '<div class="card-body">';
+                                echo '<p class="card-text">' . $row['description'] . '</p>';
+                                echo '<a href="#" class="btn btn-primary">View Trip Details</a>';
+                                echo '</div>';
+                                echo '</div>';
+                                echo '</div>';
+                                echo '</div>';
+                            }
+
+
+
+                            
+                            ?>
+
+
+    
+                                
+
+
+                            </div>
                                     </div>
                                 </div>
                             </div>

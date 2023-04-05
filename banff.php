@@ -1,7 +1,4 @@
-<?php
-session_start();
-$user_id = $_SESSION['user_id'];
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,6 +13,12 @@ $user_id = $_SESSION['user_id'];
 </head>
 
 <body>
+<?php
+      require 'userInfo.php';
+      echo $config['username']; 
+      echo $config['password']; 
+      echo $config['userid']; 
+    ?>
     <style>
         .c-item {
             height: 800px;

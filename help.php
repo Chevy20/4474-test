@@ -12,11 +12,6 @@
 
 <?php include 'connection.php';?> <!-- b onnect to db -->
 
-<?php
-session_start();
-$user_id = $_SESSION['user_id'];
-
-?>
   
 
        <!-- Navigation Bar 1 -->

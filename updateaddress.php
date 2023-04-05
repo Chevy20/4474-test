@@ -21,8 +21,8 @@ $user_id = $_SESSION['user_id'];
   
   
 
-    <!-- Navigation Bar 1 -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+     <!-- Navigation Bar 1 -->
+     <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
                 <img src="img/gachi.jpg" alt="Logo" height="50">
@@ -34,7 +34,7 @@ $user_id = $_SESSION['user_id'];
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <div class="row">
-                          <a class="nav-link" href="#">
+                          <a class="nav-link" href="HomePage.php">
                             <span>
                               <i class="fa-solid fa-house fa-lg"></i>
                               
@@ -50,7 +50,7 @@ $user_id = $_SESSION['user_id'];
                       
 
 
-                        <a class="nav-link" href="#"> 
+                        <a class="nav-link" href="help.php"> 
                           <span>
                             &nbsp; &nbsp;
                             <i class="fa-sharp fa-regular fa-circle-question fa-lg"></i>
@@ -65,6 +65,9 @@ $user_id = $_SESSION['user_id'];
                             Account
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="Wishlist.php">Wishlist</a></li>
+                            <li><a class="dropdown-item" href="#">Manage Booking</a></li>
+                            <li><a class="dropdown-item" href="a.php">Account Settting</a></li>
                             <li><a class="dropdown-item" href="#">Log Out</a></li>
                         </ul>
                     </li>
@@ -99,21 +102,16 @@ $user_id = $_SESSION['user_id'];
             $Prov = $_POST['provincename'];
             $coutnry = $_POST['countryname'];
 
-            //echo 'UPDATE User_info SET Street_name = ' . '"' . $street . '"' . ' , City = ' . '"' . $city . '"' . ' , Prov = ' . '"' . $Prov . '"' . ' , Country = ' .'"' . $coutnry . '"' .  ' WHERE user_id = ' . $user_id;
-           $result = $connection -> query('UPDATE User_info SET Street_name = ' . '"' . $street . '"' . ' , City = ' . '"' . $city . '"' . ' , Prov = ' . '"' . $Prov . '"' . ' , Country = ' .'"' . $coutnry . '"' .  ' WHERE user_id = ' . $user_id  );
-
-           echo "<script>
-           alert('Address changed');
-           window.location.href='a.php';
-           </script>";
-            
+          //echo 'UPDATE User_info SET Street_name = ' . '"' . $street . '"' . ' , City = ' . '"' . $city . '"' . ' , Prov = ' . '"' . $Prov . '"' . ' , Country = ' .'"' . $coutnry . '"' .  ' WHERE user_id = ' . $user_id;
+          $result = $connection -> query('UPDATE User_info SET Street_name = ' . '"' . $street . '"' . ' , City = ' . '"' . $city . '"' . ' , Prov = ' . '"' . $Prov . '"' . ' , Country = ' .'"' . $coutnry . '"' .  ' WHERE user_id = ' . $user_id  );
+          echo "<script>
+          alert('Address changed');
+          window.location.href='a.php';
+          </script>";
         }
         ?>
 
-
-        
-
-
+      
     <div class="container-fluid bg-light">
         <div class="row justify-content-center mt-5">
           <div class="col-md-8 col-lg-100 border rounded p-4 bg-white">
@@ -129,7 +127,7 @@ $user_id = $_SESSION['user_id'];
                 </div>
                 <div class="form-group col-4">
                   <label for="provincename">Province:</label>
-                  <input type="text" class="form-control" id="provincename" name="provincename" required>                                
+                  <input type="text" class="form-control" id="provincename" name="provincename" maxlength="2" required>                                
                 </div>
                 <div class="form-group col-4">
                   <label for="countryname">Country:</label>

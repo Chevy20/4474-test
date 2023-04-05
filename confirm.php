@@ -1,7 +1,3 @@
-<?php
-session_start();
-$user_id = $_SESSION['user_id'];
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,6 +20,12 @@ $user_id = $_SESSION['user_id'];
         $startDate = $_POST['startDate'];
         $endDate = $_POST['endDate'];
         $total = $_POST['total'];
+    ?>
+    <?php
+      require 'userInfo.php';
+      echo $config['username']; 
+      echo $config['password']; 
+      echo $config['userid']; 
     ?>
     <!-- Navigation Bar 1 -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -107,15 +109,14 @@ $user_id = $_SESSION['user_id'];
             <div class="col-md-8 col-lg-100 border rounded p-4 bg-white">
                 <h4> Payment succeeded! Below you will find your confirmation information: <h3>
                 <h5> An email copy will be sent to the email associated with your account. <h3>
-                <!-- All fields below will be populated with php using post-->
-                <p class="clbl">Booking Number: 11111111</p>     
+                <!-- All fields below will be populated with php using post-->    
                 <p class="clbl">Passenger Name: <?php echo htmlspecialchars($PassFName); ?> <?php echo htmlspecialchars($PassLName); ?></span></p>
                 <p class="clbl">Start Date: <?php echo htmlspecialchars($startDate); ?> </p>
                 <p class="clbl">End Date: <?php echo htmlspecialchars($endDate); ?></p>
                 <p class="clbl">Trip Name: <?php echo htmlspecialchars($tripName); ?></p>
                 <p class="clbl">Country: <?php echo htmlspecialchars($country); ?></p>
                 <p class="clbl">Total: $<?php echo htmlspecialchars($total); ?> CAD</p>
-                <a href="home.html" class="btn btn-primary">Return to Home</a>      <!--Change href to whatever home page is called-->
+                <a href="HomePage.php" class="btn btn-primary">Return to Home</a>      <!--Change href to whatever home page is called-->
 
             </div>
         </div>    
