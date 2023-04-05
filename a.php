@@ -18,9 +18,7 @@
     session_start();
     $user_id = $_SESSION['user_id'];
     //echo "Session Number is " . $user_id;
-    error_reporting(E_ALL);
-    ini_set('display_errors', 1);
-
+  
     ?>
 <!----TO FIX --->    
        <!-- Navigation Bar 1 -->
@@ -309,17 +307,17 @@
                         <tbody>
 
                         <?php
-                        $result1 = $connection -> query("SELECT user_id, trip_id, myDate, Cost FROM Travelled_trip");
-                        $tripper = 1;
-                        while($row1 = $result1 ->fetch_assoc()){
-                            echo '<tr>';
-                            echo '<th scope="row">' . $tripper . '</th>';
-                            echo '<td>' . $row1["user_id"] . $row1["trip_id"] . '</td>';
-                            echo '<td>' . $row1["myDate"] . '</td>';
-                            echo '<td>' . $row1["Cost"] . '</td>';
-                            echo '</tr>';
-                            $tripper = $tripper + 1;
-                        }
+                        //$result1 = $connection -> query("SELECT user_id, trip_id, myDate, Cost FROM Travelled_trip");
+                        //$tripper = 1;
+                        //while($row1 = $result1 ->fetch_assoc()){
+                            //echo '<tr>';
+                            //echo '<th scope="row">' . $tripper . '</th>';
+                            //echo '<td>' . $row1["user_id"] . $row1["trip_id"] . '</td>';
+                            //echo '<td>' . $row1["myDate"] . '</td>';
+                            //echo '<td>' . $row1["Cost"] . '</td>';
+                            //echo '</tr>';
+                            //$tripper = $tripper + 1;
+                        //}
 
                         
                         ?>
