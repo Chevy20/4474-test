@@ -6,6 +6,7 @@
         <title>Account Information</title>
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
+        <script src="https://kit.fontawesome.com/358b3891c8.js" crossorigin="anonymous"></script>
         
     </head>
     <body>
@@ -499,7 +500,7 @@
 
 
         <!-- Bootstrap Bundle with Popper and jQuery -->
-        <script src="https://kit.fontawesome.com/358b3891c8.js" crossorigin="anonymous"></script>
+        
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
         <script src="https://unpkg.com/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
         
