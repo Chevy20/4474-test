@@ -25,6 +25,31 @@
             height: 100%;
             object-fit: cover;
         }
+        .buttons-container {
+            display: flex;
+            gap: 10px;
+        }
+
+        .like-btn {
+            padding: 6px 10px;
+            font-size: 24px;
+        }
+
+        .like-btn .fa-heart-o {
+            pointer-events: none;
+        }
+
+        .like-btn:focus {
+            outline: none;
+        }
+
+        .like-btn.active {
+            color: red;
+        }
+
+        .like-btn.active .fa-heart-o {
+            content: "\f004";
+        }
     </style>
     <!-- Navigation Bar 1 -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
@@ -143,7 +168,12 @@
                         <input type="hidden" name="ticketPrice" value="300.00" />
                         <input type="hidden" name="tripId"  value ="1"/>
                     </div>
+                    <div class="buttons-container">
                     <button type="submit" class="btn btn-primary">Book Now!</button>
+                    <button class="btn btn-outline-primary like-btn">
+                        <i class="fa fa-heart-o" aria-hidden="true"></i>
+                    </button>
+                </div>
                     
                 </form>
 
@@ -159,6 +189,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
         integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
         crossorigin="anonymous"></script>
+        <script>
+            document.querySelector('.like-btn').addEventListener('click', function () {
+                this.classList.toggle('active');
+            });
+        </script>
 
 </body>
 
