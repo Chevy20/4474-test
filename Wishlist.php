@@ -196,10 +196,13 @@
   });
 
   document.getElementById('modal_no').addEventListener('click', function () {
+    var modalElement = document.getElementById('exampleModal');
+    var modalInstance = bootstrap.Modal.getInstance(modalElement);
+    modalInstance.hide();
     isEditModeEnabled = false;
     document.getElementById('edit_btn').disabled = false;
     document.getElementById('confirm_btn').style.display = 'none';
-    modalInstance.hide();
+    
   });
 
   // Add this event listener for the "Confirm Changes" button
