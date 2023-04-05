@@ -213,15 +213,17 @@
     });
 
     wishlistItems.addEventListener("drop", (event) => {
-      event.preventDefault();
-      const cardId = event.dataTransfer.getData("text/plain");
-      const card = document.getElementById(cardId);
-      const dropTarget = event.target.closest(".card");
-      
-      if (dropTarget) {
-        wishlistItems.insertBefore(card, dropTarget);
-      }
-    });
+    event.preventDefault();
+    const cardId = event.dataTransfer.getData("text/plain");
+    const card = document.getElementById(cardId);
+    const dropTarget = event.target.closest(".card");
+
+    if (dropTarget && dropTarget.parentNode === wishlistItems) {
+      wishlistItems.insertBefore(card, dropTarget);
+    } else {
+      wishlistItems.appendChild(card);
+    }
+  });
   </script>
 </body>
 
