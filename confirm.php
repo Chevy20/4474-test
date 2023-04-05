@@ -49,7 +49,7 @@
 
         // Close the prepared statement
         $stmt->close();
-?>
+
     ?>
 
     <!-- Navigation Bar 1 -->

@@ -377,10 +377,9 @@
 
             if (cardNumberValid && expiryDateValid && cvcValid && postalCodeValid && phoneNumberValid) {
                 getUniqueBookingNumber().then(result => {
-                    //bNumIn.value = result;
-                    console.log(result);
+                    bNumIn.value = result;
                 });
-                //creditCardForm.submit();
+                creditCardForm.submit();
             } else {
                 alert('Please correct the errors in the form before submitting.');
             }
