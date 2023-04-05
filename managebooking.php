@@ -65,38 +65,46 @@
                 <div>
                     <h1>Manage Boookings</h1>
                     <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Booking #</th>
-                                <th scope="col">User ID</th>
-                                <th scope="col">Trip ID</th>
-                                <th scope="col">Trip Name</th>
-                                <th scope="col">Start Date</th>
-                                <th scope="col">End Date</th>
-                                <th scope="col">Cost</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                                $result1 = $connection->query("SELECT booking_num, user_id, trip_id, trip_name, startDate, endDate, Cost FROM Travelled_trip WHERE user_id = $user_id" );
-                                $tripper = 1;
-                                while ($row1 = $result1->fetch_assoc()) {
-                                    echo '<tr>';
-                                    echo '<th scope="row">' . $tripper . '</th>';
-                                    echo '<td>' . $row1["booking_num"] . '</td>';
-                                    echo '<td>' . $row1["user_id"] . '</td>';
-                                    echo '<td>' . $row1["trip_id"] . '</td>';
-                                    echo '<td>' . $row1["trip_name"] . '</td>';
-                                    echo '<td>' . $row1["startDate"] . '</td>';
-                                    echo '<td>' . $row1["endDate"] . '</td>';
-                                    echo '<td>' . $row1["Cost"] . '</td>';
-                                    echo '</tr>';
-                                    $tripper = $tripper + 1;
-                                }
-                            ?>
-                        </tbody>
-                    </table>
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Booking #</th>
+            <th scope="col">User ID</th>
+            <th scope="col">Trip ID</th>
+            <th scope="col">Trip Name</th>
+            <th scope="col">Start Date</th>
+            <th scope="col">End Date</th>
+            <th scope="col">Cost</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+            $result1 = $connection->query("SELECT booking_num, user_id, trip_id, trip_name, startDate, endDate, Cost FROM Travelled_trip WHERE user_id = $user_id" );
+            $tripper = 1;
+            while ($row1 = $result1->fetch_assoc()) {
+                echo '<tr>';
+                echo '<th scope="row">' . $tripper . '</th>';
+                echo '<td>' . $row1["booking_num"] . '</td>';
+                echo '<td>' . $row1["user_id"] . '</td>';
+                echo '<td>' . $row1["trip_id"] . '</td>';
+                echo '<td>' . $row1["trip_name"] . '</td>';
+                echo '<td>' . $row1["startDate"] . '</td>';
+                echo '<td>' . $row1["endDate"] . '</td>';
+                echo '<td>' . $row1["Cost"] . '</td>';
+                echo '<td>
+                        <form action="delete_trip.php" method="post">
+                            <input type="hidden" name="booking_num" value="' . $row1["booking_num"] . '">
+                            <button type="submit" name="delete_trip" class="btn btn-danger">Delete</button>
+                        </form>
+                      </td>';
+                echo '</tr>';
+                $tripper = $tripper + 1;
+            }
+        ?>
+    </tbody>
+</table>
+
                 </div>
 
 
