@@ -9,5 +9,15 @@
     
   </head>
 <body>
-    <p>Work In Progress</p>
+       <!--Change image and text to show side by side-->
+    <!--Showcase-->
+    <section class="bg-white text-dark p-lg-0 text-center">
+        <div class="container">
+            <div class="d-sm-flex flex-column">
+                <div>
+                    <h1>Manage Boookings</h1>
+                </div>
+                
+        </div>
+    </section>
 </body>
