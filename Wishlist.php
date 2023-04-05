@@ -213,19 +213,20 @@
     });
 
     wishlistItems.addEventListener("drop", (event) => {
-    event.preventDefault();
-    const cardId = event.dataTransfer.getData("text/plain");
-    const card = document.getElementById(cardId);
-    const cardColumn = card.closest(".col-md-8");
-    const dropTarget = event.target.closest(".card");
+      event.preventDefault();
+      const cardId = event.dataTransfer.getData("text/plain");
+      const card = document.getElementById(cardId);
+      const cardColumn = card.closest(".col-md-8");
+      const dropTarget = event.target.closest(".card");
 
-    if (dropTarget && dropTarget.parentNode === wishlistItems) {
-      const dropTargetColumn = dropTarget.closest(".col-md-8");
-      wishlistItems.insertBefore(cardColumn, dropTargetColumn);
-    } else {
-      wishlistItems.appendChild(cardColumn);
-    }
-  });
+      if (dropTarget && dropTarget.parentNode === wishlistItems) {
+        const dropTargetColumn = dropTarget.closest(".col-md-8");
+        wishlistItems.insertBefore(cardColumn, dropTargetColumn);
+      } else {
+        wishlistItems.appendChild(cardColumn);
+      }
+    });
+
   </script>
 </body>
 
