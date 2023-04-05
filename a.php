@@ -296,40 +296,39 @@
                 <div class="tab-pane fade" id="trips" role="tabpanel" aria-labelledby="trips-tab">
                     <table class="table table-striped">
                         <thead>
-                        
-                        <tr>
-                            <th scope="col">Booking #</th>
-                            <th scope="col">User ID</th>
-                            <th scope="col">Trip ID</th>
-                            <th scope="col">Trip Name</th>
-                            <th scope="col">Start Date</th>
-                            <th scope="col">End Date</th>
-                            <th scope="col">Cost</th>
-                        </tr>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Booking #</th>
+                                <th scope="col">User ID</th>
+                                <th scope="col">Trip ID</th>
+                                <th scope="col">Trip Name</th>
+                                <th scope="col">Start Date</th>
+                                <th scope="col">End Date</th>
+                                <th scope="col">Cost</th>
+                            </tr>
                         </thead>
                         <tbody>
-
-                        <?php
-                            $result1 = $connection -> query("SELECT booking_num, user_id, trip_id, trip_name, startDate, endDate, Cost FROM Travelled_trip");
-                            $tripper = 1;
-                            while($row1 = $result1 ->fetch_assoc()){
-                                echo '<tr>';
-                                echo '<th scope="row">' . $tripper . '</th>';
-                                echo '<td>' . $row1["Index"] . '</td>';
-                                echo '<td>' . $row1["booking_num"] . '</td>';
-                                echo '<td>' . $row1["user_id"] . '</td>';
-                                echo '<td>' . $row1["trip_id"] . '</td>';
-                                echo '<td>' . $row1["trip_name"] . '</td>';
-                                echo '<td>' . $row1["startDate"] . '</td>';
-                                echo '<td>' . $row1["endDate"] . '</td>';
-                                echo '<td>' . $row1["Cost"] . '</td>';
-                                echo '</tr>';
-                                $tripper = $tripper + 1;
-                            }
-                        ?>
+                            <?php
+                                $result1 = $connection->query("SELECT booking_num, user_id, trip_id, trip_name, startDate, endDate, Cost FROM Travelled_trip");
+                                $tripper = 1;
+                                while ($row1 = $result1->fetch_assoc()) {
+                                    echo '<tr>';
+                                    echo '<th scope="row">' . $tripper . '</th>';
+                                    echo '<td>' . $row1["booking_num"] . '</td>';
+                                    echo '<td>' . $row1["user_id"] . '</td>';
+                                    echo '<td>' . $row1["trip_id"] . '</td>';
+                                    echo '<td>' . $row1["trip_name"] . '</td>';
+                                    echo '<td>' . $row1["startDate"] . '</td>';
+                                    echo '<td>' . $row1["endDate"] . '</td>';
+                                    echo '<td>' . $row1["Cost"] . '</td>';
+                                    echo '</tr>';
+                                    $tripper = $tripper + 1;
+                                }
+                            ?>
                         </tbody>
                     </table>
                 </div>
+
 
 
 
