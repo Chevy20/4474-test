@@ -143,11 +143,13 @@
     return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
   }
 
-  // Check for the delete_success URL parameter
-  if (getUrlParameter("delete_success") !== '') {
-    const successModal = new bootstrap.Modal(document.getElementById('successModal'));
-    successModal.show();
-  }
+  document.addEventListener('DOMContentLoaded', () => {
+    // Check for the delete_success URL parameter
+    if (getUrlParameter("delete_success") !== '') {
+      const successModal = new bootstrap.Modal(document.getElementById('successModal'));
+      successModal.show();
+    }
+  });
 
   const deleteButtons = document.querySelectorAll('.delete-btn');
   const confirmationModal = new bootstrap.Modal(document.getElementById('confirmationModal'));
