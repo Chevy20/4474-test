@@ -75,7 +75,7 @@
             <th scope="col">Start Date</th>
             <th scope="col">End Date</th>
             <th scope="col">Cost</th>
-            <th scope="col">Action</th>
+            <th scope="col">Delete</th>
         </tr>
     </thead>
     <tbody>
@@ -95,7 +95,9 @@
                 echo '<td>
                         <form action="delete_trip.php" method="post">
                             <input type="hidden" name="booking_num" value="' . $row1["booking_num"] . '">
-                            <button type="submit" name="delete_trip" class="btn btn-danger">Delete</button>
+                            <button type="submit" class="btn btn-danger">
+                            <img src="img/542724.png" class="card-img-top" style="width:20px;height:20px;">
+                          </button>
                         </form>
                       </td>';
                 echo '</tr>';
