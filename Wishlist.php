@@ -137,21 +137,6 @@
           <button type="button" class="btn btn-success justify-content-md-center" id="confirm_btn" style="display: none;">
             Confirm Changes
           </button>
-            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
-              data-bs-auto-close="outside" aria-expanded="false">
-              <img src="img/1827789.png" alt="Company Logo" width="20" height="20">
-            </button>
-            <ul class="dropdown-menu">
-              <li>
-                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                  <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-                  <label class="btn btn-outline-primary p-1" for="btnradio1">List View</label>
-
-                  <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-                  <label class="btn btn-outline-primary p-1" for="btnradio2">Grid View</label>
-                </div>
-              </li>
-            </ul>
           </div>
         </div>
       </div>
@@ -214,6 +199,7 @@
     isEditModeEnabled = false;
     document.getElementById('edit_btn').disabled = false;
     document.getElementById('confirm_btn').style.display = 'none';
+    modalInstance.hide();
   });
 
   // Add this event listener for the "Confirm Changes" button
