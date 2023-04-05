@@ -97,7 +97,7 @@
   <div class="container text-center">
     <div class="row justify-content-center">
       <div class="col-auto">
-        <div class="edit button edit-btn-group">
+        <div class="edit button">
         <button type="button" class="btn btn-primary justify-content-md-center" data-bs-toggle="modal"
           data-bs-target="#exampleModal" id="edit_btn">
           Edit Wishlist
@@ -158,7 +158,7 @@
             <a href="#" class="btn btn-primary">View Trip Details</a>
           </div>
           <div class="d-grid m-1">
-            <div class="btn-group">
+            <div class="btn-group edit-btn-group">
               <button type="button" class="btn btn-outline-primary">
                 ʌ
               </button>
