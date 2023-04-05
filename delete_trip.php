@@ -11,10 +11,10 @@ if (isset($_POST['delete_trip'])) {
     
     if ($stmt->execute()) {
         // Redirect back to the page with the table
-        header("Location: your_page_with_table.php?delete_success");
+        header("Location: managebooking.php?delete_success");
     } else {
         // Redirect back to the page with the table and show an error message
-        header("Location: your_page_with_table.php?delete_error");
+        header("Location: managebooking.php?delete_error");
     }
 }
 ?>
