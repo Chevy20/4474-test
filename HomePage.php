@@ -25,6 +25,10 @@
       .nav-item {
         margin-right: 25px;
       }
+      .navbar-collapse {
+        display: flex;
+        justify-content: center;
+      }
     </style>
     <!-- Navigation Bar 1 -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white">
