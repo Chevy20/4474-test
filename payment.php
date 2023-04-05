@@ -16,6 +16,7 @@
     <title>Trip Information</title>
 </head>
 <body>
+<?php include 'connection.php';?> <!-- connect to db -->
     <?php
         $PassFName = $_GET['passFName1'];
         $PassLName = $_GET['passLName1'];
@@ -27,7 +28,7 @@
         $total= $_GET['gtIN'];
         $startDate = $_GET['trip-start'];
         $endDate = $_GET['trip-end'];
-        
+        $tripId = $_GET['tripId'];
     ?>
 
     <!-- Navigation Bar 1 -->
@@ -209,6 +210,8 @@
                     <input type="hidden" id="endDate" name="endDate" value="<?php echo htmlspecialchars($endDate); ?>">
                     <input type="hidden" id="country" name="country" value="<?php echo htmlspecialchars($country); ?>">
                     <input type="hidden" id="total" name="total" value="<?php echo htmlspecialchars($total); ?>">
+                    <input type="hidden" id="bNum" name="bNum">
+                    <input type="hidden" name="tripId" id="tripId" value ="<?php echo htmlspecialchars($tripId); ?>" >
                     <button type="submit" class="btn btn-primary" id="submitBtn" disabled >Process Payment</button>
                 </form>
 
@@ -298,6 +301,37 @@
             const regex = /^\(\d{3}\) \d{3}-\d{4}$/;
             return regex.test(phoneNumber);
         }
+        function generateRandomNumber() {
+            return Math.floor(100000 + Math.random() * 900000);
+        }
+        async function getUniqueBookingNumber() {
+            let uniqueFound = false;
+            let bookingNumber;
+
+            while (!uniqueFound) {
+                bookingNumber = generateRandomNumber();
+
+                const response = await fetch('check_booking_number.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ bookingNumber: bookingNumber })
+                });
+
+                const result = await response.json();
+
+                if (result.unique === true) {
+                    uniqueFound = true;
+                }
+            }
+
+            return bookingNumber;
+        }
+
+
+
+        
 
         creditCardForm.addEventListener('submit', (e) => {
             e.preventDefault();
@@ -345,6 +379,10 @@
             }
 
             if (cardNumberValid && expiryDateValid && cvcValid && postalCodeValid && phoneNumberValid) {
+                getUniqueBookingNumber().then(uniqueBookingNumber => {
+                    const bNumInput = document.getElementById('bNum');
+                    bNumInput.value = uniqueBookingNumber;
+                });
                 creditCardForm.submit();
             } else {
                 alert('Please correct the errors in the form before submitting.');

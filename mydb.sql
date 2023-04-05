@@ -51,15 +51,7 @@ CREATE TABLE Trips (
 );
 
 
-CREATE TABLE Travelled_trip (
-    user_id INT NOT NULL,
-    trip_id INT NOT NULL,
-    myDate DATE ,
-    Cost FLOAT,
-    PRIMARY KEY (trip_id,user_id),
-    FOREIGN KEY (user_id) REFERENCES Account_info(user_id),
-    FOREIGN KEY (trip_id) REFERENCES Trips(trip_id)
-);
+CREATE TABLE Travelled_trip (booking_num INT NOT NULL,user_id INT NOT NULL,trip_id INT NOT NULL,myDate DATE ,Cost FLOAT,PRIMARY KEY (trip_id,user_id,booking_num),FOREIGN KEY (user_id) REFERENCES Account_info(user_id),FOREIGN KEY (trip_id) REFERENCES Trips(trip_id));
 
 select * from Account_info;
 select * from User_info;

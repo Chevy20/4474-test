@@ -20,6 +20,7 @@
     $country = $_GET['country'];
     $duration = $_GET['duration'];
     $ticketPrice = $_GET['ticketPrice'];
+    $tripId = $_GET['tripId'];
 
     ?>
     
@@ -443,6 +444,7 @@
                     <input type="hidden" name="taxIn" id="taxIn" />
                     <input type="hidden" name="bookIN" id="bookIN" />
                     <input type="hidden" name="gtIN"  id="gtIN"/>
+                    <input type="hidden" name="tripId" id="tripId" value ="<?php echo htmlspecialchars($tripId); ?>" />
                 </div>
                 <div class="mb-3 form-check">
                     <input type="checkbox" onchange="document.getElementById('submitBtn').disabled = !this.checked;" class="form-check-input" id="verifyCheck" unchecked>

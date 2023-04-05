@@ -16,6 +16,7 @@
     <title>Confirmation page</title>
 </head>
 <body>
+    <?php include 'connection.php';?> <!-- connect to db -->
     <?php
         $PassFName = $_POST['PassFName'];
         $PassLName = $_POST['PassLName'];
@@ -24,6 +25,33 @@
         $startDate = $_POST['startDate'];
         $endDate = $_POST['endDate'];
         $total = $_POST['total'];
+        $bNum = $_POST['bNum'];
+
+        
+        $bNum = $_POST['bNum'];
+        $user_id = $_SESSION['user_id'];
+        $tripId = $_GET['tripId'];
+        $startDate = $_GET['trip-start'];
+        $total = $_GET['gtIN'];
+
+        // Prepare the SQL statement to insert the record into the Travelled_trip table
+        $sql = "INSERT INTO Travelled_trip (booking_num, user_id, trip_id, myDate, Cost) VALUES (?, ?, ?, ?, ?)";
+
+ 
+        $stmt = $conn->prepare($sql);
+
+        // Bind the variables to the prepared statement
+        $stmt->bind_param("iiiis", $bNum, $user_id, $tripId, $startDate, $total);
+
+        // Execute the prepared statement
+        if ($stmt->execute()) {
+            echo "New record created successfully";
+        } else {
+            echo "Error: " . $stmt->error;
+        }
+
+        // Close the prepared statement
+        $stmt->close();
     ?>
 
     <!-- Navigation Bar 1 -->

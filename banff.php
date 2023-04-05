@@ -142,6 +142,7 @@
                         <input type="hidden" name="country" value="Canada" />
                         <input type="hidden" name="duration" value="4" />
                         <input type="hidden" name="ticketPrice" value="200.00" />
+                        <input type="hidden" name="tripId"  value ="5"/>
                     </div>
                     <button type="submit" class="btn btn-primary">Book Now!</button>
 
