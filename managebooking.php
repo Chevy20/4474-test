@@ -2,9 +2,6 @@
   session_start();
   $user_id = $_SESSION['user_id'];
   include 'connection.php'
-  ini_set('display_errors', 1);
-  ini_set('display_startup_errors', 1);
-  error_reporting(E_ALL);
 ?>
 <!doctype html>
 <html lang="en">
@@ -94,15 +91,15 @@
                                 echo '<td>' . $row1["startDate"] . '</td>';
                                 echo '<td>' . $row1["endDate"] . '</td>';
                                 echo '<td>' . $row1["Cost"] . '</td>';
-                                echo '<td>'
-                                echo '<button class="btn btn-danger delete-btn">'
-                                echo    '<img src="img/542724.png" class="card-img-top" style="width:20px;height:20px;">'
-                                echo    '<input type="hidden" name="booking_num" value="' . $row1["booking_num"] . '">'
-                                echo  '</button>'
-                                echo   '<form action="delete_trip.php" method="post" class="d-none">'
-                                echo      '<input type="hidden" name="booking_num" value="' . $row1["booking_num"] . '">'
-                                echo    '</form>'
-                                echo '</td>';
+                                echo '<td>
+                                      <button class="btn btn-danger delete-btn">
+                                      <img src="img/542724.png" class="card-img-top" style="width:20px;height:20px;">
+                                      <input type="hidden" name="booking_num" value="' . $row1["booking_num"] . '">
+                                    </button>
+                                    <form action="delete_trip.php" method="post" class="d-none">
+                                      <input type="hidden" name="booking_num" value="' . $row1["booking_num"] . '">
+                                    </form>
+                                      </td>';
                                 echo '</tr>';
                                 $tripper = $tripper + 1;
                             }
