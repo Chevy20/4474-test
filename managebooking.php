@@ -167,13 +167,16 @@
       currentForm.submit();
     }
   });
-  // Function to get URL parameters
-  function getURLParameter(name) {
-    return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null;
+// Function to get URL parameters
+function getUrlParameter(name) {
+    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+    const results = regex.exec(location.search);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
   }
 
   // Check for the delete_success URL parameter
-  if (getURLParameter("delete_success") !== null) {
+  if (getUrlParameter("delete_success") !== '') {
     const successModal = new bootstrap.Modal(document.getElementById('successModal'));
     successModal.show();
   }
