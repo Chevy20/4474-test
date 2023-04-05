@@ -315,6 +315,7 @@
                             while($row1 = $result1 ->fetch_assoc()){
                                 echo '<tr>';
                                 echo '<th scope="row">' . $tripper . '</th>';
+                                echo '<td>' . $row1["Index"] . '</td>';
                                 echo '<td>' . $row1["booking_num"] . '</td>';
                                 echo '<td>' . $row1["user_id"] . '</td>';
                                 echo '<td>' . $row1["trip_id"] . '</td>';
