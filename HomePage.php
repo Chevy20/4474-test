@@ -67,10 +67,10 @@
                         </a>
                         <li class="nav-item dropdown nav-item">
                         <ul class="dropdown-menu nav-item " aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item nav-link" href="Wishlist.php">Wishlist</a></li>
-                            <li><a class="dropdown-item nav-link" href="#">Manage Bookings</a></li>
-                            <li><a class="dropdown-item nav-link" href="a.php">Account Settting</a></li>
-                            <li><a class="dropdown-item nav-link" href="logout.php">Log Out</a></li>
+                            <li><a class="dropdown-item nav-link nav-item" href="Wishlist.php">Wishlist</a></li>
+                            <li><a class="dropdown-item nav-link nav-item" href="#">Manage Bookings</a></li>
+                            <li><a class="dropdown-item nav-link nav-item" href="a.php">Account Settting</a></li>
+                            <li><a class="dropdown-item nav-link nav-item" href="logout.php">Log Out</a></li>
                         </ul>
                         </li>
                 </ul>
