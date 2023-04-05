@@ -33,6 +33,17 @@
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav1">
                 <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Account
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="Wishlist.php">Wishlist</a></li>
+                            <li><a class="dropdown-item" href="#">Manage Booking</a></li>
+                            <li><a class="dropdown-item" href="a.php">Account Settting</a></li>
+                            <li><a class="dropdown-item" href="#">Log Out</a></li>
+                        </ul>
+                    </li>
                     <li class="nav-item">
                         <div class="row">
                           <a class="nav-link" href="HomePage.php">
@@ -60,17 +71,6 @@
                         </a>
 
 
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Account
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="Wishlist.php">Wishlist</a></li>
-                            <li><a class="dropdown-item" href="#">Manage Booking</a></li>
-                            <li><a class="dropdown-item" href="a.php">Account Settting</a></li>
-                            <li><a class="dropdown-item" href="#">Log Out</a></li>
-                        </ul>
                     </li>
                 </ul>
             </div>
