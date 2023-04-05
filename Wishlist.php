@@ -10,7 +10,7 @@
             WHERE wishlist.user_id = ?";
 
     // Prepare and execute the SQL statement
-    $stmt = $conn->prepare($sql);
+    $stmt = $connection->prepare($sql);
     $stmt->bind_param("i", $user_id);
     $stmt->execute();
 
