@@ -330,7 +330,7 @@
             return bookingNumber;
         }
     
-        creditCardForm.addEventListener('submit', (e) => {
+        creditCardForm.addEventListener('submit', async (event) =>  {
             e.preventDefault();
 
             const cardNumber = cardNumberInput.value;
@@ -376,9 +376,8 @@
             }
 
             if (cardNumberValid && expiryDateValid && cvcValid && postalCodeValid && phoneNumberValid) {
-                getUniqueBookingNumber().then(result => {
-                    bNumIn.value = result;
-                });
+                const uniqueBookingNumber = await getUniqueBookingNumber();
+                bNumIn.value = uniqueBookingNumber;
                 creditCardForm.submit();
             } else {
                 alert('Please correct the errors in the form before submitting.');
