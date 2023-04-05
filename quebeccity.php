@@ -71,54 +71,56 @@
         }
     </style>
     <!-- Navigation Bar 1 -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+ <!-- Navigation Bar 1 -->
+ <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
                 <img src="img/gachi.jpg" alt="Logo" height="50">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav1"
-                aria-controls="navbarNav1" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav1" aria-controls="navbarNav1" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav1">
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <div class="row">
-                            <a class="nav-link" href="#">
-                                <span>
-                                    <img src="img/home.png" alt="Home icon" style="width:20px;height:20px">
-                                </span>
-                                <span>Home </span>
-
-                            </a>
-
-                        </div>
-
-                    </li>
-                    <li class="nav-item">
-
-
-
-                        <a class="nav-link" href="#">
-                            <span>
-                                &nbsp; &nbsp;
-                                <img src="img/help.png" alt="Help icon" style="width:20px;height:20px">
-                            </span>
-                            <span>Help</span>
-                        </a>
-
-
-                    </li>
-                    <li class="nav-item dropdown">
-
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Account
+                <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span><i class="fa-regular fa-circle-user"></i></span>
+                            <span>Account</span>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Log Out</a></li>
-                            <li><a class="dropdown-item" href="a.php">Manage Account</a></li>
+                            <li><a class="dropdown-item nav-link" href="Wishlist.php">Wishlist</a></li>
+                            <li><a class="dropdown-item nav-link" href="#">Manage Bookings</a></li>
+                            <li><a class="dropdown-item nav-link" href="a.php">Account Settting</a></li>
+                            <li><a class="dropdown-item nav-link" href="logout.php">Log Out</a></li>
                         </ul>
+                    </li>
+                    <li class="nav-item">
+                        <div class="row">
+                          <a class="nav-link" href="HomePage.php">
+                            <span>
+                              <i class="fa-solid fa-house fa-lg"></i>
+                              
+                            </span>
+                            <span>Home </span>
+
+                          </a>
+                          
+                        </div>
+                        
+                    </li>
+                    <li class="nav-item">
+                      
+
+
+                        <a class="nav-link" href="help.php"> 
+                          <span>
+                            &nbsp; &nbsp;
+                            <i class="fa-sharp fa-regular fa-circle-question fa-lg"></i>
+                          </span>
+                          <span>help</span>
+                        </a>
+
+
                     </li>
                 </ul>
             </div>
