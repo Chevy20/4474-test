@@ -190,6 +190,13 @@
         });
       });
     }
+    function updateViewDetailsButtonsState() {
+      const viewDetailsButtons = document.querySelectorAll('.view-details-btn');
+
+      viewDetailsButtons.forEach((button) => {
+        button.classList.toggle('disabled', isEditModeEnabled);
+      });
+    }
     document.getElementById('liveToastBtn').addEventListener('click', function () {
       isEditModeEnabled = true;
       document.getElementById('edit_btn').disabled = true;
