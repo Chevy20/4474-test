@@ -66,7 +66,7 @@
                             <span>Account</span>
                         </a>
                         <li class="nav-item dropdown nav-item">
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <ul class="dropdown-menu nav-item " aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item nav-link" href="Wishlist.php">Wishlist</a></li>
                             <li><a class="dropdown-item nav-link" href="#">Manage Bookings</a></li>
                             <li><a class="dropdown-item nav-link" href="a.php">Account Settting</a></li>
