@@ -1,19 +1,19 @@
-.bus{
-    width:100vw;
+.bus {
+    width: 100vw;
     height: 60vh;
     object-fit: cover;
 }
 
-.searchForm{
+.searchForm {
     width: 50vw;
     margin-left: auto;
-    margin-right:auto;  
+    margin-right: auto;
     position: absolute;
     left: 350px;
-    top:450px;
+    top: 450px;
     /* background-color: rgb(203, 225, 135); */
     padding: 20px 30px;
-    
+
     background-color: #FFFFFF;
     border: 1px solid #000000;
     border-radius: 20px;
@@ -22,29 +22,33 @@
 
 }
 
-.afterSearchButtons{
+.afterSearchButtons {
     margin-top: 150px;
     width: 60vw;
     margin-left: auto;
-    margin-right:auto;
+    margin-right: auto;
 }
-.text{
+
+.text {
     margin-top: 150px;
     padding: 10px 300px;
     margin-bottom: 100px;
 }
-.text h4{
+
+.text h4 {
     text-align: center;
 }
-.navbar-collapse{
+
+.navbar-collapse {
     display: flex;
     justify-content: center;
 }
+
 .dropdown-menu {
-    min-width: auto;
     max-width: 100vw;
+    overflow-x: auto;
 }
+
 .dropdown-item {
-    white-space: normal;
-    word-wrap: break-word;
+    white-space: nowrap;
 }
