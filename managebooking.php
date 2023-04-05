@@ -57,6 +57,18 @@
           </div>
       </div>
   </nav>
+  <!-- Full Screen Image -->
+  <a href="HomePage.php" class="d-block bg-image hover-zoom" data-bs-toggle="popover" data-bs-placement="top" title="Return to Home Page"> </a>
+    <style>
+    /* Custom CSS */
+    .bg-image {
+      background-image: url("img/james.jpg");
+      background-size: cover;
+      background-position: center;
+      height: 30vh;
+    }
+
+  </style>
   <!--Showcase-->
   <section class="bg-white text-dark p-lg-0 text-center">
       <div class="container">
