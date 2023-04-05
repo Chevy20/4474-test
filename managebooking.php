@@ -92,12 +92,12 @@
                                 echo '<td>' . $row1["endDate"] . '</td>';
                                 echo '<td>' . $row1["Cost"] . '</td>';
                                 echo '<td>
-                                        <form action="delete_trip.php" method="post">
-                                            <input type="hidden" name="booking_num" value="' . $row1["booking_num"] . '">
-                                            <button class="btn btn-danger delete-btn" data-bs-toggle="modal" data-bs-target="#deleteConfirmationModal">
-                                                <i class="fas fa-trash-alt"></i>
-                                            </button>
-                                        </form>
+                                <form action="delete_trip.php" method="post">
+                                    <input type="hidden" name="booking_num" value="' . $row1["booking_num"] . '">
+                                    <button class="btn btn-danger delete-btn" data-bs-toggle="modal" data-bs-target="#deleteConfirmationModal">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </form>
                                       </td>';
                                 echo '</tr>';
                                 $tripper = $tripper + 1;
@@ -131,23 +131,25 @@
       </div>
     </div>
   </div>
+
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        let deleteButtons = document.querySelectorAll('.delete-btn');
-        let confirmDeleteButton = document.getElementById('confirmDelete');
-        let currentForm;
+  document.addEventListener('DOMContentLoaded', function () {
+      let deleteButtons = document.querySelectorAll('.delete-btn');
+      let confirmDeleteButton = document.getElementById('confirmDelete');
+      let currentForm;
 
-        deleteButtons.forEach(function (button) {
-            button.addEventListener('click', function (event) {
-                currentForm = button.parentElement;
-            });
-        });
+      deleteButtons.forEach(function (button) {
+          button.addEventListener('click', function (event) {
+              event.preventDefault(); // Add this line to prevent form submission
+              currentForm = button.parentElement;
+          });
+      });
 
-        confirmDeleteButton.addEventListener('click', function () {
-            if (currentForm) {
-                currentForm.submit();
-            }
-        });
-    });
-  </script>
+      confirmDeleteButton.addEventListener('click', function () {
+          if (currentForm) {
+              currentForm.submit();
+          }
+      });
+  });
+</script>
 </body>
