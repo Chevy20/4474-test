@@ -228,8 +228,8 @@
   cancelButton.addEventListener('click', () => {
     disableEditMode();
   });
-});
   */
+});
 
 
   </script>
