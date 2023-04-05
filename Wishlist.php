@@ -110,9 +110,7 @@
           data-bs-target="#exampleModal" id="edit_btn">
           Edit Wishlist
         </button>
-        <button type="button" class="btn btn-success justify-content-md-center" id="confirm_btn" style="display: none;">
-          Confirm Changes
-        </button>
+        
           <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog">
@@ -136,6 +134,9 @@
       <div class="col-auto">
         <div class="options menu">
           <div class="btn-group">
+          <button type="button" class="btn btn-success justify-content-md-center" id="confirm_btn" style="display: none;">
+            Confirm Changes
+          </button>
             <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
               data-bs-auto-close="outside" aria-expanded="false">
               <img src="img/1827789.png" alt="Company Logo" width="20" height="20">
