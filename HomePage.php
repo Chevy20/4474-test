@@ -82,7 +82,7 @@
     <img src="img/buscom.jpg" alt="Bus" class="bus"/>
     <!--Form-->
     <div class="d-flex justify-content-center">
-      <form class="searchForm">
+      <form class="searchForm" id="searchForm">
       <div class="form-check form-check-inline">
       <input class="form-check-input" type="radio" name="inlineRadioOptions" id="oneway" value="oneway" checked>
       <label class="form-check-label" for="oneway">One Way</label>
