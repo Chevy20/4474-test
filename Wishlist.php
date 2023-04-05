@@ -97,15 +97,7 @@
   <div class="container text-center">
     <div class="row justify-content-center">
       <div class="col-auto">
-        <div class="search bar" style="width:1000px">
-          <div class="form-outline">
-            <input type="search" id="form1" class="form-control" placeholder="Searching Wishlist..."
-              aria-label="Search" />
-          </div>
-        </div>
-      </div>
-      <div class="col-auto">
-        <div class="edit button">
+        <div class="edit button edit-btn-group">
         <button type="button" class="btn btn-primary justify-content-md-center" data-bs-toggle="modal"
           data-bs-target="#exampleModal" id="edit_btn">
           Edit Wishlist
@@ -189,29 +181,41 @@
     crossorigin="anonymous"></script>
   <script>
     let isEditModeEnabled = false;
+    function updateButtonGroupState() {
+      const buttonGroups = document.querySelectorAll('.edit-btn-group');
+
+      buttonGroups.forEach((buttonGroup) => {
+        buttonGroup.querySelectorAll('button').forEach((button) => {
+          button.disabled = !isEditModeEnabled;
+        });
+      });
+    }
+
     document.getElementById('liveToastBtn').addEventListener('click', function () {
-    isEditModeEnabled = true;
-    document.getElementById('edit_btn').disabled = true;
-    document.getElementById('confirm_btn').style.display = 'block';
-  });
+      isEditModeEnabled = true;
+      document.getElementById('edit_btn').disabled = true;
+      document.getElementById('confirm_btn').style.display = 'block';
+      updateButtonGroupState();
+    });
 
-  document.getElementById('modal_no').addEventListener('click', function () {
-    var modalElement = document.getElementById('exampleModal');
-    var modalInstance = bootstrap.Modal.getInstance(modalElement);
-    modalInstance.hide();
-    isEditModeEnabled = false;
-    document.getElementById('edit_btn').disabled = false;
-    document.getElementById('confirm_btn').style.display = 'none';
-    
-  });
+    document.getElementById('modal_no').addEventListener('click', function () {
+      var modalElement = document.getElementById('exampleModal');
+      var modalInstance = bootstrap.Modal.getInstance(modalElement);
+      modalInstance.hide();
+      isEditModeEnabled = false;
+      document.getElementById('edit_btn').disabled = false;
+      document.getElementById('confirm_btn').style.display = 'none';
+      updateButtonGroupState();
+    });
 
-  // Add this event listener for the "Confirm Changes" button
-  document.getElementById('confirm_btn').addEventListener('click', function () {
-    isEditModeEnabled = false;
-    document.getElementById('edit_btn').disabled = false;
-    document.getElementById('confirm_btn').style.display = 'none';
-    // Add any functionality you want to happen when "Confirm Changes" is clicked
-  });
+    document.getElementById('confirm_btn').addEventListener('click', function () {
+      isEditModeEnabled = false;
+      document.getElementById('edit_btn').disabled = false;
+      document.getElementById('confirm_btn').style.display = 'none';
+      updateButtonGroupState();
+      // Add any functionality you want to happen when "Confirm Changes" is clicked
+    });
+
     document.querySelectorAll('.card').forEach((card) => {
       card.addEventListener('dragstart', (e) => {
         if (!isEditModeEnabled) return;
