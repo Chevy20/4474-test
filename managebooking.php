@@ -141,7 +141,7 @@
   deleteButtons.forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
-      currentForm = btn.closest('form');
+      currentForm = btn.nextElementSibling; // Get the form element
       confirmationModal.show();
     });
   });
@@ -151,6 +151,7 @@
       currentForm.submit();
     }
   });
-</script>  
+</script>
+
 
 </body>
