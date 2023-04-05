@@ -98,7 +98,7 @@
                 <h2>Welcome Back</h2>
                 <?php
 
-                $result1 = $connection -> query("SELECT user_id, username FROM Account_info");
+                $result1 = $connection -> query("SELECT user_id, username FROM Account_info WHERE user_id = $user_id ");
 
                 $row1 = $result1 ->fetch_assoc();
                 echo '<h4> &nbsp; &nbsp; Account Number:' . $row1["user_id"] . "AAC@@@" . $row1["username"] . '</h4>';
