@@ -1,3 +1,7 @@
+<?php 
+    $session_start();
+    $user_id = $_SESSION['user_id'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,12 +25,7 @@
         $endDate = $_POST['endDate'];
         $total = $_POST['total'];
     ?>
-    <?php
-      require 'userInfo.php';
-      echo $config['username']; 
-      echo $config['password']; 
-      echo $config['userid']; 
-    ?>
+
     <!-- Navigation Bar 1 -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">

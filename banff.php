@@ -16,12 +16,6 @@
 </head>
 
 <body>
-<?php
-      require 'userInfo.php';
-      echo $config['username']; 
-      echo $config['password']; 
-      echo $config['userid']; 
-    ?>
     <style>
         .c-item {
             height: 800px;

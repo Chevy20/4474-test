@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+<?php 
+    $session_start();
+    $user_id = $_SESSION['user_id'];
+?><!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -19,12 +22,7 @@
     $ticketPrice = $_GET['ticketPrice'];
 
     ?>
-    <?php
-      require 'userInfo.php';
-      echo $config['username']; 
-      echo $config['password']; 
-      echo $config['userid']; 
-    ?>
+    
    <!-- Navigation Bar 1 -->
    <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container-fluid">
