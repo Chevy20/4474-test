@@ -309,7 +309,7 @@
                         </thead>
                         <tbody>
                             <?php
-                                $result1 = $connection->query("SELECT booking_num, user_id, trip_id, trip_name, startDate, endDate, Cost FROM Travelled_trip");
+                                $result1 = $connection->query("SELECT booking_num, user_id, trip_id, trip_name, startDate, endDate, Cost FROM Travelled_trip WHERE user_id = $user_id" );
                                 $tripper = 1;
                                 while ($row1 = $result1->fetch_assoc()) {
                                     echo '<tr>';
