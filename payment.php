@@ -379,10 +379,8 @@
             }
 
             if (cardNumberValid && expiryDateValid && cvcValid && postalCodeValid && phoneNumberValid) {
-                getUniqueBookingNumber().then(uniqueBookingNumber => {
-                    const bNumInput = document.getElementById('bNum');
-                    bNumInput.value = uniqueBookingNumber;
-                });
+                let myVariable = getUniqueBookingNumber();
+                console.log(myVariable);
                 creditCardForm.submit();
             } else {
                 alert('Please correct the errors in the form before submitting.');
