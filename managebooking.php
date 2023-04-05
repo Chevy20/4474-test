@@ -91,14 +91,15 @@
                                 echo '<td>' . $row1["startDate"] . '</td>';
                                 echo '<td>' . $row1["endDate"] . '</td>';
                                 echo '<td>' . $row1["Cost"] . '</td>';
-                                echo '<td>
-                                <form action="delete_trip.php" method="post">
-                                    <input type="hidden" name="booking_num" value="' . $row1["booking_num"] . '">
-                                    <button class="btn btn-danger delete-btn" data-bs-toggle="modal" data-bs-target="#deleteConfirmationModal">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </button>
-                                </form>
-                                      </td>';
+                                echo '<td>'
+                                echo '<button class="btn btn-danger delete-btn">'
+                                echo    '<img src="img/542724.png" class="card-img-top" style="width:20px;height:20px;">'
+                                echo    '<input type="hidden" name="booking_num" value="' . $row1["booking_num"] . '">'
+                                echo  '</button>'
+                                echo   '<form action="delete_trip.php" method="post" class="d-none">'
+                                echo      '<input type="hidden" name="booking_num" value="' . $row1["booking_num"] . '">'
+                                echo    '</form>'
+                                echo '</td>';
                                 echo '</tr>';
                                 $tripper = $tripper + 1;
                             }
@@ -111,14 +112,14 @@
         </div>
   </section>
   <script src="https://kit.fontawesome.com/358b3891c8.js" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" 
-    integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5/1bW8F+ALQzjIrU0sLOensoY2Wfv+jaQfDm5/z5" 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
     crossorigin="anonymous"></script>
-  <div class="modal fade" id="deleteConfirmationModal" tabindex="-1" aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
+  <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="deleteConfirmationModalLabel">Delete Confirmation</h5>
+          <h5 class="modal-title" id="confirmationModalLabel">Delete Booking</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -126,30 +127,30 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-danger" id="confirmDelete">Confirm</button>
+          <button type="button" class="btn btn-danger" id="confirmDelete">Delete</button>
         </div>
       </div>
     </div>
   </div>
-
   <script>
-  document.addEventListener('DOMContentLoaded', function () {
-      let deleteButtons = document.querySelectorAll('.delete-btn');
-      let confirmDeleteButton = document.getElementById('confirmDelete');
-      let currentForm;
+  const deleteButtons = document.querySelectorAll('.delete-btn');
+  const confirmationModal = new bootstrap.Modal(document.getElementById('confirmationModal'));
+  const confirmDelete = document.getElementById('confirmDelete');
+  let currentForm;
 
-      deleteButtons.forEach(function (button) {
-          button.addEventListener('click', function (event) {
-              event.preventDefault(); // Add this line to prevent form submission
-              currentForm = button.parentElement;
-          });
-      });
-
-      confirmDeleteButton.addEventListener('click', function () {
-          if (currentForm) {
-              currentForm.submit();
-          }
-      });
+  deleteButtons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      currentForm = btn.closest('form');
+      confirmationModal.show();
+    });
   });
-</script>
+
+  confirmDelete.addEventListener('click', () => {
+    if (currentForm) {
+      currentForm.submit();
+    }
+  });
+</script>  
+
 </body>
