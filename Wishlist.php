@@ -32,7 +32,9 @@
   <title>Wishlist Page</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js" integrity="sha384-d1KUVm0d4+ThADWK4XmXf5xJkUzC6XLHd6UelC+gUwI2QBBfWmYJt9B0VfJpa5Q5" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl7/6en8XCp+HHAAK5GSLf2xlYtvJ8U2Q4U+9cuEnJoa3" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha384-7YY2iY6XWCJ1OjXGR8JLWLzD/+MmU7FjPTOcs1F8/NN5m5P5lc6X9Bq3q3uaPTaF/C" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
 
 <body>
@@ -195,43 +197,44 @@
     <?php endwhile; ?>
   </div>
 </div>
+<style>
+.sortable-placeholder {
+  border: 1px dashed #ccc;
+  background-color: #eee;
+  height: 200px;
+}
+</style>
   <script src="https://kit.fontawesome.com/358b3891c8.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
     crossorigin="anonymous"></script>
   <script>
-   document.addEventListener('DOMContentLoaded', () => {
-  let sortable;
+    $(document).ready(function () {
+    let isEditModeEnabled = false;
 
-  const enableEditMode = () => {
-    const wishlistItems = document.querySelector('.wishlist.items .row');
-    sortable = new Sortable(wishlistItems, {
-      draggable: '.col-md-8',
-      animation: 150,
+    const enableEditMode = () => {
+      $('.wishlist.items .row').sortable({
+        items: '> .col-md-8',
+        placeholder: 'sortable-placeholder',
+      });
+      isEditModeEnabled = true;
+    };
+
+    const disableEditMode = () => {
+      if (isEditModeEnabled) {
+        $('.wishlist.items .row').sortable('destroy');
+        isEditModeEnabled = false;
+      }
+    };
+
+    $('#liveToastBtn').on('click', function () {
+      enableEditMode();
     });
-  };
 
-  const disableEditMode = () => {
-    if (sortable) {
-      sortable.destroy();
-      sortable = null;
-    }
-  };
-
-  const editButton = document.querySelector('#liveToastBtn');
-  editButton.addEventListener('click', () => {
-    enableEditMode();
+    $('.btn-danger').on('click', function () {
+      disableEditMode();
+    });
   });
-
-  /*
-      const cancelButton = document.querySelector('.btn-danger');
-  cancelButton.addEventListener('click', () => {
-    disableEditMode();
-  });
-  */
-});
-
-
   </script>
 </body>
 
