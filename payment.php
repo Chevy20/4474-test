@@ -212,6 +212,7 @@
                     <input type="hidden" id="total" name="total" value="<?php echo htmlspecialchars($total); ?>">
                     <input type="hidden" id="bNum" name="bNum">
                     <input type="hidden" name="tripId" id="tripId" value ="<?php echo htmlspecialchars($tripId); ?>" >
+                    <button  class="btn btn-primary" id="testBtn" >Generate Booking Num</button>
                     <button type="submit" class="btn btn-primary" id="submitBtn" disabled >Process Payment</button>
                 </form>
 
@@ -233,8 +234,9 @@
         const billPCInput = document.getElementById('billPC');
         const billPhoneInput = document.getElementById('billPhone');
         const creditCardForm = document.getElementById('credit-card-form');
+        const testBtn = document.getElementById('testBtn');
+        
       
-
         cardNumberInput.addEventListener('input', (e) => {
             e.target.value = e.target.value
                 .replace(/[^\d]/g, '')
@@ -328,6 +330,10 @@
 
             return bookingNumber;
         }
+        testBtn.addEventListener('click', () => {
+            let myvar = getUniqueBookingNumber();
+            console.log(myvar);
+        });
 
 
 
@@ -379,8 +385,6 @@
             }
 
             if (cardNumberValid && expiryDateValid && cvcValid && postalCodeValid && phoneNumberValid) {
-                let myVariable = getUniqueBookingNumber();
-                console.log(myVariable);
                 creditCardForm.submit();
             } else {
                 alert('Please correct the errors in the form before submitting.');
