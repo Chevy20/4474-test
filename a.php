@@ -291,7 +291,7 @@
                       echo '</div>';
                     ?>
 
-                
+                </div>
 
                 <div class="tab-pane fade" id="trips" role="tabpanel" aria-labelledby="trips-tab">
                     <table class="table table-striped">
