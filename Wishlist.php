@@ -7,9 +7,9 @@
     include 'connection.php'; 
 
     // Fetch wishlist items for the current user
-    $sql = "SELECT trips.trip_id, trips.trip_name, trips.pic, trips.description
+    $sql = "SELECT Trips.trip_id, Trips.trip_name, Trips.pic, Trips.description
             FROM wishlist
-            JOIN trips ON wishlist.trip_id = trips.trip_id
+            JOIN Trips ON wishlist.trip_id = Trips.trip_id
             WHERE wishlist.user_id = ?";
 
     // Prepare and execute the SQL statement
