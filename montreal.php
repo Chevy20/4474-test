@@ -54,7 +54,7 @@
             font-size: 24px;
         }
 
-        .like-btn .fa-heart-o {
+        .like-btn .fa-heart {
             pointer-events: none;
         }
 
@@ -66,7 +66,7 @@
             color: red;
         }
 
-        .like-btn.active .fa-heart-o {
+        .like-btn.active .fa-heart {
             content: "\f004";
         }
     </style>

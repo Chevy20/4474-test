@@ -54,7 +54,7 @@
             font-size: 24px;
         }
 
-        .like-btn .fa-heart-o {
+        .like-btn .fa-heart {
             pointer-events: none;
         }
 
@@ -66,7 +66,7 @@
             color: red;
         }
 
-        .like-btn.active .fa-heart-o {
+        .like-btn.active .fa-heart {
             content: "\f004";
         }
     </style>
@@ -193,7 +193,7 @@
                     <div class="buttons-container">
                         <button type="submit" class="btn btn-primary">Book Now!</button>
                         <button type="button" class="btn btn-outline-danger like-btn<?php if ($is_trip_in_wishlist) echo ' active'; ?>">
-                            <i class="fa fa-heart-o" aria-hidden="true"></i>
+                            <i class="far fa-heart" aria-hidden="true"></i>
                         </button>
                     </div>
                     
