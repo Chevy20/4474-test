@@ -42,7 +42,7 @@
                             <li><a class="dropdown-item nav-link" href="Wishlist.php">Wishlist</a></li>
                             <li><a class="dropdown-item nav-link" href="#">Manage Bookings</a></li>
                             <li><a class="dropdown-item nav-link" href="a.php">Account Settting</a></li>
-                            <li><a class="dropdown-item nav-link" href="#">Log Out</a></li>
+                            <li><a class="dropdown-item nav-link" href="logout.php">Log Out</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
