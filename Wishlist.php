@@ -14,6 +14,9 @@
 
     // Prepare and execute the SQL statement
     $stmt = $connection->prepare($sql);
+    if (!$stmt) {
+      die("Prepare failed: " . $connection->error);
+    }
     $stmt->bind_param("i", $user_id);
     $stmt->execute();
 
