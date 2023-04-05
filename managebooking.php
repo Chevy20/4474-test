@@ -97,7 +97,8 @@
                                       <input type="hidden" name="booking_num" value="' . $row1["booking_num"] . '">
                                     </button>
                                     <form action="delete_trip.php" method="post" class="d-none">
-                                      <input type="hidden" name="booking_num" value="' . $row1["booking_num"] . '">
+                                    <input type="hidden" name="booking_num" value="' . $row1["booking_num"] . '">
+                                    <input type="hidden" name="delete_trip" value="1">
                                     </form>
                                       </td>';
                                 echo '</tr>';
