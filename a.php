@@ -20,7 +20,7 @@
     //echo "Session Number is " . $user_id;
 
     ?>
-    
+<!----TO FIX --->    
        <!-- Navigation Bar 1 -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container-fluid">
