@@ -32,6 +32,7 @@
   <title>Wishlist Page</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js" integrity="sha384-d1KUVm0d4+ThADWK4XmXf5xJkUzC6XLHd6UelC+gUwI2QBBfWmYJt9B0VfJpa5Q5" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -199,58 +200,37 @@
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
     crossorigin="anonymous"></script>
   <script>
-    // Initialize editing mode state as false
-    let editingMode = false;
+   document.addEventListener('DOMContentLoaded', () => {
+  let sortable;
 
-    // Enable editing mode when 'Yes' button is clicked
-    document.getElementById("liveToastBtn").addEventListener("click", () => {
-      editingMode = true;
+  const enableEditMode = () => {
+    const wishlistItems = document.querySelector('.wishlist.items .row');
+    sortable = new Sortable(wishlistItems, {
+      draggable: '.col-md-8',
+      animation: 150,
     });
+  };
 
-    // Get the wishlist items container
-    const wishlistItems = document.querySelector(".wishlist.items .row");
-
-    // Add drag and drop event listeners
-    wishlistItems.addEventListener("dragstart", (event) => {
-      if (editingMode) {
-        event.dataTransfer.setData("text/plain", event.target.id);
-      }
-    });
-
-    wishlistItems.addEventListener("dragover", (event) => {
-      if (editingMode) {
-        event.preventDefault();
-      }
-    });
-
-    wishlistItems.addEventListener("drop", (event) => {
-      if (editingMode) {
-        event.preventDefault();
-        const id = event.dataTransfer.getData("text");
-        const draggableElement = document.getElementById(id);
-        const dropzone = event.target.closest(".col-md-8");
-        const afterElement = getDragAfterElement(wishlistItems, event.clientY);
-        if (dropzone && afterElement) {
-          wishlistItems.insertBefore(draggableElement.parentElement, afterElement.parentElement);
-        } else if (dropzone && !afterElement) {
-          wishlistItems.appendChild(draggableElement.parentElement);
-        }
-      }
-    });
-
-    function getDragAfterElement(container, y) {
-      const draggableElements = [...container.querySelectorAll(".col-md-8:not(.dragging)")];
-
-      return draggableElements.reduce((closest, child) => {
-        const box = child.getBoundingClientRect();
-        const offset = y - box.top - box.height / 2;
-        if (offset < 0 && offset > closest.offset) {
-          return { offset: offset, element: child };
-        } else {
-          return closest;
-        }
-      }, { offset: Number.NEGATIVE_INFINITY }).element;
+  const disableEditMode = () => {
+    if (sortable) {
+      sortable.destroy();
+      sortable = null;
     }
+  };
+
+  const editButton = document.querySelector('#liveToastBtn');
+  editButton.addEventListener('click', () => {
+    enableEditMode();
+  });
+
+  /*
+      const cancelButton = document.querySelector('.btn-danger');
+  cancelButton.addEventListener('click', () => {
+    disableEditMode();
+  });
+});
+  */
+
 
   </script>
 </body>
