@@ -18,6 +18,8 @@
     session_start();
     $user_id = $_SESSION['user_id'];
     //echo "Session Number is " . $user_id;
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
 
     ?>
 <!----TO FIX --->    
