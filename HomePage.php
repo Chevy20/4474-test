@@ -92,6 +92,11 @@
   
           <div class="row g-3 align-items-center">
             <div class="col-auto">
+            Departure
+            <input type="text" class="form-control" id="from" placeholder="Departure" value="London">
+            </div>
+
+            <div class="col-auto">
             Destination
             <select class="form-select" id="destination" name="destination">
             <?php
@@ -104,6 +109,10 @@
             ?>
             </select>
             </div>
+              <div class="col-auto">
+                  <p> </p>
+                  <input type="number" min="1" max="10" class="form-control" id="passengerNo" value="1">
+              </div>
               <div class="col-auto">
                   <button type="submit" class="btn btn-primary">Search</button>
               </div>
