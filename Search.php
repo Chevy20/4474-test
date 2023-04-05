@@ -149,7 +149,8 @@
                                 echo '</div>';
                                 echo '<div class="card-body">';
                                 echo '<p class="card-text">' . $row['description'] . '</p>';
-                                echo '<a href="#" class="btn btn-primary">View Trip Details</a>';
+                                $filename = strtolower(str_replace(" ", "", $row['trip_name'])) . ".php";
+                                echo '<a href="'.$filename .'" class="btn btn-primary">View Trip Details</a>';
                                 echo '</div>';
                                 echo '</div>';
                                 echo '</div>';
