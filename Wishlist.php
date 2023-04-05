@@ -199,34 +199,58 @@
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
     crossorigin="anonymous"></script>
   <script>
-    const cards = document.querySelectorAll(".card");
-    cards.forEach((card) => {
-      card.addEventListener("dragstart", (event) => {
-        event.dataTransfer.setData("text/plain", event.target.id);
-      });
+    // Initialize editing mode state as false
+    let editingMode = false;
+
+    // Enable editing mode when 'Yes' button is clicked
+    document.getElementById("liveToastBtn").addEventListener("click", () => {
+      editingMode = true;
     });
 
+    // Get the wishlist items container
     const wishlistItems = document.querySelector(".wishlist.items .row");
 
-    wishlistItems.addEventListener("dragover", (event) => {
-      event.preventDefault();
-    });
-
-    wishlistItems.addEventListener("drop", (event) => {
-      event.preventDefault();
-      const cardId = event.dataTransfer.getData("text/plain");
-      const card = document.getElementById(cardId);
-      const cardColumn = card.closest(".col-md-8");
-      const dropTarget = event.target.closest(".card");
-
-      if (dropTarget && dropTarget.parentNode === wishlistItems) {
-        const dropTargetColumn = dropTarget.closest(".col-md-8");
-        wishlistItems.insertBefore(cardColumn, dropTargetColumn);
-      } else {
-        wishlistItems.appendChild(cardColumn);
+    // Add drag and drop event listeners
+    wishlistItems.addEventListener("dragstart", (event) => {
+      if (editingMode) {
+        event.dataTransfer.setData("text/plain", event.target.id);
       }
     });
 
+    wishlistItems.addEventListener("dragover", (event) => {
+      if (editingMode) {
+        event.preventDefault();
+      }
+    });
+
+    wishlistItems.addEventListener("drop", (event) => {
+      if (editingMode) {
+        event.preventDefault();
+        const id = event.dataTransfer.getData("text");
+        const draggableElement = document.getElementById(id);
+        const dropzone = event.target.closest(".col-md-8");
+        const afterElement = getDragAfterElement(wishlistItems, event.clientY);
+        if (dropzone && afterElement) {
+          wishlistItems.insertBefore(draggableElement.parentElement, afterElement.parentElement);
+        } else if (dropzone && !afterElement) {
+          wishlistItems.appendChild(draggableElement.parentElement);
+        }
+      }
+    });
+
+    function getDragAfterElement(container, y) {
+      const draggableElements = [...container.querySelectorAll(".col-md-8:not(.dragging)")];
+
+      return draggableElements.reduce((closest, child) => {
+        const box = child.getBoundingClientRect();
+        const offset = y - box.top - box.height / 2;
+        if (offset < 0 && offset > closest.offset) {
+          return { offset: offset, element: child };
+        } else {
+          return closest;
+        }
+      }, { offset: Number.NEGATIVE_INFINITY }).element;
+    }
   </script>
 </body>
 
