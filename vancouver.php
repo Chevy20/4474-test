@@ -201,7 +201,22 @@
         </div>
     </section>
 
-
+    <div class="modal fade" id="notificationModal" tabindex="-1" aria-labelledby="notificationModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="notificationModalLabel">Notification</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="notificationModalMessage">
+                    <!-- Message will be set via JavaScript -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
         integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
         crossorigin="anonymous"></script>
@@ -210,8 +225,8 @@
         crossorigin="anonymous"></script>
         <script>
             const likeBtn = document.querySelector('.like-btn');
-            const toastAdded = new bootstrap.Toast(document.getElementById('toastAdded'));
-            const toastRemoved = new bootstrap.Toast(document.getElementById('toastRemoved'));
+            const notificationModal = new bootstrap.Modal(document.getElementById('notificationModal'));
+            const notificationModalMessage = document.getElementById('notificationModalMessage');
 
             likeBtn.addEventListener('click', function () {
                 const tripId = document.querySelector('input[name="tripId"]').value;
@@ -227,7 +242,8 @@
                     .then(response => response.text())
                     .then(data => {
                         console.log(data); // Check for success or error messages from the PHP script
-                        toastRemoved.show();
+                        notificationModalMessage.innerHTML = 'Trip removed from your wishlist!';
+                        notificationModal.show();
                     })
                     .catch(error => {
                         console.error('Error:', error);
@@ -241,7 +257,8 @@
                     .then(response => response.text())
                     .then(data => {
                         console.log(data); // Check for success or error messages from the PHP script
-                        toastAdded.show();
+                        notificationModalMessage.innerHTML = 'Trip added to your wishlist!';
+                        notificationModal.show();
                     })
                     .catch(error => {
                         console.error('Error:', error);
@@ -253,27 +270,6 @@
 
 
 
-
-    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
-        <div id="toastAdded" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="toast-header">
-                <strong class="me-auto">Notification</strong>
-                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
-            <div class="toast-body">
-                Trip added to your wishlist!
-            </div>
-        </div>
-        <div id="toastRemoved" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="toast-header">
-                <strong class="me-auto">Notification</strong>
-                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
-            <div class="toast-body">
-                Trip removed from your wishlist!
-            </div>
-        </div>
-    </div>
 </body>
 
 </html>
