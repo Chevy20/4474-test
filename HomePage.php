@@ -124,7 +124,8 @@
 
     <!-- Buttons -->
     <div class="afterSearchButtons text-center">
-        <a href="#" class="btn btn-secondary btn-lg"><i class="fa-sharp fa-solid fa-bus"></i> Manage Bookings</a>
+        <a href="Search.php" class="btn btn-secondary btn-lg"><i class="fa-solid fa-magnifying-glass"></i> Search All Trips</a>
+        <a href="managebooking.php" class="btn btn-secondary btn-lg"><i class="fa-sharp fa-solid fa-bus"></i> Manage Bookings</a>
         <a href="Wishlist.php" class="btn btn-secondary btn-lg"><i class="fa-regular fa-heart"></i> Wishlist</a>
         <a href="help.php" class="btn btn-secondary btn-lg"><i class="fa-regular fa-circle-question"></i> Help</a>
     </div>
