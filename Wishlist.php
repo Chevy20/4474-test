@@ -1,10 +1,29 @@
+<?php 
+    session_start();
+    $user_id = $_SESSION['user_id'];
+    include 'connection.php'; 
+
+    // Fetch wishlist items for the current user
+    $sql = "SELECT trips.trip_id, trips.trip_name, trips.pic, trips.description
+            FROM wishlist
+            JOIN trips ON wishlist.trip_id = trips.trip_id
+            WHERE wishlist.user_id = ?";
+
+    // Prepare and execute the SQL statement
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+
+    // Store the result
+    $result = $stmt->get_result();
+?>
 <!doctype html>
 <html lang="en">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>HCI Wishlist Page</title>
+  <title>Wishlist Page</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
@@ -130,24 +149,21 @@
   </div>
   </div>
   <div class="wishlist items">
-    <div class="row justify-content-center">
+  <div class="row justify-content-center">
+    <?php while($row = $result->fetch_assoc()): ?>
       <div class="col-md-8 p-3">
         <div draggable="true" class="card p-3">
           <div class="row g-0">
             <div class="col-auto">
-              <img src="img/emerald-lake-yoho-national-park-british-columbia-canada-wallpaper-1920x1080-wallpaper.jpg"
-                class="card-img" style="width:300px;height:150px;">
+              <img src="<?php echo $row['pic']; ?>" class="card-img" style="width:300px;height:150px;">
             </div>
             <div class="col-md-9 justify-content-center">
               <div class="card-header">
-                <span class="badge text-bg-dark">#1</span>
+                <span class="badge text-bg-dark">Item</span>
               </div>
               <div class="card-body">
-                <h5 class="card-title">Emerald Lake, BC</h5>
-                <p class="card-text">Emerald Lake is a freshwater lake located in Yoho National Park, British Columbia,
-                  Canada. Yoho National Park is one of the 4 contiguous National Parks in the heart of Canada's Rocky
-                  Mountains, along the boundary of British Columbia and Alberta Provinces, the other Parks are Kootenay,
-                  Jasper, and Banff.</p>
+                <h5 class="card-title"><?php echo $row['trip_name']; ?></h5>
+                <p class="card-text"><?php echo $row['description']; ?></p>
               </div>
             </div>
           </div>
@@ -169,86 +185,9 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="row justify-content-center">
-      <div class="col-md-8 p-3">
-        <div draggable="true" class="card p-3">
-          <div class="row g-0">
-            <div class="col-auto">
-              <img
-                src="img/1000163-sea-city-cityscape-Italy-Venice-Tourism-evening-coast-town-canal-vacation-waterway-geographical-feature.jpg"
-                class="card-img" style="width:300px;height:150px;">
-            </div>
-            <div class="col-md-9 justify-content-center">
-              <div class="card-header">
-                <span class="badge text-bg-dark">#2</span>
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">Venice, Italy</h5>
-                <p class="card-text">Venice, known also as the “City of Canals,” “The Floating City,” and “Serenissima,”
-                  is arguably one of Italy's most picturesque cities. With its winding canals, striking architecture,
-                  and beautiful bridges, Venice is a popular destination for travel.</p>
-              </div>
-            </div>
-          </div>
-          <div class="d-grid gap-2 m-1">
-            <a href="tripInfo.html" class="btn btn-primary">View Trip Details</a>
-          </div>
-          <div class="d-grid m-1">
-            <div class="btn-group">
-              <button type="button" class="btn btn-outline-primary">
-                ʌ
-              </button>
-              <button type="button" class="btn btn-outline-primary">
-                v
-              </button>
-              <button type="button" class="btn btn-danger" disabled>
-                <img src="img/542724.png" class="card-img-top" style="width:20px;height:20px;">
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row justify-content-center">
-      <div class="col-md-8 p-3">
-        <div draggable="true" class="card p-3">
-          <div class="row g-0">
-            <div class="col-auto">
-              <img src="img/804395.jpg" class="card-img" style="width:300px;height:150px;">
-            </div>
-            <div class="col-md-9 justify-content-center">
-              <div class="card-header">
-                <span class="badge text-bg-dark">#3</span>
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">Reykjavík, Iceland</h5>
-                <p class="card-text">Reykjavík is a city of bold contrasts: it is both cosmopolitan and small-town;
-                  vibrant and sophisticated; young-at-heart and yet full of history. Many monuments, new and old, are
-                  also worth a peek, including the newly built oceanfront music and conference centre, Harpa.</p>
-              </div>
-            </div>
-          </div>
-          <div class="d-grid gap-2 m-1">
-            <a href="#" class="btn btn-primary">View Trip Details</a>
-          </div>
-          <div class="d-grid m-1">
-            <div class="btn-group">
-              <button type="button" class="btn btn-outline-primary">
-                ʌ
-              </button>
-              <button type="button" class="btn btn-outline-primary">
-                v
-              </button>
-              <button type="button" class="btn btn-danger" disabled>
-                <img src="img/542724.png" class="card-img-top" style="width:20px;height:20px;">
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <?php endwhile; ?>
   </div>
+</div>
   <script src="https://kit.fontawesome.com/358b3891c8.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
