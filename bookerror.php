@@ -1,7 +1,4 @@
 <?php 
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
     session_start();
     $user_id = $_SESSION['user_id'];
 ?>
@@ -19,38 +16,7 @@
     <title>Confirmation page</title>
 </head>
 <body>
-    <?php include 'connection.php';?> <!-- connect to db -->
-    <?php
-        $PassFName = $_POST['PassFName'];
-        $PassLName = $_POST['PassLName'];
-        $tripName = $_POST['tripName'];
-        $country = $_POST['country'];
-        $startDate = $_POST['startDate'];
-        $endDate = $_POST['endDate'];
-        $total = $_POST['total'];
-        $bNum = $_POST['bNum'];
-        $tripId = $_POST['tripId'];
-
-        $stmt = $connection->prepare("INSERT INTO Travelled_trip (booking_num, user_id, trip_id, trip_name, startDate, endDate, Cost) VALUES (?, ?, ?, ?, ?, ?, ?)");
-
-        // Bind the parameters
-        $stmt->bind_param("iiisssd", $bNum, $user_id, $tripId, $tripName, $startDate, $endDate, $total);
-
-        // Execute the statement
-        $result = $stmt->execute();
-
-        if (!$result) {
-            header("Location: bookerror.php");
-            exit();
-        }
-
-
-        // Close the statement
-        $stmt->close();
-
-        // Close the connection (optional)
-        $connection->close();
-    ?>
+>
 
     <!-- Navigation Bar 1 -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -109,41 +75,14 @@
         #pageTitle {
             text-align: center;
         }
-        .input-error {
-            border-color: #dc3545;
-        }
-
-        .input-error ~ .invalid-feedback {
-            display: block;
-            color: #dc3545;
-            font-size: 12px;
-        }
-        .confirm{
-            font-size: 14px;
-        }
-        .clbl{
-            font-size: 16px;
-        }
-      
-   
     </style>
     <h1 id="pageTitle"> Confirmation Information<h1>
     
     <div class="container-fluid bg-light">
         <div class="row justify-content-center mt-5">
             <div class="col-md-8 col-lg-100 border rounded p-4 bg-white">
-                <h4> Payment succeeded! Below you will find your confirmation information: <h3>
-                <h5> An email copy will be sent to the email associated with your account. <h3>
-                <!-- All fields below will be populated with php using post--> 
-                <p class="clbl">Booking Number: <?php echo htmlspecialchars($bNum); ?> </p>   
-                <p class="clbl">Passenger Name: <?php echo htmlspecialchars($PassFName); ?> <?php echo htmlspecialchars($PassLName); ?></span></p>
-                <p class="clbl">Start Date: <?php echo htmlspecialchars($startDate); ?> </p>
-                <p class="clbl">End Date: <?php echo htmlspecialchars($endDate); ?></p>
-                <p class="clbl">Trip Name: <?php echo htmlspecialchars($tripName); ?></p>
-                <p class="clbl">Country: <?php echo htmlspecialchars($country); ?></p>
-                <p class="clbl">Total: $<?php echo htmlspecialchars($total); ?> CAD</p>
+                <h3> System Error occured during Payment Process. Your card has not been charged. Return to home and try the process again <h3>
                 <a href="HomePage.php" class="btn btn-primary">Return to Home</a>      <!--Change href to whatever home page is called-->
-
             </div>
         </div>    
     </div>
