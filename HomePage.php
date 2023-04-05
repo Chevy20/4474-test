@@ -21,7 +21,11 @@
     <?php include 'connection.php';?> <!-- b onnect to db -->
 
  
-
+    <style>
+      .nav-item {
+        margin-right: 20px;
+      }
+    </style>
     <!-- Navigation Bar 1 -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container-fluid">
