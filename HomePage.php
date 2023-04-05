@@ -237,17 +237,23 @@
   <!-- Footer -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
     <script>
-      document.getElementById("searchForm").addEventListener("submit", function (event) {
-        event.preventDefault(); // Prevent the default form submission
-        
-        const destination = document.getElementById("destination").value;
-        const form = document.getElementById("searchForm");
+      document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("searchForm").addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent the default form submission
 
-        console.log(destination);
+          const destination = document.getElementById("destination").value;
 
-        // Submit the form with the updated action
-        form.submit();
+          // Remove spaces from the destination value
+          const destinationNoSpaces = destination.replace(/\s+/g, '');
+
+          // Set the form action based on the destination value without spaces
+          this.action = destinationNoSpaces.toLowerCase() + ".php";
+
+          // Submit the form with the updated action
+          this.submit();
+        });
       });
     </script>
+
   </body>
 </html>
