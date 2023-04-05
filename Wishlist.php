@@ -158,7 +158,7 @@
   <div class="row justify-content-center">
     <?php while($row = $result->fetch_assoc()): ?>
       <div class="col-md-8 p-3">
-        <div draggable="true" class="card p-3">
+        <div draggable="true" class="card p-3" id="card-<?php echo $row['trip_id']; ?>">
           <div class="row g-0">
             <div class="col-auto">
               <img src="<?php echo $row['pic']; ?>" class="card-img" style="width:300px;height:150px;">
@@ -198,6 +198,31 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
     crossorigin="anonymous"></script>
+  <script>
+    const cards = document.querySelectorAll(".card");
+    cards.forEach((card) => {
+      card.addEventListener("dragstart", (event) => {
+        event.dataTransfer.setData("text/plain", event.target.id);
+      });
+    });
+
+    const wishlistItems = document.querySelector(".wishlist.items .row");
+
+    wishlistItems.addEventListener("dragover", (event) => {
+      event.preventDefault();
+    });
+
+    wishlistItems.addEventListener("drop", (event) => {
+      event.preventDefault();
+      const cardId = event.dataTransfer.getData("text/plain");
+      const card = document.getElementById(cardId);
+      const dropTarget = event.target.closest(".card");
+      
+      if (dropTarget) {
+        wishlistItems.insertBefore(card, dropTarget);
+      }
+    });
+  </script>
 </body>
 
 </html>
