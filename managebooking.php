@@ -14,102 +14,140 @@
     
   </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-white">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-            <img src="img/gachi.jpg" alt="Logo" height="50">
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav1" aria-controls="navbarNav1" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNav1">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="HomePage.php">
-                        <span>
-                            <i class="fa-solid fa-house fa-lg"></i>
-                        </span>
-                        <span>Home </span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="help.php"> 
-                        <span>
-                            &nbsp; &nbsp;
-                            <i class="fa-sharp fa-regular fa-circle-question fa-lg"></i>
-                        </span>
-                        <span>help</span>
-                    </a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <span><i class="fa-regular fa-circle-user"></i></span>
-                        <span>Account</span>
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item nav-link" href="Wishlist.php">Wishlist</a></li>
-                        <li><a class="dropdown-item nav-link" href="managebooking.php">Manage Bookings</a></li>
-                        <li><a class="dropdown-item nav-link" href="a.php">Account Settting</a></li>
-                        <li><a class="dropdown-item nav-link" href="logout.php">Log Out</a></li>
-                    </ul>
-                </li>
-            </ul>
+  <nav class="navbar navbar-expand-lg navbar-light bg-white">
+      <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+              <img src="img/gachi.jpg" alt="Logo" height="50">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav1" aria-controls="navbarNav1" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end" id="navbarNav1">
+              <ul class="navbar-nav">
+                  <li class="nav-item">
+                      <a class="nav-link" href="HomePage.php">
+                          <span>
+                              <i class="fa-solid fa-house fa-lg"></i>
+                          </span>
+                          <span>Home </span>
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="help.php"> 
+                          <span>
+                              &nbsp; &nbsp;
+                              <i class="fa-sharp fa-regular fa-circle-question fa-lg"></i>
+                          </span>
+                          <span>help</span>
+                      </a>
+                  </li>
+                  <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          <span><i class="fa-regular fa-circle-user"></i></span>
+                          <span>Account</span>
+                      </a>
+                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <li><a class="dropdown-item nav-link" href="Wishlist.php">Wishlist</a></li>
+                          <li><a class="dropdown-item nav-link" href="managebooking.php">Manage Bookings</a></li>
+                          <li><a class="dropdown-item nav-link" href="a.php">Account Settting</a></li>
+                          <li><a class="dropdown-item nav-link" href="logout.php">Log Out</a></li>
+                      </ul>
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </nav>
+  <!--Showcase-->
+  <section class="bg-white text-dark p-lg-0 text-center">
+      <div class="container">
+          <div class="d-sm-flex flex-column">
+              <div>
+                  <h1>Manage Boookings</h1>
+                  <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Booking #</th>
+                            <th scope="col">User ID</th>
+                            <th scope="col">Trip ID</th>
+                            <th scope="col">Trip Name</th>
+                            <th scope="col">Start Date</th>
+                            <th scope="col">End Date</th>
+                            <th scope="col">Cost</th>
+                            <th scope="col">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                            $result1 = $connection->query("SELECT booking_num, user_id, trip_id, trip_name, startDate, endDate, Cost FROM Travelled_trip WHERE user_id = $user_id" );
+                            $tripper = 1;
+                            while ($row1 = $result1->fetch_assoc()) {
+                                echo '<tr>';
+                                echo '<th scope="row">' . $tripper . '</th>';
+                                echo '<td>' . $row1["booking_num"] . '</td>';
+                                echo '<td>' . $row1["user_id"] . '</td>';
+                                echo '<td>' . $row1["trip_id"] . '</td>';
+                                echo '<td>' . $row1["trip_name"] . '</td>';
+                                echo '<td>' . $row1["startDate"] . '</td>';
+                                echo '<td>' . $row1["endDate"] . '</td>';
+                                echo '<td>' . $row1["Cost"] . '</td>';
+                                echo '<td>
+                                        <form action="delete_trip.php" method="post">
+                                            <input type="hidden" name="booking_num" value="' . $row1["booking_num"] . '">
+                                            <button class="btn btn-danger delete-btn" data-bs-toggle="modal" data-bs-target="#deleteConfirmationModal">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </button>
+                                        </form>
+                                      </td>';
+                                echo '</tr>';
+                                $tripper = $tripper + 1;
+                            }
+                        ?>
+                    </tbody>
+                </table>
+
+            </div>
+          </div>
         </div>
+  </section>
+  <script src="https://kit.fontawesome.com/358b3891c8.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+  <div class="modal fade" id="deleteConfirmationModal" tabindex="-1" aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteConfirmationModalLabel">Delete Confirmation</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to delete this booking?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-danger" id="confirmDelete">Confirm</button>
+        </div>
+      </div>
     </div>
-</nav>
-       <!--Change image and text to show side by side-->
-    <!--Showcase-->
-    <section class="bg-white text-dark p-lg-0 text-center">
-        <div class="container">
-            <div class="d-sm-flex flex-column">
-                <div>
-                    <h1>Manage Boookings</h1>
-                    <table class="table table-striped">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Booking #</th>
-            <th scope="col">User ID</th>
-            <th scope="col">Trip ID</th>
-            <th scope="col">Trip Name</th>
-            <th scope="col">Start Date</th>
-            <th scope="col">End Date</th>
-            <th scope="col">Cost</th>
-            <th scope="col">Delete</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php
-            $result1 = $connection->query("SELECT booking_num, user_id, trip_id, trip_name, startDate, endDate, Cost FROM Travelled_trip WHERE user_id = $user_id" );
-            $tripper = 1;
-            while ($row1 = $result1->fetch_assoc()) {
-                echo '<tr>';
-                echo '<th scope="row">' . $tripper . '</th>';
-                echo '<td>' . $row1["booking_num"] . '</td>';
-                echo '<td>' . $row1["user_id"] . '</td>';
-                echo '<td>' . $row1["trip_id"] . '</td>';
-                echo '<td>' . $row1["trip_name"] . '</td>';
-                echo '<td>' . $row1["startDate"] . '</td>';
-                echo '<td>' . $row1["endDate"] . '</td>';
-                echo '<td>' . $row1["Cost"] . '</td>';
-                echo '<td>
-                        <form action="delete_trip.php" method="post">
-                            <input type="hidden" name="booking_num" value="' . $row1["booking_num"] . '">
-                            <button type="submit" class="btn btn-danger">
-                            <img src="img/542724.png" class="card-img-top" style="width:20px;height:20px;">
-                          </button>
-                        </form>
-                      </td>';
-                echo '</tr>';
-                $tripper = $tripper + 1;
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        let deleteButtons = document.querySelectorAll('.delete-btn');
+        let confirmDeleteButton = document.getElementById('confirmDelete');
+        let currentForm;
+
+        deleteButtons.forEach(function (button) {
+            button.addEventListener('click', function (event) {
+                currentForm = button.parentElement;
+            });
+        });
+
+        confirmDeleteButton.addEventListener('click', function () {
+            if (currentForm) {
+                currentForm.submit();
             }
-        ?>
-    </tbody>
-</table>
-
-                </div>
-
-
-        </div>
-    </section>
+        });
+    });
+  </script>
 </body>
