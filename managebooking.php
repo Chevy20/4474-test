@@ -135,6 +135,20 @@
   </div>
 
   <script>
+  // Function to get URL parameters
+  function getUrlParameter(name) {
+    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+    const results = regex.exec(location.search);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+  }
+
+  // Check for the delete_success URL parameter
+  if (getUrlParameter("delete_success") !== '') {
+    const successModal = new bootstrap.Modal(document.getElementById('successModal'));
+    successModal.show();
+  }
+
   const deleteButtons = document.querySelectorAll('.delete-btn');
   const confirmationModal = new bootstrap.Modal(document.getElementById('confirmationModal'));
   const confirmDelete = document.getElementById('confirmDelete');
@@ -152,20 +166,8 @@
       currentForm.submit();
     }
   });
-// Function to get URL parameters
-function getUrlParameter(name) {
-    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-    const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-    const results = regex.exec(location.search);
-    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-  }
-
-  // Check for the delete_success URL parameter
-  if (getUrlParameter("delete_success") !== '') {
-    const successModal = new bootstrap.Modal(document.getElementById('successModal'));
-    successModal.show();
-  }
 </script>
+
 <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -182,5 +184,4 @@ function getUrlParameter(name) {
     </div>
   </div>
 </div>
-
 </body>
