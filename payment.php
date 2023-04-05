@@ -210,7 +210,6 @@
                     <input type="hidden" id="endDate" name="endDate" value="<?php echo htmlspecialchars($endDate); ?>">
                     <input type="hidden" id="country" name="country" value="<?php echo htmlspecialchars($country); ?>">
                     <input type="hidden" id="total" name="total" value="<?php echo htmlspecialchars($total); ?>">
-                    <input type="hidden" id="bNum" name="bNum">
                     <input type="hidden" name="tripId" id="tripId" value ="<?php echo htmlspecialchars($tripId); ?>" >
                    
                     <button type="submit" class="btn btn-primary" id="submitBtn" disabled >Process Payment</button>
@@ -234,7 +233,6 @@
         const billPCInput = document.getElementById('billPC');
         const billPhoneInput = document.getElementById('billPhone');
         const creditCardForm = document.getElementById('credit-card-form');
-        const bNumIn = document.getElementById('bNum');
       
         cardNumberInput.addEventListener('input', (e) => {
             e.target.value = e.target.value
@@ -344,7 +342,12 @@
             const cvcValid = isCvcValid(cvc);
             const postalCodeValid = isPostalCodeValid(postalCode);
             const phoneNumberValid = isPhoneNumberValid(phoneNumber);
-
+            const uniqueBookingNumber = await getUniqueBookingNumber();
+            const bNumIn = document.createElement('input');
+            bNumIn.type = 'hidden';
+            bNumIn.name = 'bNum';
+            bNumIn.value = uniqueBookingNumber;
+            creditCardForm.appendChild(bNumIn);
             if (!cardNumberValid) {
                 cardNumberInput.classList.add('input-error');
             } else {
@@ -376,8 +379,6 @@
             }
 
             if (cardNumberValid && expiryDateValid && cvcValid && postalCodeValid && phoneNumberValid) {
-                const uniqueBookingNumber = await getUniqueBookingNumber();
-                bNumIn.value = uniqueBookingNumber;
                 creditCardForm.submit();
             } else {
                 alert('Please correct the errors in the form before submitting.');
