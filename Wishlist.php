@@ -32,9 +32,6 @@
   <title>Wishlist Page</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl7/6en8XCp+HHAAK5GSLf2xlYtvJ8U2Q4U+9cuEnJoa3" crossorigin="anonymous"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha384-7YY2iY6XWCJ1OjXGR8JLWLzD/+MmU7FjPTOcs1F8/NN5m5P5lc6X9Bq3q3uaPTaF/C" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
 
 <body>
@@ -197,44 +194,60 @@
     <?php endwhile; ?>
   </div>
 </div>
-<style>
-.sortable-placeholder {
-  border: 1px dashed #ccc;
-  background-color: #eee;
-  height: 200px;
-}
-</style>
   <script src="https://kit.fontawesome.com/358b3891c8.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
     crossorigin="anonymous"></script>
   <script>
-    $(document).ready(function () {
-    let isEditModeEnabled = false;
+    document.querySelectorAll('.card').forEach((card) => {
+      card.addEventListener('dragstart', (e) => {
+        if (!isEditModeEnabled) return;
 
-    const enableEditMode = () => {
-      $('.wishlist.items .row').sortable({
-        items: '> .col-md-8',
-        placeholder: 'sortable-placeholder',
+        e.dataTransfer.setData('text/plain', card.id);
+        setTimeout(() => {
+          card.classList.add('invisible');
+        }, 0);
       });
-      isEditModeEnabled = true;
-    };
 
-    const disableEditMode = () => {
-      if (isEditModeEnabled) {
-        $('.wishlist.items .row').sortable('destroy');
-        isEditModeEnabled = false;
-      }
-    };
+      card.addEventListener('dragend', (e) => {
+        if (!isEditModeEnabled) return;
 
-    $('#liveToastBtn').on('click', function () {
-      enableEditMode();
+        e.preventDefault();
+        card.classList.remove('invisible');
+      });
+
+      card.addEventListener('dragenter', (e) => {
+        if (!isEditModeEnabled) return;
+
+        e.preventDefault();
+      });
+
+      card.addEventListener('dragover', (e) => {
+        if (!isEditModeEnabled) return;
+
+        e.preventDefault();
+      });
+
+      card.addEventListener('drop', (e) => {
+        if (!isEditModeEnabled) return;
+
+        e.preventDefault();
+        const cardId = e.dataTransfer.getData('text/plain');
+        const cardColumn = document.getElementById(cardId).closest('.col-md-8');
+        const dropTargetColumn = e.target.closest('.col-md-8');
+
+        if (cardColumn !== dropTargetColumn) {
+          const wishlistItems = document.querySelector('.wishlist.items .row');
+          const dropTargetIndex = Array.from(wishlistItems.children).indexOf(dropTargetColumn);
+
+          if (Array.from(wishlistItems.children).indexOf(cardColumn) < dropTargetIndex) {
+            wishlistItems.insertBefore(cardColumn, dropTargetColumn.nextSibling);
+          } else {
+            wishlistItems.insertBefore(cardColumn, dropTargetColumn);
+          }
+        }
+      });
     });
-
-    $('.btn-danger').on('click', function () {
-      disableEditMode();
-    });
-  });
   </script>
 </body>
 
