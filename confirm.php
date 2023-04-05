@@ -32,16 +32,15 @@
 
         
         $bNum = $_POST['bNum'];
-        $user_id = $_SESSION['user_id'];
-        $tripId = $_GET['tripId'];
-        $startDate = $_GET['trip-start'];
-        $total = $_GET['gtIN'];
+        $tripId = $_POST['tripId'];
+        $startDate = $_POST['trip-start'];
+        $total = $_POST['gtIN'];
 
         // Prepare the SQL statement to insert the record into the Travelled_trip table
         $sql = "INSERT INTO Travelled_trip (booking_num, user_id, trip_id, myDate, Cost) VALUES (?, ?, ?, ?, ?)";
 
  
-        $stmt = $conn->prepare($sql);
+        $stmt = $connection->prepare($sql);
 
         // Bind the variables to the prepared statement
         $stmt->bind_param("iiiis", $bNum, $user_id, $tripId, $startDate, $total);
