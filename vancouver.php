@@ -1,6 +1,24 @@
 <?php 
     session_start();
     $user_id = $_SESSION['user_id'];
+    function is_trip_in_wishlist($connection, $user_id, $trip_id) {
+        $query = "SELECT * FROM wishlist WHERE user_id = ? AND trip_id = ?";
+        $stmt = $connection->prepare($query);
+        $stmt->bind_param("ii", $user_id, $trip_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+    
+        if ($result->num_rows > 0) {
+            $stmt->close();
+            return true;
+        } else {
+            $stmt->close();
+            return false;
+        }
+    }
+    
+    $trip_id = 1; // replace this with the actual trip ID
+    $is_trip_in_wishlist = is_trip_in_wishlist($connection, $user_id, $trip_id);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -170,7 +188,7 @@
                     </div>
                     <div class="buttons-container">
                     <button type="submit" class="btn btn-primary">Book Now!</button>
-                    <button type="button"class="btn btn-outline-danger like-btn">
+                    <button type="button" class="btn btn-outline-danger like-btn<?php if ($is_trip_in_wishlist) echo ' active'; ?>">
                         <i class="fa fa-heart-o" aria-hidden="true"></i>
                     </button>
                 </div>
