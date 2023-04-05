@@ -1,6 +1,7 @@
 <?php 
     session_start();
     $user_id = $_SESSION['user_id'];
+    include 'connection.php'; 
     function is_trip_in_wishlist($connection, $user_id, $trip_id) {
         $query = "SELECT * FROM wishlist WHERE user_id = ? AND trip_id = ?";
         $stmt = $connection->prepare($query);
