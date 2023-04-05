@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Vancouver Trip Information</title>
@@ -24,17 +24,6 @@
         .c-img {
             height: 100%;
             object-fit: cover;
-        }
-        #likeButton {
-            border-width: 2px;
-            font-size: 24px;
-        }
-        #likeButton.liked {
-            background-color: #ff0000;
-            color: #ffffff;
-        }
-        #likeButton i {
-            pointer-events: none;
         }
     </style>
     <!-- Navigation Bar 1 -->
@@ -155,11 +144,7 @@
                         <input type="hidden" name="tripId"  value ="1"/>
                     </div>
                     <button type="submit" class="btn btn-primary">Book Now!</button>
-                    <div class="container mt-5">
-                        <button id="likeButton" class="btn btn-outline-danger">
-                            <i class="bi bi-heart"></i>
-                        </button>
-                    </div>
+                    
                 </form>
 
             </div>
@@ -174,11 +159,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
         integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
         crossorigin="anonymous"></script>
-        <script>
-            document.getElementById('likeButton').addEventListener('click', function () {
-                this.classList.toggle('liked');
-            });
-        </script>
 
 </body>
 
