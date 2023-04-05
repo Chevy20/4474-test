@@ -158,7 +158,7 @@
   <div class="row justify-content-center">
     <?php while($row = $result->fetch_assoc()): ?>
       <div class="col-md-8 p-3">
-        <div draggable="true" class="card p-3" id="card-<?php echo $row['trip_id']; ?>">
+        <div id="card-<?php echo $row['trip_id']; ?>" draggable="true" class="card p-3">
           <div class="row g-0">
             <div class="col-auto">
               <img src="<?php echo $row['pic']; ?>" class="card-img" style="width:300px;height:150px;">
@@ -216,12 +216,14 @@
     event.preventDefault();
     const cardId = event.dataTransfer.getData("text/plain");
     const card = document.getElementById(cardId);
+    const cardColumn = card.closest(".col-md-8");
     const dropTarget = event.target.closest(".card");
 
     if (dropTarget && dropTarget.parentNode === wishlistItems) {
-      wishlistItems.insertBefore(card, dropTarget);
+      const dropTargetColumn = dropTarget.closest(".col-md-8");
+      wishlistItems.insertBefore(cardColumn, dropTargetColumn);
     } else {
-      wishlistItems.appendChild(card);
+      wishlistItems.appendChild(cardColumn);
     }
   });
   </script>
