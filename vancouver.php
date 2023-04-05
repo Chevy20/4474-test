@@ -170,7 +170,7 @@
                     </div>
                     <div class="buttons-container">
                     <button type="submit" class="btn btn-primary">Book Now!</button>
-                    <button class="btn btn-outline-primary like-btn">
+                    <button type="button"class="btn btn-outline-danger like-btn">
                         <i class="fa fa-heart-o" aria-hidden="true"></i>
                     </button>
                 </div>
