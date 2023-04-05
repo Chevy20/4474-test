@@ -31,6 +31,25 @@
         $bNum = $_POST['bNum'];
         $tripId = $_POST['tripId'];
 
+        $stmt = $connection->prepare("INSERT INTO Travelled_trip (booking_num, user_id, trip_id, trip_name, startDate, endDate, Cost) VALUES (?, ?, ?, ?, ?, ?, ?)");
+
+        // Bind the parameters
+        $stmt->bind_param("iiisssd", $bNum, $user_id, $tripId, $tripName, $startDate, $endDate, $total);
+
+        // Execute the statement
+        $result = $stmt->execute();
+
+        if ($result) {
+            echo "Record inserted successfully";
+        } else {
+            echo "Error: " . $stmt->error;
+        }
+
+        // Close the statement
+        $stmt->close();
+
+        // Close the connection (optional)
+        $connection->close();
     ?>
 
     <!-- Navigation Bar 1 -->
@@ -116,7 +135,7 @@
                 <h4> Payment succeeded! Below you will find your confirmation information: <h3>
                 <h5> An email copy will be sent to the email associated with your account. <h3>
                 <!-- All fields below will be populated with php using post--> 
-                <p class="clbl">Booking: <?php echo htmlspecialchars($bNum); ?> </p>   
+                <p class="clbl">Booking Number: <?php echo htmlspecialchars($bNum); ?> </p>   
                 <p class="clbl">Passenger Name: <?php echo htmlspecialchars($PassFName); ?> <?php echo htmlspecialchars($PassLName); ?></span></p>
                 <p class="clbl">Start Date: <?php echo htmlspecialchars($startDate); ?> </p>
                 <p class="clbl">End Date: <?php echo htmlspecialchars($endDate); ?></p>
