@@ -2,6 +2,9 @@
   session_start();
   $user_id = $_SESSION['user_id'];
   include 'connection.php'
+  ini_set('display_errors', 1);
+  ini_set('display_startup_errors', 1);
+  error_reporting(E_ALL);
 ?>
 <!doctype html>
 <html lang="en">
