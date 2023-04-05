@@ -30,7 +30,26 @@
         $total = $_POST['total'];
         $bNum = $_POST['bNum'];
         $tripId = $_POST['tripId'];
-       
+
+                // Prepare the SQL statement to insert the record into the Travelled_trip table
+        $sql = "INSERT INTO Travelled_trip (booking_num, user_id, trip_id, myDate, Cost) VALUES (?, ?, ?, ?, ?)";
+
+        // Use a prepared statement to prevent SQL injection
+        $stmt = $connection->prepare($sql);
+
+        // Bind the variables to the prepared statement
+        $stmt->bind_param("iiiis", $bNum, $user_id, $tripId, $startDate, $total);
+
+        // Execute the prepared statement
+        if ($stmt->execute()) {
+            echo "New record created successfully";
+        } else {
+            echo "Error: " . $stmt->error;
+        }
+
+        // Close the prepared statement
+        $stmt->close();
+?>
     ?>
 
     <!-- Navigation Bar 1 -->
@@ -116,7 +135,7 @@
                 <h4> Payment succeeded! Below you will find your confirmation information: <h3>
                 <h5> An email copy will be sent to the email associated with your account. <h3>
                 <!-- All fields below will be populated with php using post--> 
-                <p class="clbl">Booking Number: <?php echo htmlspecialchars($bNum); ?> </p>   
+                <p class="clbl">Booking: <?php echo htmlspecialchars($bNum); ?> </p>   
                 <p class="clbl">Passenger Name: <?php echo htmlspecialchars($PassFName); ?> <?php echo htmlspecialchars($PassLName); ?></span></p>
                 <p class="clbl">Start Date: <?php echo htmlspecialchars($startDate); ?> </p>
                 <p class="clbl">End Date: <?php echo htmlspecialchars($endDate); ?></p>
