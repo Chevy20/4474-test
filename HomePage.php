@@ -85,12 +85,14 @@
     <div class="d-flex justify-content-center">
       <form class="searchForm" id="searchForm">
       <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="oneway" value="oneway" checked>
-      <label class="form-check-label" for="oneway">One Way</label>
-      </div>
 
+      </div>
   
           <div class="row g-3 align-items-center">
+          <div class="col-auto">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="oneway" value="oneway" checked>
+            <label class="form-check-label" for="oneway">One Way</label>
+          </div>
             <div class="col-auto">
             Departure
             <input type="text" class="form-control" id="from" placeholder="Departure" value="London">
@@ -119,6 +121,7 @@
           </div>
       </form>
   </div>
+  
   
 
     <!-- Buttons -->
