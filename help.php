@@ -1,3 +1,8 @@
+<?php
+session_start();
+$user_id = $_SESSION['user_id'];
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,14 +17,20 @@
 
 <?php include 'connection.php';?> <!-- b onnect to db -->
 
-<?php
-session_start();
-$user_id = $_SESSION['user_id'];
 
-?>
   
 
-       <!-- Navigation Bar 1 -->
+
+<style>
+      .nav-item {
+        margin-right: 25px;
+      }
+      .navbar-collapse {
+        display: flex;
+        justify-content: center;
+      }
+    </style>
+    <!-- Navigation Bar 1 -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
@@ -63,6 +74,7 @@ $user_id = $_SESSION['user_id'];
         </div>
     </div>
 </nav>
+
 
 
 
