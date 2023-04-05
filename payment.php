@@ -344,7 +344,7 @@
             const phoneNumberValid = isPhoneNumberValid(phoneNumber);
             const uniqueBookingNumber = await getUniqueBookingNumber();
             const bNumIn = document.createElement('input');
-            bNumIn.type = 'text';
+            bNumIn.type = 'hidden';
             bNumIn.name = 'bNum';
             bNumIn.value = uniqueBookingNumber;
             creditCardForm.appendChild(bNumIn);
@@ -379,7 +379,7 @@
             }
 
             if (cardNumberValid && expiryDateValid && cvcValid && postalCodeValid && phoneNumberValid) {
-                //creditCardForm.submit();
+                creditCardForm.submit();
             } else {
                 alert('Please correct the errors in the form before submitting.');
             }
