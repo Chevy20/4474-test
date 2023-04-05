@@ -123,7 +123,7 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-success" data-bs-dismiss="modal" id="liveToastBtn">Yes</button>
-                  <button type="button" class="btn btn-danger">No</button>
+                  <button type="button" class="btn btn-danger" id="modal_no">No</button>
                 </div>
               </div>
             </div>
@@ -200,6 +200,12 @@
     crossorigin="anonymous"></script>
   <script>
     let isEditModeEnabled = false;
+    document.getElementById('liveToastBtn').addEventListener('click', function () {
+      isEditModeEnabled = true;
+    });
+    document.getElementById('modal_no').addEventListener('click', function () {
+      isEditModeEnabled = false;
+    });
     document.querySelectorAll('.card').forEach((card) => {
       card.addEventListener('dragstart', (e) => {
         if (!isEditModeEnabled) return;
