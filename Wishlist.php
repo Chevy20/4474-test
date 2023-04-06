@@ -168,9 +168,9 @@
             <button type="button" class="btn btn-outline-primary" data-move="down">
               v
             </button>
-              <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal" disabled >
+            <button type="button" class="btn btn-danger" data-delete-btn data-trip-id="<?php echo $row['trip_id']; ?>" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal" disabled>
                 <img src="img/542724.png" class="card-img-top" style="width:20px;height:20px;">
-              </button>
+            </button>
             </div>
           </div>
         </div>
@@ -319,25 +319,7 @@
         });
       }
     });
-    // Get a reference to the "Yes, delete it" button
-  var deleteBookingBtn = document.getElementById("deleteBookingBtn");
 
-  // Add a click event listener to the button
-  deleteBookingBtn.addEventListener("click", function() {
-
-    // Call remove_from_wishlist.php using AJAX
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "remove_from_wishlist.php", true);
-    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhr.onreadystatechange = function() {
-      if (xhr.readyState === 4 && xhr.status === 200) {
-        // Handle the response here if necessary
-        console.log(xhr.responseText);
-      }
-    };
-    xhr.send("booking_id=" + booking_id);
-
-  });
     // Function to move a card up
     function moveCardUp(card) {
       const cardColumn = card.closest('.col-md-8');
@@ -365,6 +347,40 @@
       upDownButtons.forEach((button) => {
         button.disabled = !isEditModeEnabled;
       });
+    }
+    let currentTripId;
+
+    document.querySelectorAll("[data-delete-btn]").forEach(function(deleteButton) {
+        deleteButton.addEventListener("click", function(event) {
+            currentTripId = event.target.getAttribute("data-trip-id");
+        });
+    });
+
+    document.getElementById("confirmDeleteButton").addEventListener("click", function() {
+        removeFromWishlist(currentTripId);
+    });
+
+    function removeFromWishlist(trip_id) {
+        const formData = new FormData();
+        formData.append('trip_id', trip_id);
+
+        fetch('remove_from_wishlist.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.text())
+        .then(result => {
+            if (result === "Success") {
+                // Handle success (e.g., update the UI, show a message)
+                console.log("Item removed from wishlist successfully.");
+            } else {
+                // Handle error (e.g., show an error message)
+                console.log("Error removing item from wishlist.");
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
     }
   
   </script>
