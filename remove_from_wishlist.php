@@ -1,36 +1,21 @@
 <?php
-    session_start();
+session_start();
+include 'connection.php'; 
 
-    // Include your connection.php here
-    include 'connection.php';
+$user_id = $_SESSION['user_id'];
+$trip_id = $_POST['trip_id'];
 
-    $user_id = $_SESSION['user_id'];
-    $trip_id = $_POST['trip_id'];
+$query = "DELETE FROM wishlist WHERE user_id = ? AND trip_id = ?";
+$stmt = $connection->prepare($query);
+$stmt->bind_param("ii", $user_id, $trip_id);
+$stmt->execute();
 
-    // Get the position of the item to be removed
-    $sql = "SELECT position FROM wishlist WHERE user_id = ? AND trip_id = ?";
-    $stmt = $connection->prepare($sql);
-    $stmt->bind_param("ii", $user_id, $trip_id);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $row = $result->fetch_assoc();
-    $removed_position = $row['position'];
+if ($stmt->affected_rows > 0) {
+    echo "Success";
+} else {
+    echo "Error";
+}
 
-    // Delete the item from the wishlist
-    $sql = "DELETE FROM wishlist WHERE user_id = ? AND trip_id = ?";
-    $stmt = $connection->prepare($sql);
-    $stmt->bind_param("ii", $user_id, $trip_id);
-    $stmt->execute();
-
-    // Update the position values of the remaining items
-    $sql = "SET @position := 0";
-    $connection->query($sql);
-
-    $sql = "UPDATE wishlist SET position = (@position := @position + 1) WHERE user_id = ? ORDER BY trip_id";
-    $stmt = $connection->prepare($sql);
-    $stmt->bind_param("i", $user_id);
-    $stmt->execute();
-
-    $stmt->close();
-    $connection->close();
+$stmt->close();
+$connection->close();
 ?>

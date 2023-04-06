@@ -10,8 +10,8 @@
     $sql = "SELECT Trips.trip_id, Trips.trip_name, Trips.pic, Trips.description
             FROM wishlist
             JOIN Trips ON wishlist.trip_id = Trips.trip_id
-            WHERE wishlist.user_id = ?
-            ORDER BY wishlist.position ASC";
+            WHERE wishlist.user_id = ?";
+
 
     // Prepare and execute the SQL statement
     $stmt = $connection->prepare($sql);
@@ -231,20 +231,6 @@
       updateButtonGroupState();
       updateViewDetailsButtonsState();
 
-          // Get the updated wishlist order
-      const wishlistItems = document.querySelectorAll('.wishlist.items .col-md-8 .card');
-      const wishlist_order = Array.from(wishlistItems).map(card => parseInt(card.id.split('-')[1]));
-
-      // Send the updated order to the server using AJAX
-      const xhr = new XMLHttpRequest();
-      xhr.open("POST", "reorder_wishlist.php", true);
-      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-      xhr.onreadystatechange = function() {
-        if (this.readyState === 4 && this.status === 200) {
-          console.log("Wishlist order updated successfully.");
-        }
-      };
-      xhr.send("wishlist_order=" + JSON.stringify(wishlist_order));
 
    });
 

@@ -1,28 +1,21 @@
 <?php
-    session_start();
+session_start();
+include 'connection.php'; 
 
-    // Include your connection.php here
-    include 'connection.php';
+$user_id = $_SESSION['user_id'];
+$trip_id = $_POST['trip_id'];
 
-    $user_id = $_SESSION['user_id'];
-    $trip_id = $_POST['trip_id'];
+$query = "INSERT INTO wishlist (user_id, trip_id) VALUES (?, ?)";
+$stmt = $connection->prepare($query);
+$stmt->bind_param("ii", $user_id, $trip_id);
+$stmt->execute();
 
-    // Get the current maximum position value
-    $sql = "SELECT COALESCE(MAX(position), 0) as max_position FROM wishlist WHERE user_id = ?";
-    $stmt = $connection->prepare($sql);
-    $stmt->bind_param("i", $user_id);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $row = $result->fetch_assoc();
-    $max_position = $row['max_position'];
+if ($stmt->affected_rows > 0) {
+    echo "Success";
+} else {
+    echo "Error";
+}
 
-    // Insert the new item with position = max_position + 1
-    $new_position = $max_position + 1;
-    $sql = "INSERT INTO wishlist (user_id, trip_id, position) VALUES (?, ?, ?)";
-    $stmt = $connection->prepare($sql);
-    $stmt->bind_param("iii", $user_id, $trip_id, $new_position);
-    $stmt->execute();
-
-    $stmt->close();
-    $connection->close();
+$stmt->close();
+$connection->close();
 ?>
