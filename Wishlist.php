@@ -169,8 +169,8 @@
               v
             </button>
               </button>
-              <button type="button" class="btn btn-danger" disabled>
-                <img src="img/542724.png" class="card-img-top" style="width:20px;height:20px;">
+              <button type="button" class="btn btn-danger" data-trip-id="<?php echo $row['trip_id']; ?>" disabled>
+                  <img src="img/542724.png" class="card-img-top" style="width:20px;height:20px;">
               </button>
             </div>
           </div>
@@ -330,6 +330,27 @@
         button.disabled = !isEditModeEnabled;
       });
     }
+    document.querySelectorAll('.btn-danger').forEach(button => {
+      button.addEventListener('click', () => {
+          const tripId = button.dataset.tripId;
+          const xhr = new XMLHttpRequest();
+          xhr.open('POST', 'remove_from_wishlist.php');
+          xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+          xhr.onload = () => {
+              if (xhr.status === 200) {
+                  console.log(xhr.responseText);
+                  // Reload the page to reflect the changes
+                  location.reload();
+              } else {
+                  console.error(xhr.statusText);
+              }
+          };
+          xhr.onerror = () => {
+              console.error(xhr.statusText);
+          };
+          xhr.send(`trip_id=${tripId}`);
+      });
+  });
 
   
   </script>
