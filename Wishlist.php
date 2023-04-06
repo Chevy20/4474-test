@@ -148,7 +148,7 @@
               <img src="<?php echo $row['pic']; ?>" class="card-img" style="width:300px;height:150px;">
             </div>
             <div class="col-md-9 justify-content-center">
-              <div class="card-header">
+              <div class="card-header"> 
                 <span class="badge text-bg-dark">Item</span>
               </div>
               <div class="card-body">
@@ -169,14 +169,31 @@
               v
             </button>
               </button>
-              <button type="button" class="btn btn-danger" data-trip-id="<?php echo $row['trip_id']; ?>" disabled>
-                  <img src="img/542724.png" class="card-img-top" style="width:20px;height:20px;">
+              <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal">
+                <img src="img/542724.png" class="card-img-top" style="width:20px;height:20px;">
               </button>
             </div>
           </div>
         </div>
       </div>
     <?php endwhile; ?>
+  </div>
+</div>
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="confirmDeleteModalLabel">Confirm Delete</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to delete this booking?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+        <button type="button" class="btn btn-danger" id="deleteBookingBtn">Yes, delete it</button>
+      </div>
+    </div>
   </div>
 </div>
   <script src="https://kit.fontawesome.com/358b3891c8.js" crossorigin="anonymous"></script>
@@ -195,6 +212,24 @@
         });
       });
     }
+    const deleteBookingBtn = document.getElementById('deleteBookingBtn');
+      deleteBookingBtn.addEventListener('click', function() {
+        const tripId = <?php echo $trip_id; ?>;
+        const userId = <?php echo $user_id; ?>;
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', 'remove_from_wishlist.php', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.onreadystatechange = function() {
+          if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+            if (this.responseText === 'Success') {
+              window.location.reload(); // Reload the page if the booking was successfully deleted
+            } else {
+              alert('An error occurred while deleting the booking');
+            }
+          }
+        };
+        xhr.send('trip_id=' + encodeURIComponent(tripId) + '&user_id=' + encodeURIComponent(userId));
+      });
 
     function updateViewDetailsButtonsState() {
       const viewDetailsButtons = document.querySelectorAll('.view-details-btn');
