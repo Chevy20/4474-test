@@ -230,6 +230,7 @@
       updateButtonGroupState();
       updateViewDetailsButtonsState();
       updateUpDownButtonState();
+      sendReorderedWishlist();
       
     });
 
@@ -328,6 +329,39 @@
         button.disabled = !isEditModeEnabled;
       });
     }
+    function sendReorderedWishlist() {
+      const wishlistItems = document.querySelector('.wishlist.items .row');
+      const reorderedData = Array.from(wishlistItems.children).map((cardColumn, index) => {
+        const card = cardColumn.querySelector('.card');
+        return {
+          trip_id: parseInt(card.getAttribute('data-trip-id')),
+          position: index
+        };
+      });
+
+      fetch('reorder_wishlist.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(reorderedData)
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.text();
+      })
+      .then(data => {
+        // Handle successful response here, e.g., show a success message
+        console.log('Wishlist reordered successfully:', data);
+      })
+      .catch(error => {
+        // Handle errors here, e.g., show an error message
+        console.error('There was a problem with the fetch operation:', error);
+      });
+    }
+
   
   </script>
 </body>
