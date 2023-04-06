@@ -161,11 +161,12 @@
           </div>
           <div class="d-grid m-1">
             <div class="btn-group edit-btn-group">
-              <button type="button" class="btn btn-outline-primary">
-                ʌ
-              </button>
-              <button type="button" class="btn btn-outline-primary">
-                v
+            <button type="button" class="btn btn-outline-primary" data-move="up">
+              ʌ
+            </button>
+            <button type="button" class="btn btn-outline-primary" data-move="down">
+              v
+            </button>
               </button>
               <button type="button" class="btn btn-danger" disabled>
                 <img src="img/542724.png" class="card-img-top" style="width:20px;height:20px;">
@@ -278,22 +279,23 @@
       });
     });
 
+    // Add event listeners to up (ʌ) and down (v) buttons
     document.querySelectorAll('.btn-outline-primary').forEach((button) => {
-  const card = button.closest('.card');
+      const card = button.closest('.card');
+      const moveDirection = button.getAttribute('data-move');
 
-      if (button.textContent === 'ʌ') {
+      if (moveDirection === 'up') {
         button.addEventListener('click', () => {
           if (!isEditModeEnabled) return;
           moveCardUp(card);
         });
-      } else if (button.textContent === 'v') {
+      } else if (moveDirection === 'down') {
         button.addEventListener('click', () => {
           if (!isEditModeEnabled) return;
           moveCardDown(card);
         });
       }
     });
-
     // Function to move a card up
     function moveCardUp(card) {
       const cardColumn = card.closest('.col-md-8');
