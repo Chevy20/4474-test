@@ -183,6 +183,7 @@
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
     crossorigin="anonymous"></script>
   <script>
+    updateUpDownButtonState();
     let isEditModeEnabled = false;
     function updateButtonGroupState() {
       const buttonGroups = document.querySelectorAll('.edit-btn-group');
@@ -207,6 +208,7 @@
       document.getElementById('confirm_btn').style.display = 'block';
       updateButtonGroupState();
       updateViewDetailsButtonsState();
+      updateUpDownButtonState(); 
     });
 
     document.getElementById('modal_no').addEventListener('click', function () {
@@ -218,6 +220,7 @@
       document.getElementById('confirm_btn').style.display = 'none';
       updateButtonGroupState();
       updateViewDetailsButtonsState();
+      updateUpDownButtonState();
     });
 
     document.getElementById('confirm_btn').addEventListener('click', function () {
@@ -226,7 +229,8 @@
       document.getElementById('confirm_btn').style.display = 'none';
       updateButtonGroupState();
       updateViewDetailsButtonsState();
-      // Add any functionality you want to happen when "Confirm Changes" is clicked
+      updateUpDownButtonState();
+      
     });
 
     document.querySelectorAll('.card').forEach((card) => {
@@ -316,6 +320,13 @@
 
       const wishlistItems = document.querySelector('.wishlist.items .row');
       wishlistItems.insertBefore(cardColumn, nextCardColumn.nextElementSibling);
+    }
+    function updateUpDownButtonState() {
+      const upDownButtons = document.querySelectorAll('.btn-outline-primary');
+
+      upDownButtons.forEach((button) => {
+        button.disabled = !isEditModeEnabled;
+      });
     }
   
   </script>
