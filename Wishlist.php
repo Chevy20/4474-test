@@ -278,20 +278,20 @@
       });
     });
 
-    // Add event listeners to up (ʌ) and down (v) buttons
-    document.querySelectorAll('.card').forEach((card) => {
-      const upButton = card.querySelector('.btn-outline-primary:first-child');
-      const downButton = card.querySelector('.btn-outline-primary:last-child');
+    document.querySelectorAll('.btn-outline-primary').forEach((button) => {
+  const card = button.closest('.card');
 
-      upButton.addEventListener('click', () => {
-        if (!isEditModeEnabled) return;
-        moveCardUp(card);
-      });
-
-      downButton.addEventListener('click', () => {
-        if (!isEditModeEnabled) return;
-        moveCardDown(card);
-      });
+      if (button.textContent === 'ʌ') {
+        button.addEventListener('click', () => {
+          if (!isEditModeEnabled) return;
+          moveCardUp(card);
+        });
+      } else if (button.textContent === 'v') {
+        button.addEventListener('click', () => {
+          if (!isEditModeEnabled) return;
+          moveCardDown(card);
+        });
+      }
     });
 
     // Function to move a card up
