@@ -232,8 +232,7 @@
 
       // Add the following code to send the new order to the server
       const tripOrder = Array.from(document.querySelectorAll('.card')).map(card => parseInt(card.dataset.tripId, 10));
-      const userId = /* Your user_id value */;
-
+      const userId = <?php echo json_encode($user_id); ?>;
       fetch('reorder_wishlist.php', {
           method: 'POST',
           headers: {
