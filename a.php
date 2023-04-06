@@ -20,15 +20,7 @@
     //echo "Session Number is " . $user_id;
   
     ?>
- <style>
-      .nav-item {
-        margin-right: 25px;
-      }
-      .navbar-collapse {
-        display: flex;
-        justify-content: center;
-      }
-    </style>  
+<!----TO FIX --->    
       <!-- Navigation Bar 1 -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white">
     <div class="container-fluid">
@@ -350,120 +342,126 @@
                                     color: white;
                                 }
                                 </style>
-                                
-
+                            
 
 
                             
                             </nav>
                         </nav>
                         </div>
+
+
                         <div class="col-8">
                         <div class="tab-content">
                             <div class="tab-pane fade show active" id="privacy">
-                            <h3>Privacy Settings</h3>
-                            <!-- Rounded switch -->
-                            <div class="form-check form-switch mb-3">
-                                <input class="form-check-input" type="checkbox" id="travel-history">
-                                <label class="form-check-label" for="travel-history">Allow Company to collect recent travel history information</label>
-                                
+                                    <h3>Privacy Settings</h3>
+                                    <!-- Rounded switch -->
+                                    <div class="form-check form-switch mb-3">
+                                        <input class="form-check-input" type="checkbox" id="travel-history">
+                                        <label class="form-check-label" for="travel-history">Allow Company to collect recent travel history information</label>                          
+                                    </div>
+                                    
+                                    <div class="form-check form-switch mb-3">
+                                        <input class="form-check-input" type="checkbox" id="email-deals">
+                                        <label class="form-check-label" for="email-deals">Allow Company to send out limited deals and discount to your email</label>
+                                    </div>
+                                    
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="disclose-info">
+                                        <label class="form-check-label" for="disclose-info">Allow your information to be disclosed to third party company</label>
+                                    </div>
                             </div>
                             
-                            <div class="form-check form-switch mb-3">
-                                <input class="form-check-input" type="checkbox" id="email-deals">
-                                <label class="form-check-label" for="email-deals">Allow Company to send out limited deals and discount to your email</label>
-                            </div>
-                            
-                            <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" id="disclose-info">
-                                <label class="form-check-label" for="disclose-info">Allow your information to be disclosed to third party company</label>
-                            </div>
-                            
-                            </div>
-
                             <div class="tab-pane fade" id="notifications">
-                            <h3>Notification Settings</h3>
-                            <div class="form-check form-switch mb-3">
-                                <input class="form-check-input" type="checkbox" id="travel-history">
-                                <label class="form-check-label" for="travel-history">Notify me when the wishlist trip is on Sale</label>
+                                <h3>Notification Settings</h3>
+                                <div class="form-check form-switch mb-3">
+                                    <input class="form-check-input" type="checkbox" id="travel-history">
+                                    <label class="form-check-label" for="travel-history">Notify me when the wishlist trip is on Sale</label>
+                                    
+                                </div>
                                 
-                            </div>
-                            
-                            <div class="form-check form-switch mb-3">
-                                <input class="form-check-input" type="checkbox" id="email-deals">
-                                <label class="form-check-label" for="email-deals">Notify me when with Seasonal Limited Deals</label>
-                            </div>
+                                
+                                <div class="form-check form-switch mb-3">
+                                    <input class="form-check-input" type="checkbox" id="email-deals">
+                                    <label class="form-check-label" for="email-deals">Notify me when with Seasonal Limited Deals</label>
+                                </div>
                             </div>
 
                             <div class="tab-pane fade" id="changepassword">
                             
-                            <div class="card">
-                                <div class="card-body">
-                                <h5 class="card-title">Change Password</h5>
-                                <p class="card-text">Forgot your passwords?</p>
-                                <a class="btn btn-primary " data-bs-toggle="popover" data-bs-placement="top" title="Edit information" href="changepassword.php"  >Change Passowrd</a>
-
-
-                                
-                                
+                                <div class="card">
+                                    <div class="card-body">
+                                    <h5 class="card-title">Change Password</h5>
+                                    <p class="card-text">Forgot your passwords?</p>
+                                    <a class="btn btn-primary " data-bs-toggle="popover" data-bs-placement="top" title="Edit information" href="changepassword.php"  >Change Passowrd</a>    
                                 </div>
-                            </di/v>
+
                             </div>
+                        
 
                             <div class="tab-pane fade" id="deleteaccount">
-                            <h5 class="card-title">Delete Account</h5>
-
-
-                            <div class="card" style="max-height: 50px; ">
-                                <div class="card-body">
-                                
-                                <span> 
-                                    <i class="fa-solid fa-triangle-exclamation fa-xl" style="color: #ff0000;"></i>
-                                    <span class="text-danger"> Are you certain of this action, your account will be deleted permanently!!!</span>
-                                </span>
+                                <h5 class="card-title">Delete Account</h5>
+                                <div class="card" style="max-height: 50px; ">
+                                    <div class="card-body">
+                                    
+                                    <span> 
+                                        <i class="fa-solid fa-triangle-exclamation fa-xl" style="color: #ff0000;"></i>
+                                        <span class="text-danger"> Are you certain of this action, your account will be deleted permanently!!!</span>
+                                    </span>
+                                    </div>
                                 </div>
-                            </div>
+                                
 
                             
-                            <br>  
-                            <a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleting">
-                                Delete Account  
-                            </a>
+                                <br>  
+                                <a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleting">
+                                    Delete Account  
+                                </a>
 
-                            <script> 
+                                <script> 
                         
-                                function confirmDelete() {
+                                    function confirmDelete() {
 
-                                    alert("You activated Delete Account feature, however for the testing and grading, account will not be deleted this moment");
-                                }
-                                              
-                            </script>
+                                        alert("You activated Delete Account feature, however for the testing and grading, account will not be deleted this moment");
+                                    }
+                                                
+                                </script>
+                    
+                            
 
-                            <!-- Modal -->
-                            <div class="modal fade" id="deleting" tabindex="-1" aria-labelledby="deletingLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                    <h5 class="modal-title" id="deletingLabel">Delete Account</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <!-- Modal -->
+                                <div class="modal fade" id="deleting" tabindex="-1" aria-labelledby="deletingLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                    <div class="modal-content">
+
+                                        <div class="modal-header">
+                                        <h5 class="modal-title" id="deletingLabel">Delete Account</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        
+                                        <div class="modal-body">
+                                        Are you sure you want to delete your account?
+                                        </div>
+
+                                        <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                        <button type="button" class="btn btn-danger" onclick="confirmDelete()">Delete</button>
+                                        </div>
+                                        
                                     </div>
-                                    <div class="modal-body">
-                                    Are you sure you want to delete your account?
                                     </div>
-                                    <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                    <button type="button" class="btn btn-danger" onclick="confirmDelete()">Delete</button>
-                                    </div>
-                                </div>
-                                </div>
-                            </div>    
+                                </div> 
                             </div>
+
+                        
+                        
+
+                            
 
                             <div class="tab-pane fade" id="updatecontact">
                             <h3>Update Contact Information</h3>
                             <p>Click here to update your address</p>
-                            <a class="btn btn-primary " data-bs-toggle="popover" data-bs-placement="top" title="Edit information" href="updatecontact.php"  >Update Address</a>
-                            
+                            <a class="btn btn-primary " data-bs-toggle="popover" data-bs-placement="top" title="Edit information" href="updatecontact.php"  >Update Address</a> 
                             </div>
 
 
@@ -471,7 +469,6 @@
                             <h3>Update Address</h3>
                             <p>Click here to update your address</p>
                             <a class="btn btn-primary " data-bs-toggle="popover" data-bs-placement="top" title="Edit information" href="updateaddress.php"  >Update Address</a>
-                            
                             </div>
 
 
@@ -481,13 +478,12 @@
                 
 
                         </div>
-
-                        
+                        </div>
     
                     </div>
                     
         
-                </div>
+                </div
 
             </div>
             </div>
