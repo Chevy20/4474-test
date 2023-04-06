@@ -347,28 +347,6 @@
         button.disabled = !isEditModeEnabled;
       });
     }
-    document.querySelectorAll('.btn-danger').forEach(button => {
-      button.addEventListener('click', () => {
-          const tripId = button.dataset.tripId;
-          const xhr = new XMLHttpRequest();
-          xhr.open('POST', 'remove_from_wishlist.php');
-          xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-          xhr.onload = () => {
-              if (xhr.status === 200) {
-                  console.log(xhr.responseText);
-                  // Reload the page to reflect the changes
-                  location.reload();
-              } else {
-                  console.error(xhr.statusText);
-              }
-          };
-          xhr.onerror = () => {
-              console.error(xhr.statusText);
-          };
-          xhr.send(`trip_id=${tripId}`);
-      });
-  });
-
   
   </script>
 </body>
