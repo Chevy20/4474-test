@@ -168,8 +168,7 @@
             <button type="button" class="btn btn-outline-primary" data-move="down">
               v
             </button>
-              </button>
-              <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal">
+              <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal" >
                 <img src="img/542724.png" class="card-img-top" style="width:20px;height:20px;">
               </button>
             </div>
@@ -212,30 +211,7 @@
         });
       });
     }
-    document.querySelectorAll('.btn-danger').forEach(button => {
-      button.addEventListener('click', () => {
-        const tripId = button.dataset.tripId;
-        const modal = new bootstrap.Modal(document.getElementById('confirmDeleteModal'));
-        modal.show();
 
-        document.getElementById('confirmDeleteBtn').addEventListener('click', () => {
-          fetch('remove_from_wishlist.php', {
-            method: 'POST',
-            body: JSON.stringify({ trip_id: tripId }),
-            headers: { 'Content-Type': 'application/json' }
-          })
-          .then(response => response.json())
-          .then(data => {
-            if (data.success) {
-              location.reload();
-            } else {
-              console.log(data.error);
-            }
-          })
-          .catch(error => console.error(error));
-        });
-      });
-    });
 
     function updateViewDetailsButtonsState() {
       const viewDetailsButtons = document.querySelectorAll('.view-details-btn');
