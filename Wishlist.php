@@ -140,6 +140,7 @@
   </div>
   <div class="wishlist items">
   <div class="row justify-content-center">
+  <?php if($result->num_rows > 0): ?>
     <?php while($row = $result->fetch_assoc()): ?>
       <div class="col-md-8 p-3">
         <div id="card-<?php echo $row['trip_id']; ?>" draggable="true" class="card p-3">
@@ -176,6 +177,12 @@
         </div>
       </div>
     <?php endwhile; ?>
+    <?php else: ?>
+      <div class="col-md-8 p-3 text-center">
+        <h5>Your wishlist is empty.</h5>
+          <scirpt> document.getElementById('edit_btn').disabled = true;</script>
+      </div>
+    <?php endif; ?>
   </div>
 </div>
 <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
