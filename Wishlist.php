@@ -314,6 +314,44 @@ document.querySelectorAll('.card').forEach((card) => {
       const wishlistItems = document.querySelector('.wishlist.items .row');
       wishlistItems.insertBefore(cardColumn, nextCardColumn.nextElementSibling);
     }
+        // Add event listeners to up (ʌ) and down (v) buttons
+    document.querySelectorAll('.card').forEach((card) => {
+      const upButton = card.querySelector('.btn-outline-primary:first-child');
+      const downButton = card.querySelector('.btn-outline-primary:last-child');
+
+      upButton.addEventListener('click', () => {
+        if (!isEditModeEnabled) return;
+        moveCardUp(card);
+      });
+
+      downButton.addEventListener('click', () => {
+        if (!isEditModeEnabled) return;
+        moveCardDown(card);
+      });
+    });
+
+    // Function to move a card up
+    function moveCardUp(card) {
+      const cardColumn = card.closest('.col-md-8');
+      const previousCardColumn = cardColumn.previousElementSibling;
+
+      if (!previousCardColumn) return; // Don't move if it's the first card
+
+      const wishlistItems = document.querySelector('.wishlist.items .row');
+      wishlistItems.insertBefore(cardColumn, previousCardColumn);
+    }
+
+    // Function to move a card down
+    function moveCardDown(card) {
+      const cardColumn = card.closest('.col-md-8');
+      const nextCardColumn = cardColumn.nextElementSibling;
+
+      if (!nextCardColumn) return; // Don't move if it's the last card
+
+      const wishlistItems = document.querySelector('.wishlist.items .row');
+      wishlistItems.insertBefore(cardColumn, nextCardColumn.nextElementSibling);
+    }
+
   </script>
 </body>
 
