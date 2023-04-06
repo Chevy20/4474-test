@@ -229,10 +229,23 @@
       document.getElementById('confirm_btn').style.display = 'none';
       updateButtonGroupState();
       updateViewDetailsButtonsState();
-      updateUpDownButtonState();
-      sendReorderedWishlist();
-      
-    });
+
+      // Add the following code to send the new order to the server
+      const tripOrder = Array.from(document.querySelectorAll('.card')).map(card => parseInt(card.dataset.tripId, 10));
+      const userId = /* Your user_id value */;
+
+      fetch('reorder_wishlist.php', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: new URLSearchParams({
+              user_id: userId,
+              trip_order: JSON.stringify(tripOrder),
+          }),
+      });
+   });
+
 
     document.querySelectorAll('.card').forEach((card) => {
       card.addEventListener('dragstart', (e) => {
