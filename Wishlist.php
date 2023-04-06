@@ -212,24 +212,30 @@
         });
       });
     }
-    const deleteBookingBtn = document.getElementById('deleteBookingBtn');
-      deleteBookingBtn.addEventListener('click', function() {
-        const tripId = <?php echo $trip_id; ?>;
-        const userId = <?php echo $user_id; ?>;
-        const xhr = new XMLHttpRequest();
-        xhr.open('POST', 'remove_from_wishlist.php', true);
-        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        xhr.onreadystatechange = function() {
-          if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-            if (this.responseText === 'Success') {
-              window.location.reload(); // Reload the page if the booking was successfully deleted
+    document.querySelectorAll('.btn-danger').forEach(button => {
+      button.addEventListener('click', () => {
+        const tripId = button.dataset.tripId;
+        const modal = new bootstrap.Modal(document.getElementById('confirmDeleteModal'));
+        modal.show();
+
+        document.getElementById('confirmDeleteBtn').addEventListener('click', () => {
+          fetch('remove_from_wishlist.php', {
+            method: 'POST',
+            body: JSON.stringify({ trip_id: tripId }),
+            headers: { 'Content-Type': 'application/json' }
+          })
+          .then(response => response.json())
+          .then(data => {
+            if (data.success) {
+              location.reload();
             } else {
-              alert('An error occurred while deleting the booking');
+              console.log(data.error);
             }
-          }
-        };
-        xhr.send('trip_id=' + encodeURIComponent(tripId) + '&user_id=' + encodeURIComponent(userId));
+          })
+          .catch(error => console.error(error));
+        });
       });
+    });
 
     function updateViewDetailsButtonsState() {
       const viewDetailsButtons = document.querySelectorAll('.view-details-btn');
