@@ -168,7 +168,7 @@
             <button type="button" class="btn btn-outline-primary" data-move="down">
               v
             </button>
-              <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal" >
+              <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal" disabled >
                 <img src="img/542724.png" class="card-img-top" style="width:20px;height:20px;">
               </button>
             </div>
