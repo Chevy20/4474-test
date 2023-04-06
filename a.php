@@ -91,7 +91,7 @@
                 $result1 = $connection -> query("SELECT user_id, username FROM Account_info WHERE user_id = $user_id ");
 
                 $row1 = $result1 ->fetch_assoc();
-                echo '<h4> &nbsp; &nbsp; Account Number:' . $row1["user_id"] . "AAC@@@" . $row1["username"] . '</h4>';
+                echo '<h4> &nbsp; &nbsp; Account Number:' . $row1["username"] . '</h4>';
                 
                 ?>
                 <br>
@@ -323,42 +323,38 @@
 
 
                 <div class="tab-pane fade" id="settings" role="tabpanel" aria-labelledby="settings-tab" id="setting">
-
                     <div class="row">
                         <div class="col-4">
-                        <nav id="navbar" class="h-100 flex-column align-items-stretch pe-4 border-end">
-                            <nav class="nav nav-pills flex-column">
+                            <nav id="navbar" class="h-100 flex-column align-items-stretch pe-4 border-end">
+                                <nav class="nav nav-pills flex-column">
 
-                            <a class="nav-link" data-bs-toggle="pill" href="#privacy">Privacy and Security</a>
-                            <a class="nav-link" data-bs-toggle="pill" href="#notifications">Notifications</a>
-                            <a class="nav-link" data-bs-toggle="pill" href="#changepassword">Change Password</a>             
-                            <a class="nav-link" data-bs-toggle="pill" href="#updatecontact"  >Update Contact Info.</a>
-                            <a class="nav-link" data-bs-toggle="pill" href="#updateaddress"  >Update Address</a>
-                            <a class="nav-link text-danger" id="ddbut" data-bs-toggle="pill" href="#deleteaccount"  >Delete Account</a>
+                                <a class="nav-link" data-bs-toggle="pill" href="#privacy">Privacy and Security</a>
+                                <a class="nav-link" data-bs-toggle="pill" href="#notifications">Notifications</a>
+                                <a class="nav-link" data-bs-toggle="pill" href="#changepassword">Change Password</a>             
+                                <a class="nav-link" data-bs-toggle="pill" href="#updatecontact"  >Update Contact Info.</a>
+                                <a class="nav-link" data-bs-toggle="pill" href="#updateaddress"  >Update Address</a>
+                                <a class="nav-link text-danger" id="ddbut" data-bs-toggle="pill" href="#deleteaccount"  >Delete Account</a>
 
-                            <style>
-                                #ddbut.nav-link.active {
-                                    background-color: #ff9999;
-                                    color: white;
-                                }
-                                </style>
-                            
-
-
-                            
+                                    <style>
+                                        #ddbut.nav-link.active {
+                                            background-color: #ff9999;
+                                            color: white;
+                                        }
+                                    </style>
+                                </nav>
                             </nav>
-                        </nav>
                         </div>
 
-
+                        
                         <div class="col-8">
-                        <div class="tab-content">
-                            <div class="tab-pane fade show active" id="privacy">
+                            <div class="tab-content">
+                                <div class="tab-pane fade show active" id="privacy">
                                     <h3>Privacy Settings</h3>
                                     <!-- Rounded switch -->
                                     <div class="form-check form-switch mb-3">
                                         <input class="form-check-input" type="checkbox" id="travel-history">
-                                        <label class="form-check-label" for="travel-history">Allow Company to collect recent travel history information</label>                          
+                                        <label class="form-check-label" for="travel-history">Allow Company to collect recent travel history information</label>
+                                        
                                     </div>
                                     
                                     <div class="form-check form-switch mb-3">
@@ -370,106 +366,114 @@
                                         <input class="form-check-input" type="checkbox" id="disclose-info">
                                         <label class="form-check-label" for="disclose-info">Allow your information to be disclosed to third party company</label>
                                     </div>
-                            </div>
-                            
-                            <div class="tab-pane fade" id="notifications">
-                                <h3>Notification Settings</h3>
-                                <div class="form-check form-switch mb-3">
-                                    <input class="form-check-input" type="checkbox" id="travel-history">
-                                    <label class="form-check-label" for="travel-history">Notify me when the wishlist trip is on Sale</label>
-                                    
-                                </div>
-                                
-                                
-                                <div class="form-check form-switch mb-3">
-                                    <input class="form-check-input" type="checkbox" id="email-deals">
-                                    <label class="form-check-label" for="email-deals">Notify me when with Seasonal Limited Deals</label>
-                                </div>
-                            </div>
-
-                            <div class="tab-pane fade" id="changepassword">
-                            
-                                <div class="card">
-                                    <div class="card-body">
-                                    <h5 class="card-title">Change Password</h5>
-                                    <p class="card-text">Forgot your passwords?</p>
-                                    <a class="btn btn-primary " data-bs-toggle="popover" data-bs-placement="top" title="Edit information" href="changepassword.php"  >Change Passowrd</a>    
                                 </div>
 
-                            </div>
-                        
-
-                            <div class="tab-pane fade" id="deleteaccount">
-                                <h5 class="card-title">Delete Account</h5>
-                                <div class="card" style="max-height: 50px; ">
-                                    <div class="card-body">
-                                    
-                                    <span> 
-                                        <i class="fa-solid fa-triangle-exclamation fa-xl" style="color: #ff0000;"></i>
-                                        <span class="text-danger"> Are you certain of this action, your account will be deleted permanently!!!</span>
-                                    </span>
+                                <div class="tab-pane fade" id="notifications">
+                                    <h3>Notification Settings</h3>
+                                    <div class="form-check form-switch mb-3">
+                                        <input class="form-check-input" type="checkbox" id="travel-history">
+                                        <label class="form-check-label" for="travel-history">Notify me when the wishlist trip is on Sale</label>
                                     </div>
-                                </div>
+                        
                                 
+                                    <div class="form-check form-switch mb-3">
+                                        <input class="form-check-input" type="checkbox" id="email-deals">
+                                        <label class="form-check-label" for="email-deals">Notify me when with Seasonal Limited Deals</label>
+                                    </div>
+
+                                </div>
+
+                                <div class="tab-pane fade" id="changepassword">
+                                    <div class="card">
+                                        <div class="card-body">
+                                        <h5 class="card-title">Change Password</h5>
+                                        <p class="card-text">Forgot your passwords?</p>
+                                        <a class="btn btn-primary " data-bs-toggle="popover" data-bs-placement="top" title="Edit information" href="changepassword.php"  >Change Passowrd</a>
+                                    </div>
+
+                                </div>
 
                             
-                                <br>  
-                                <a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleting">
-                                    Delete Account  
-                                </a>
 
                                 <script> 
-                        
-                                    function confirmDelete() {
+                                        function confirmDelete() {
 
-                                        alert("You activated Delete Account feature, however for the testing and grading, account will not be deleted this moment");
-                                    }
-                                                
+                                            alert("You activated Delete Account feature, however for the testing and grading, account will not be deleted this moment");
+                                        }
+                                              
                                 </script>
-                    
+
+
+
                             
-
-                                <!-- Modal -->
-                                <div class="modal fade" id="deleting" tabindex="-1" aria-labelledby="deletingLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                    <div class="modal-content">
-
-                                        <div class="modal-header">
-                                        <h5 class="modal-title" id="deletingLabel">Delete Account</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        
-                                        <div class="modal-body">
-                                        Are you sure you want to delete your account?
-                                        </div>
-
-                                        <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                        <button type="button" class="btn btn-danger" onclick="confirmDelete()">Delete</button>
-                                        </div>
-                                        
-                                    </div>
-                                    </div>
-                                </div> 
-                            </div>
-
-                        
-                        
+                                
 
                             
 
-                            <div class="tab-pane fade" id="updatecontact">
-                            <h3>Update Contact Information</h3>
-                            <p>Click here to update your address</p>
-                            <a class="btn btn-primary " data-bs-toggle="popover" data-bs-placement="top" title="Edit information" href="updatecontact.php"  >Update Address</a> 
-                            </div>
+                                    </div>
+                                    
+                                    
+                                <div class="tab-pane fade" id="updatecontact">
+                                    <h3>Update Contact Information</h3>
+                                    <p>Click here to update your address</p>
+                                    <a class="btn btn-primary " data-bs-toggle="popover" data-bs-placement="top" title="Edit information" href="updatecontact.php"  >Update Address</a>
+                                </div>
 
 
-                            <div class="tab-pane fade" id="updateaddress">
-                            <h3>Update Address</h3>
-                            <p>Click here to update your address</p>
-                            <a class="btn btn-primary " data-bs-toggle="popover" data-bs-placement="top" title="Edit information" href="updateaddress.php"  >Update Address</a>
-                            </div>
+                                <div class="tab-pane fade" id="updateaddress">
+                                    <h3>Update Address</h3>
+                                    <p>Click here to update your address</p>
+                                    <a class="btn btn-primary " data-bs-toggle="popover" data-bs-placement="top" title="Edit information" href="updateaddress.php"  >Update Address</a>              
+                                </div>
+
+
+
+                                <div class="tab-pane fade" id="deleteaccount">
+                                    <h5 class="card-title">Delete Account</h5>
+                                    <div class="card" style="max-height: 50px; ">
+                                        <div class="card-body">
+                                
+                                                <span> 
+                                                    <i class="fa-solid fa-triangle-exclamation fa-xl" style="color: #ff0000;"></i>
+                                                    <span class="text-danger"> Are you certain of this action, your account will be deleted permanently!!!</span>
+                                                </span>
+
+                                                <br><br>
+
+
+
+                                                <br>  
+                                                <a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleting">
+                                                Delete Account  
+                                                </a>
+
+
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="deleting" tabindex="-1" aria-labelledby="deletingLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                            <h5 class="modal-title" id="deletingLabel">Delete Account</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+
+                                                        
+                                                        <div class="modal-body">
+                                                            Are you sure you want to delete your account?
+                                                        </div>
+
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                            <button type="button" class="btn btn-danger" onclick="confirmDelete()">Delete</button>
+                                                        </div>
+
+                                                    </div>   
+                                                </div>  
+
+                                        </div>
+                                    </div>
+                                </div>
 
 
 
@@ -477,13 +481,16 @@
                         
                 
 
+                            </div>
                         </div>
-                        </div>
+
+                        
     
+                    </div>
                     </div>
                     
         
-                </div
+                </div>
 
             </div>
             </div>
