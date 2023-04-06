@@ -319,6 +319,25 @@
         });
       }
     });
+    // Get a reference to the "Yes, delete it" button
+  var deleteBookingBtn = document.getElementById("deleteBookingBtn");
+
+  // Add a click event listener to the button
+  deleteBookingBtn.addEventListener("click", function() {
+
+    // Call remove_from_wishlist.php using AJAX
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "remove_from_wishlist.php", true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        // Handle the response here if necessary
+        console.log(xhr.responseText);
+      }
+    };
+    xhr.send("booking_id=" + booking_id);
+
+  });
     // Function to move a card up
     function moveCardUp(card) {
       const cardColumn = card.closest('.col-md-8');
