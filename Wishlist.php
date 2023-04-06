@@ -180,8 +180,12 @@
     <?php else: ?>
       <div class="col-md-8 p-3 text-center">
         <h5>Your wishlist is empty.</h5>
-          <scirpt> document.getElementById('edit_btn').disabled = true;</script>
       </div>
+    <?php endif; ?>
+    <?php if($result->num_rows == 0): ?>
+    <script>
+      document.getElementById('edit_btn').disabled = true;
+    </script>
     <?php endif; ?>
   </div>
 </div>
