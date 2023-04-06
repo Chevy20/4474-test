@@ -23,9 +23,12 @@
     $stmt->execute();
 
     // Update the position values of the remaining items
-    $sql = "UPDATE wishlist SET position = position - 1 WHERE user_id = ? AND position > ?";
+    $sql = "SET @position := 0";
+    $connection->query($sql);
+
+    $sql = "UPDATE wishlist SET position = (@position := @position + 1) WHERE user_id = ? ORDER BY trip_id";
     $stmt = $connection->prepare($sql);
-    $stmt->bind_param("ii", $user_id, $removed_position);
+    $stmt->bind_param("i", $user_id);
     $stmt->execute();
 
     $stmt->close();
