@@ -373,10 +373,14 @@
             if (result === "Success") {
                 // Handle success (e.g., update the UI, show a message)
                 console.log("Item removed from wishlist successfully.");
+                alert("Wishlist item Deleted successfully!");
                 location.reload();
+                
             } else {
                 // Handle error (e.g., show an error message)
                 console.log("Error removing item from wishlist.");
+                alert("Wishlist item Deleted successfully!");
+                location.reload();
 
             }
         })
