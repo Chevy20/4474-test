@@ -179,7 +179,7 @@
     <?php endwhile; ?>
     <?php else: ?>
       <div class="col-md-8 p-3 text-center">
-        <h5>Your wishlist is empty.</h5>
+        <h3>Your wishlist is empty.</h3>
       </div>
     <?php endif; ?>
     <?php if($result->num_rows == 0): ?>
